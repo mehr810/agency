@@ -46,7 +46,6 @@ const ServicesSection = () => {
                     </p>
                 </div>
 
-
                 {/* Paragraph */}
                 <div className="mb-6 max-w-3xl">
                     <p className="text-lg md:text-xl text-gray-700">
@@ -74,7 +73,7 @@ const ServicesSection = () => {
                             className={clsx(
                                 "relative border border-gray-200 rounded-xl w-[220px] h-[250px] flex-shrink-0 transition-all duration-300 overflow-hidden group",
                                 hovered === index &&
-                                "bg-gradient-to-tr from-green-600 to-yellow-400 text-white shadow-xl"
+                                "bg-gradient-to-bl from-[#FFDE21] to-white text-black shadow-xl"
                             )}
                         >
                             {/* SVG lines */}
@@ -98,7 +97,7 @@ const ServicesSection = () => {
                                 />
                             </svg>
 
-                            {/* CARD CONTENT - left aligned + centered vertically */}
+                            {/* CARD CONTENT */}
                             <div className="relative z-10 h-full flex flex-col justify-center items-start px-6">
                                 <h3 className="text-lg font-bold uppercase tracking-wider mb-2">
                                     {service.title}
@@ -106,7 +105,7 @@ const ServicesSection = () => {
                                 <p
                                     className={clsx(
                                         "text-xs leading-snug",
-                                        hovered === index ? "text-white" : "text-gray-700"
+                                        hovered === index ? "text-black" : "text-gray-700"
                                     )}
                                 >
                                     {service.description}
