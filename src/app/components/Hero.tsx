@@ -3,13 +3,20 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Playfair_Display } from "next/font/google";
+import { Playfair_Display, League_Spartan } from "next/font/google";
 
-// Load Playfair Display via next/font/google
+// Load Playfair Display
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "700", "900"],
   variable: "--font-playfair",
+});
+
+// Load League Spartan for 'impossible things'
+const spartan = League_Spartan({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-spartan",
 });
 
 const HeroSection = () => {
@@ -66,8 +73,8 @@ const HeroSection = () => {
           We like doing
           <br />
           <span
-            className="italic font-normal"
-            style={{ fontFamily: "'Charm', cursive", fontWeight: 400 }}
+            className={`italic font-normal ${spartan.className}`}
+            style={{ fontWeight: 400 }}
           >
             — impossible things
           </span>
