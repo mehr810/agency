@@ -66,10 +66,9 @@ export default function TeamSection() {
       <div className="relative z-20 max-w-7xl mx-auto px-4 md:px-20 mt-10 md:mt-20">
         <div className="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center md:justify-end gap-y-10 gap-x-5 md:gap-x-10">
           {teamMembers.map((member, i) => {
-            let baseStyle = 'transition-transform duration-300 transform';
+            const baseStyle = 'transition-transform duration-300 transform';
             let responsiveLayout = '';
 
-            // For desktop styling, same as original
             if (i === 0) {
               responsiveLayout = 'md:mt-20 md:-translate-x-10';
             } else if (i === 1) {

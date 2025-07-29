@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Hero from "./components/Hero";
 import PartnersSection from "./components/Partners";
 import PartnersPage from "./components/PartnersSection";
@@ -9,91 +8,36 @@ import ServicesSection from "./components/ServicesCard";
 import TeamSection from "./components/Team";
 import Testimonials from "./components/Testimonials";
 
-// Animation variant
-const fadeInUp = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 },
-};
-
 export default function Home() {
   return (
     <main className="bg-white">
-      <motion.section
-        className="py-0 md:py-4"
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.4 }}
-        transition={{ duration: 0.6 }}
-      >
+      <section className="py-0 md:py-4">
         <Hero />
-      </motion.section>
+      </section>
 
-      <motion.section
-        className="py-0"
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.4 }}
-        transition={{ duration: 0.6 }}
-      >
+      <section className="mb-0 md:mb-0">
         <MightyFiveStatement />
-      </motion.section>
+      </section>
 
-      <motion.section
-        className="py-8 md:py-0"
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.4 }}
-        transition={{ duration: 0.6 }}
-      >
+      <section className="min-h-screen py-8 md:py-12">
         <ServicesSection />
-      </motion.section>
+      </section>
 
-      <motion.section
-        className="py-6 md:py-0"
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.4 }}
-        transition={{ duration: 0.6 }}
-      >
+      <section className="py-8 md:py-12">
         <Testimonials />
-      </motion.section>
+      </section>
 
-      <motion.section
-        className="py-6 md:py-0"
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.4 }}
-        transition={{ duration: 0.6 }}
-      >
+      <section className="py-8 md:py-12">
         <PartnersSection />
-      </motion.section>
+      </section>
 
-      <motion.section
-        className="py-6 md:py-0"
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.4 }}
-        transition={{ duration: 0.6 }}
-      >
+      <section className="py-8 md:py-12">
         <TeamSection />
-      </motion.section>
+      </section>
 
-      <motion.section
-        className="py-6 md:py-10"
-        variants={fadeInUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.4 }}
-        transition={{ duration: 0.6 }}
-      >
+      <section className="py-8 md:py-12">
         <PartnersPage />
-      </motion.section>
+      </section>
     </main>
   );
 }

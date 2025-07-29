@@ -19,9 +19,9 @@ const logos = [
 export default function PartnersSection() {
   const controls = useAnimation();
   const cardWidth = 240; // width + gap
-  const totalSteps = logos.length;
 
   useEffect(() => {
+    const totalSteps = logos.length;
     let currentIndex = 0;
 
     const stepScroll = () => {
@@ -34,19 +34,18 @@ export default function PartnersSection() {
 
       if (currentIndex >= totalSteps) {
         setTimeout(() => {
-          // Instantly reset back to 0 after anim completes
           controls.set({ x: 0 });
           currentIndex = 0;
-        }, 800); // allow smooth animation to finish
+        }, 800);
       }
     };
 
-    const interval = setInterval(stepScroll, 2500); // pause between moves
+    const interval = setInterval(stepScroll, 2500);
 
     return () => clearInterval(interval);
   }, [controls]);
 
-  const duplicatedLogos = [...logos, ...logos]; // for seamless reset
+  const duplicatedLogos = [...logos, ...logos];
 
   return (
     <div>
@@ -57,7 +56,7 @@ export default function PartnersSection() {
         </h3>
       </section>
 
-      {/* Partners Scrolling Section */}
+      {/* Partners Section */}
       <section className="bg-white mt-12">
         <div className="max-w-7xl mx-auto flex items-start gap-4 relative px-4">
           {/* Vertical Side Text */}
@@ -68,7 +67,7 @@ export default function PartnersSection() {
             </p>
           </div>
 
-          {/* Main Content */}
+          {/* Main Heading */}
           <div className="flex-1 pl-40 md:pl-58">
             <div className="text-left mb-12">
               <h2 className="text-3xl md:text-5xl font-semibold leading-snug">
@@ -82,7 +81,7 @@ export default function PartnersSection() {
           </div>
         </div>
 
-        {/* Step-by-Step Scrolling Logos */}
+        {/* Scrolling Logos */}
         <div className="overflow-hidden w-full">
           <motion.div
             className="flex gap-8 items-center py-6"

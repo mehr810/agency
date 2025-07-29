@@ -95,3 +95,7 @@
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }
+/* global.css */
+html {
+  scroll-behavior: smooth;
+}
