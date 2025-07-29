@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 const logos = [
   { name: "BAT", logo: "/logos/image.png" },
@@ -16,6 +17,37 @@ const logos = [
 ];
 
 export default function PartnersSection() {
+  const controls = useAnimation();
+  const cardWidth = 240; // width + gap
+  const totalSteps = logos.length;
+
+  useEffect(() => {
+    let currentIndex = 0;
+
+    const stepScroll = () => {
+      currentIndex += 1;
+
+      controls.start({
+        x: `-${currentIndex * cardWidth}px`,
+        transition: { duration: 0.7, ease: "easeInOut" },
+      });
+
+      if (currentIndex >= totalSteps) {
+        setTimeout(() => {
+          // Instantly reset back to 0 after anim completes
+          controls.set({ x: 0 });
+          currentIndex = 0;
+        }, 800); // allow smooth animation to finish
+      }
+    };
+
+    const interval = setInterval(stepScroll, 2500); // pause between moves
+
+    return () => clearInterval(interval);
+  }, [controls]);
+
+  const duplicatedLogos = [...logos, ...logos]; // for seamless reset
+
   return (
     <div>
       {/* Top Heading Section */}
@@ -28,7 +60,7 @@ export default function PartnersSection() {
       {/* Partners Scrolling Section */}
       <section className="bg-white mt-12">
         <div className="max-w-7xl mx-auto flex items-start gap-4 relative px-4">
-          {/* Vertical Side Text with Faded Line */}
+          {/* Vertical Side Text */}
           <div className="absolute left-32 md:left-48 top-1/2 transform -translate-y-1/2 flex items-center">
             <div className="absolute h-[1px] w-32 bg-gray-500 opacity-50 transform rotate-90 origin-left"></div>
             <p className="text-sm tracking-widest text-gray-500 uppercase transform -rotate-90 origin-left whitespace-nowrap relative z-10 pl-4">
@@ -50,21 +82,17 @@ export default function PartnersSection() {
           </div>
         </div>
 
-        {/* Full-width Scrolling Logos in Card Style with Shadows */}
-        <div className="max-w-full overflow-hidden">
+        {/* Step-by-Step Scrolling Logos */}
+        <div className="overflow-hidden w-full">
           <motion.div
             className="flex gap-8 items-center py-6"
-            animate={{ x: ["0%", "-100%"] }}
-            transition={{
-              repeat: Infinity,
-              duration: 400,
-              ease: "linear",
-            }}
+            animate={controls}
+            initial={{ x: 0 }}
           >
-            {[...logos, ...logos].map((partner, idx) => (
+            {duplicatedLogos.map((partner, idx) => (
               <div
                 key={idx}
-                className="relative flex-shrink-0 w-56 h-36 bg-white shadow-lg rounded-xl flex items-center justify-center transition-transform hover:scale-105 duration-300"
+                className="relative flex-shrink-0 w-56 h-36 bg-white shadow-lg rounded-xl flex items-center justify-center"
               >
                 <Image
                   src={partner.logo}
@@ -73,8 +101,6 @@ export default function PartnersSection() {
                   height={80}
                   className="object-contain"
                 />
-
-                {/* Vertical Divider */}
                 <div className="absolute right-[-16px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-gray-500 to-transparent opacity-70"></div>
               </div>
             ))}

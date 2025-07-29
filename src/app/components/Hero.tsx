@@ -3,28 +3,27 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
-import { Playfair_Display, League_Spartan } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 
-// Fonts
+// Fonts from Google
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "700", "900"],
   variable: "--font-playfair",
 });
 
-const spartan = League_Spartan({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-spartan",
-});
-
 const HeroSection = () => {
   useEffect(() => {
-    const link = document.createElement("link");
-    link.href =
-      "https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap";
-    link.rel = "stylesheet";
-    document.head.appendChild(link);
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @font-face {
+        font-family: 'BeautySalon';
+        src: url('/fonts/BeautySalon Script Regular.ttf') format('truetype');
+        font-weight: thin;
+        font-style: normal;
+      }
+    `;
+    document.head.appendChild(style);
   }, []);
 
   const media = [
@@ -38,28 +37,33 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="w-full overflow-hidden">
+    <section className="w-full overflow-hidden mt-8">
       {/* Top Text */}
-      <div className="relative z-20 px-4 md:px-12 py-10 md:py-16 bg-white">
+      <div className="relative z-20 px-4 md:px-12 py-0 sm:py-4 bg-white">
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className={`text-3xl sm:text-4xl md:text-6xl lg:text-[79px] font-thin leading-snug text-black ${playfair.className}`}
+          className={`text-3xl sm:text-4xl md:text-6xl lg:text-[79px] font-thin leading-snug text-black ${playfair.className} drop-shadow`}
+          style={{ textShadow: "1px 1px 4px rgba(0, 0, 0, 0.2)" }}
         >
           We like doing
           <br />
           <span
-            className={`italic font-normal ${spartan.className}`}
-            style={{ fontWeight: 400 }}
+            className="italic block text-3xl sm:text-4xl md:text-6xl lg:text-[79px] pl-10 md:pl-20 lg:pl-28"
+            style={{
+              fontFamily: "BeautySalon, cursive",
+              fontWeight: "thin",
+              textShadow: "1px 1px 4px rgba(0, 0, 0, 0.2)",
+            }}
           >
-            — impossible things
+            impossible things
           </span>
         </motion.h1>
       </div>
 
       {/* Hero Media */}
-      <div className="relative w-full bg-white py-4 sm:py-10">
+      <div className="relative w-full bg-white py-0 sm:py-4">
         <div className="relative mx-auto w-full aspect-video sm:max-w-3xl md:max-w-5xl lg:max-w-7xl">
           <video
             autoPlay

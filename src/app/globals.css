@@ -89,3 +89,9 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+/* global.css or wherever you write global styles */
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}

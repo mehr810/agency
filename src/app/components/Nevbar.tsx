@@ -23,7 +23,10 @@ const navItems = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down" | "initial">("initial");
+  const [lastScrollY, setLastScrollY] = useState(0);
 
+  // Detect mobile
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 800);
     handleResize();
@@ -31,23 +34,35 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Lock scroll when menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
   }, [menuOpen]);
 
-  const renderNavItem = (item: typeof navItems[0], index: number) => {
-    const [number, ...textParts] = item.label.split(" ");
-    const text = textParts.join(" ");
+  // Scroll direction detection
+  useEffect(() => {
+    const handleScroll = () => {
+      const current = window.scrollY;
+      if (current > lastScrollY) {
+        setScrollDirection("down");
+      } else if (current < lastScrollY) {
+        setScrollDirection("up");
+      }
+      setLastScrollY(current);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
+  const renderNavItem = (item: typeof navItems[0], idx: number) => {
+    const [num, ...words] = item.label.split(" ");
+    const text = words.join(" ");
     return (
       <motion.div
         key={item.href}
         initial={{ opacity: 0, x: isMobile ? 0 : 20, y: isMobile ? 20 : 0 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
-        transition={{ delay: 0.1 + index * 0.05 }}
+        transition={{ delay: 0.1 + idx * 0.05 }}
       >
         <Link
           href={item.href}
@@ -59,59 +74,70 @@ export default function Navbar() {
           )}
           onClick={() => setMenuOpen(false)}
         >
-          <span className="text-4xl mr-1 opacity-60">{number}</span>
+          <span className="text-4xl mr-1 opacity-60">{num}</span>
           {text}
         </Link>
       </motion.div>
     );
   };
 
+  const showNavbar = scrollDirection === "initial" || scrollDirection === "up" || menuOpen;
+
   return (
     <div className={playfair.className}>
-      {/* Main Navbar */}
+      {/* Navbar */}
       <div
         className={cn(
-          "fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white",
-          menuOpen ? "py-0 px-4 sm:px-6 md:px-12" : "py-1 px-4 sm:px-6 md:px-12"
+          "fixed top-0 left-0 w-full z-50 transition-transform duration-300 ease-in-out",
+          menuOpen ? "bg-transparent" : "bg-white",
+          "px-4 sm:px-6 md:px-12",
+          showNavbar ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-10 pointer-events-none"
         )}
+        style={{ paddingTop: "12px", paddingBottom: "[-5px]px" }} // ↓ tighter padding here ↓
       >
-        <div className="flex items-center justify-between gap-6 sm:gap-4">
+        <div className="flex items-center justify-between">
           <Link
             href="/"
             className={cn(
-              "block transition-all duration-300",
+              "transition-opacity duration-300 pt-2",
               menuOpen ? "opacity-0" : "opacity-100",
-              isMobile ? "w-14" : "w-18 sm:w-20"
+              isMobile ? "w-[72px]" : "w-[90px] sm:w-[110px]"
             )}
           >
             <Image
               src="/logo-mighty-five.png"
               alt="Logo"
-              width={100}
-              height={83}
+              width={120}
+              height={100}
               className="object-contain h-auto w-full"
               priority
             />
           </Link>
 
+          {/* Hamburger / X */}
           <button
-            className="relative w-9 h-4 focus:outline-none z-50 group"
+            className="relative w-9 h-9 flex items-center justify-center focus:outline-none z-50"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
-            <div
-              className={cn(
-                "absolute left-0 w-full h-[3px] bg-black transition-all duration-300",
-                menuOpen ? "rotate-45 top-1/2" : "top-0"
-              )}
+            <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
+            <motion.span
+              className="absolute bg-black rounded-sm"
+              style={{ height: 3, width: 30 }}
+              animate={menuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -8 }}
+              transition={{ duration: 0.3 }}
             />
-            <div
-              className={cn(
-                "absolute left-0 bg-black transition-all duration-300 origin-left h-[3px]",
-                menuOpen
-                  ? "-rotate-45 top-1/2 w-full"
-                  : "bottom-0 w-5 group-hover:w-full"
-              )}
+            <motion.span
+              className="absolute bg-black rounded-sm"
+              style={{ height: 3, width: 30 }}
+              animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+            <motion.span
+              className="absolute bg-black rounded-sm"
+              style={{ height: 3, width: 30 }}
+              animate={menuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 8 }}
+              transition={{ duration: 0.3 }}
             />
           </button>
         </div>
@@ -131,7 +157,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 0.2, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center"
+                className="absolute inset-0 flex items-center justify-center"
               >
                 <div className="text-6xl md:text-8xl font-bold text-black/20 whitespace-nowrap rotate-90">
                   WE LIKE DOING
@@ -148,13 +174,13 @@ export default function Navbar() {
               exit={{ x: "100%" }}
               transition={{ type: "tween", ease: [0.22, 1, 0.36, 1] }}
               className={cn(
-                "fixed inset-0 z-40 pt-32 px-6",
+                "fixed inset-0 z-40 px-6 overflow-y-auto max-h-screen",
                 isMobile
-                  ? "flex items-start justify-center"
-                  : "flex items-center justify-end pr-24"
+                  ? "pt-[90px] flex items-start justify-center"
+                  : "pt-[90px] flex items-start justify-end pr-24"
               )}
             >
-              <div className="space-y-10 text-right gap-1 text-amber-300">
+              <div className="space-y-10 text-right text-amber-300 pb-20">
                 {navItems.map(renderNavItem)}
               </div>
             </motion.div>
