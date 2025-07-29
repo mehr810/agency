@@ -16,8 +16,8 @@ const HeroSection = () => {
     const style = document.createElement("style");
     style.innerHTML = `
       @font-face {
-        font-family: 'BeautySalon';
-        src: url('/fonts/BeautySalon Script Regular.ttf') format('truetype');
+        font-family: 'Amoresa';
+        src: url('/fonts/Amoresa.ttf') format('truetype');
         font-weight: thin;
         font-style: normal;
       }
@@ -44,14 +44,13 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           className={`text-3xl sm:text-4xl md:text-6xl lg:text-[79px] font-thin leading-snug text-black ${playfair.className} drop-shadow`}
-          style={{ textShadow: "1px 1px 4px rgba(0, 0, 0, 0.2)" }}
         >
           We like doing
           <br />
           <span
-            className="italic block text-3xl sm:text-4xl md:text-6xl lg:text-[79px] pl-10 md:pl-20 lg:pl-28"
+            className="italic block text-3xl sm:text-4xl md:text-6xl lg:text-[79px] pl-10 md:pl-22 lg:pl-28 mt-1.5"
             style={{
-              fontFamily: "BeautySalon, cursive",
+              fontFamily: "Amoresa, Amoresa-Regular, sans-serif",
               fontWeight: "thin",
               textShadow: "1px 1px 4px rgba(0, 0, 0, 0.2)",
             }}

@@ -4,20 +4,16 @@ import Image from 'next/image';
 export default function PartnersPage() {
   const partners = [
     { name: "BAT", logo: "/logos/image.png" },
-    { name: "VELO", logo: "/logos/image2.png" },
-    { name: "GSK", logo: "/logos/logo.png" },
-    { name: "PediaSure", logo: "/logos/logo1.png" },
-    { name: "UNICEF", logo: "/logos/logo3.webp" },
-    { name: "Toyota1", logo: "/logos/logo4.webp" },
-    { name: "Toyota2", logo: "/logos/logo5.webp" },
-    { name: "Toyota3", logo: "/logos/logo6.webp" },
-    { name: "Toyota4", logo: "/logos/logo7.webp" },
-    { name: "Toyota5", logo: "/logos/logo7.webp" },
-    { name: "Toyota6", logo: "/logos/logo7.webp" },
-    { name: "Toyota7", logo: "/logos/logo7.webp" },
-    { name: "Toyota8", logo: "/logos/logo7.webp" },
-    { name: "Toyota9", logo: "/logos/logo7.webp" },
-    { name: "Toyota10", logo: "/logos/logo7.webp" },
+  { name: "VELO", logo: "/logos/image2.png" },
+  { name: "PediaSure", logo: "/logos/logo1.png" },
+  { name: "UNICEF", logo: "/logos/logo3.webp" },
+  { name: "Asset Avenue", logo: "/pertner-logos/Asset.png" },
+  { name: "Atlas", logo: "/pertner-logos/Atlas.png" },
+  { name: "Big Moe's Kitchen", logo: "/pertner-logos/Big-Moe's-Kitchen-Logo.png" },
+  { name: "I Am Design", logo: "/pertner-logos/I-am-design.jpg" },
+  { name: "Promethean", logo: "/pertner-logos/Promeathean.png" },
+  { name: "Recession Proof Anchored", logo: "/pertner-logos/Recession.PNG" },
+  { name: "Verdent", logo: "/pertner-logos/VERDENT.jpg" },
   ];
 
   const columns = 5; // Match grid with 5 columns as in the image

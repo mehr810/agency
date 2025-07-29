@@ -40,38 +40,25 @@ const ServicesSection = () => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="bg-white text-black py-8 px-6 md:px-12 font-sans overflow-x-hidden">
+    <section className="bg-white text-black py-12 px-6 md:px-12 font-sans overflow-x-hidden">
       <div className="max-w-[1800px] mx-auto">
-        {/* Header */}
-        <div className="mb-14">
-          <h2 className="text-5xl md:text-6xl font-bold mb-2">Our Expertise</h2>
-          <p className="text-2xl md:text-3xl font-light text-[#FFDE21] leading-tight shadow-neutral-600 mb-0">
-            Tailored digital services built to drive growth, <br />
-            <span className="text-black">designed for impact.</span>
-          </p>
-        </div>
-
-        {/* Paragraph */}
-        <div className="mb-10 max-w-4xl">
-          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
-            At Mighty Five, we turn ideas into impact. Whether you&rsquo;re a startup
-            finding your voice or an enterprise scaling your reach, our digital
-            solutions are built to move fast, look sharp, and deliver real results.
-            From strategy to execution, we craft experiences that connect, convert,
-            and grow. We don&rsquo;t just build brands — we build momentum.
-          </p>
+        {/* Just the "Services" Heading */}
+        <div className="mb-16 text-center">
+          <h2 className="text-5xl sm:text-4xl md:text-8xl font-semibold tracking-widest uppercase">
+            Services
+          </h2>
         </div>
       </div>
 
-      {/* Outer Box */}
+      {/* Services Cards */}
       <div className="relative border border-gray-300 rounded-2xl py-10 px-6 w-full overflow-hidden">
-        {/* Vertical design lines (right) */}
+        {/* Decorative Lines Right */}
         <div className="absolute top-8 bottom-8 right-6 z-0 hidden lg:block">
           <div className="w-[2px] h-20 bg-gray-300 mb-6"></div>
           <div className="w-[2px] h-20 bg-gray-300"></div>
         </div>
 
-        {/* Grid Container */}
+        {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 z-10 relative">
           {services.map((service, index) => (
             <div
@@ -85,7 +72,7 @@ const ServicesSection = () => {
                   "bg-[#FFDE21] text-black shadow-[0_10px_40px_rgba(0,0,0,0.2)]"
               )}
             >
-              {/* Decorative SVG lines */}
+              {/* SVG Decoration */}
               <svg
                 className="absolute right-0 top-0 h-full w-[80px] z-0 pointer-events-none hidden sm:block"
                 xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +93,7 @@ const ServicesSection = () => {
                 />
               </svg>
 
-              {/* Card content */}
+              {/* Card Content */}
               <div className="relative z-10">
                 <h3 className="text-xl md:text-2xl font-extrabold uppercase tracking-wide mb-3">
                   {service.title}
