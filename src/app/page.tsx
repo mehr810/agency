@@ -2,8 +2,6 @@
 
 import Hero from "./components/Hero";
 import PartnersSection from "./components/Partners";
-import PartnersPage from "./components/PartnersSection";
-import MightyFiveStatement from "./components/Pitch";
 import ServicesSection from "./components/ServicesCard";
 import TeamSection from "./components/Team";
 import Testimonials from "./components/Testimonials";
@@ -15,16 +13,8 @@ export default function Home() {
         <Hero />
       </section>
 
-      <section className="mb-0 md:mb-0">
-        <MightyFiveStatement />
-      </section>
-
       <section className="min-h-screen py-8 md:py-12">
         <ServicesSection />
-      </section>
-
-      <section className="py-8 md:py-12">
-        <Testimonials />
       </section>
 
       <section className="py-8 md:py-12">
@@ -36,7 +26,7 @@ export default function Home() {
       </section>
 
       <section className="py-8 md:py-12">
-        <PartnersPage />
+        <Testimonials />
       </section>
     </main>
   );

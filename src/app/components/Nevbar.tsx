@@ -97,22 +97,29 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-between">
           <Link
-            href="/"
-            className={cn(
-              "transition-opacity duration-300 pt-2",
-              menuOpen ? "opacity-0" : "opacity-100",
-              isMobile ? "w-[72px]" : "w-[90px] sm:w-[110px]"
-            )}
-          >
-            <Image
-              src="/logo-mighty-five.png"
-              alt="Logo"
-              width={120}
-              height={100}
-              className="object-contain h-auto w-full"
-              priority
-            />
-          </Link>
+  href="/"
+  className={cn(
+    "transition-opacity duration-300 pt-2",
+    menuOpen ? "opacity-0" : "opacity-100",
+    isMobile ? "w-[72px]" : "w-[90px] sm:w-[110px]"
+  )}
+>
+  <motion.div
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+  >
+    <Image
+      src="/logo-mighty-five.png"
+      alt="Logo"
+      width={120}
+      height={100}
+      className="object-contain h-auto w-full"
+      priority
+    />
+  </motion.div>
+</Link>
+
 
           {/* Hamburger / X */}
           <button

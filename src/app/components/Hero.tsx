@@ -2,23 +2,22 @@
 
 import { motion } from "framer-motion";
 import { useEffect } from "react";
-import { Playfair_Display } from "next/font/google";
-
-// Fonts from Google
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  variable: "--font-playfair",
-});
 
 const HeroSection = () => {
   useEffect(() => {
     const style = document.createElement("style");
     style.innerHTML = `
       @font-face {
-        font-family: 'Amoresa';
-        src: url('/fonts/Amoresa.ttf') format('truetype');
-        font-weight: thin;
+        font-family: 'Montserrat';
+        src: url('/fonts/Montserrat-Bold.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Montserrat';
+        src: url('/fonts/Montserrat-Bold.ttf') format('truetype');
+        font-weight: 700;
         font-style: normal;
       }
     `;
@@ -36,47 +35,71 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="w-full overflow-hidden mt-8">
+    <section className="w-full overflow-hidden mt-10">
       {/* Top Text */}
-      <div className="relative z-20 px-4 md:px-12 py-0 sm:py-4 bg-white">
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className={`text-3xl sm:text-4xl md:text-6xl lg:text-[79px] font-thin leading-snug text-black ${playfair.className} drop-shadow`}
-        >
-          We like doing
-          <br />
-          <span
-            className="italic block text-3xl sm:text-4xl md:text-6xl lg:text-[79px] pl-10 md:pl-22 lg:pl-28 mt-1.5"
+      <div className="relative z-20 px-4 md:px-15 py-0 sm:py-4 bg-white">
+        <div className="overflow-hidden">
+          <motion.h1
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1.1, ease: "easeOut" }}
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-[69px] leading-snug text-black drop-shadow"
             style={{
-              fontFamily: "Amoresa, Amoresa-Regular, sans-serif",
-              fontWeight: "thin",
-              textShadow: "1px 1px 4px rgba(0, 0, 0, 0.2)",
+              fontFamily: "Montserrat",
+              fontWeight: 700,
             }}
           >
-            impossible things
-          </span>
-        </motion.h1>
+            <span className="block overflow-hidden">
+              <motion.span
+                initial={{ y: 100 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="block"
+              >
+                We like doing
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden">
+              <motion.span
+                initial={{ y: 100 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1.3, delay: 0.2, ease: "easeOut" }}
+                className="italic block pl-10 md:pl-22 lg:pl-28 mt-1.5 text-3xl sm:text-4xl md:text-6xl lg:text-[69px]"
+                style={{
+                  fontFamily: "Montserrat",
+                  fontWeight: 700,
+                  textShadow: "1px 1px 4px rgba(0, 0, 0, 0.2)",
+                }}
+              >
+                impossible things
+              </motion.span>
+            </span>
+          </motion.h1>
+        </div>
       </div>
 
       {/* Hero Media */}
-      <div className="relative w-full bg-white py-0 sm:py-4">
-        <div className="relative mx-auto w-full aspect-video sm:max-w-3xl md:max-w-5xl lg:max-w-7xl">
+      <div className="relative w-full bg-white py-2 sm:py-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, rotateX: 15 }}
+          animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+          transition={{ duration: 1.3, delay: 0.5, ease: "anticipate" }}
+          className="relative w-full aspect-video sm:max-w-3xl md:max-w-5xl lg:max-w-none lg:px-0"
+        >
           <video
             autoPlay
             loop
             muted
             playsInline
             preload="none"
-            className="w-full h-full object-contain sm:object-cover"
+            className="w-full h-full object-contain sm:object-cover rounded-lg shadow-lg"
             poster={media[0].poster}
             title={media[0].title}
           >
             <source src={media[0].src} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

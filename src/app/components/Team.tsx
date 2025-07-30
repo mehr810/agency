@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { motion, Variants } from 'framer-motion';
 
 type TeamMember = {
   name: string;
@@ -15,67 +15,67 @@ const teamMembers: TeamMember[] = [
   { name: 'ASMA ASAD KHAN', role: 'Digital Innovation Lead', image: '/team/asma.webp' },
 ];
 
+// Animation variants
+const cardVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 60,
+    filter: 'blur(8px)',
+  },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      delay: i * 0.2,
+      duration: 0.6,
+      ease: [0.25, 1, 0.5, 1],
+    },
+  }),
+};
+
 export default function TeamSection() {
   return (
-    <section className="py-20 bg-white max-w-7xl mx-auto px-6 md:px-20">
-      {/* Top Section: Heading + Tagline */}
-      <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
-        {/* Left: Heading */}
-        <div className="md:w-1/2 text-left">
-          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-            Meet The Team <br />
-            <span className="relative inline-block">
-              <span className="relative inline-block text-black">
-                Our
-                <span className="absolute -bottom-1 left-0 h-1 w-10 bg-blue-600 rounded-full"></span>
-              </span>{' '}
-              <span className="text-black">Professionals</span>
-            </span>
-          </h2>
-        </div>
+    <section className="bg-white max-w-7xl mx-auto px-6 md:px-20">
+      {/* Heading */}
+      <motion.h2
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        viewport={{ once: true }}
+        className="text-3xl md:text-5xl tracking-widest font-extrabold text-center text-gray-900 mb-12"
+      >
+        Meet Our Team
+      </motion.h2>
 
-        {/* Right: Tagline, Image credit, Read More button */}
-<div className="md:w-1/2 flex flex-col justify-center gap-6">
-  <p className="text-gray-500 italic text-base whitespace-pre-line">
-    We are a team of bold thinkers and creative minds,{"\n"}
-    committed to delivering innovative solutions that{"\n"}
-    drive growth, impact, and lasting value.
-  </p>
-  <p className="text-sm text-gray-400">
-    Powered by passion and precision,{"\n"}
-    we transform ideas into reality through strategy,{"\n"}
-    collaboration, and a relentless pursuit of excellence.
-  </p>
-</div>
-      </div>
-
-      {/* Bottom Section: Team Cards */}
-      <div className="flex flex-col sm:flex-row justify-center items-center gap-10 px-2 md:px-10">
+      {/* Team Cards */}
+      <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-10">
         {teamMembers.map((member, i) => (
-          <div
+          <motion.div
             key={i}
-            className="text-center shadow-md rounded-md overflow-hidden w-full sm:w-64"
+            custom={i}
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="text-center shadow-md rounded-md overflow-hidden w-64 bg-white"
           >
-            <div className="relative w-full h-90">
+            <div className="relative w-full h-80">
               <Image
                 src={member.image}
                 alt={`${member.name} - ${member.role}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 16rem"
-                priority={i === 0} // optional: prioritize first image loading
+                layout="fill"
+                objectFit="cover"
+                objectPosition="top"
+                sizes="256px"
+                priority={i === 0}
               />
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-semibold text-gray-800">{member.name}</h3>
-              <p className="text-sm text-blue-600 mb-3">{member.role}</p>
-              <div className="flex justify-center gap-4 text-gray-600 text-lg">
-                <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
-                <FaInstagram className="hover:text-pink-500 cursor-pointer" />
-                <FaLinkedinIn className="hover:text-blue-800 cursor-pointer" />
-              </div>
+              <h3 className="text-lg font-bold text-gray-800">{member.name}</h3>
+              <p className="text-sm font-semibold text-gray-800">{member.role}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

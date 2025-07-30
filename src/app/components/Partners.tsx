@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 const logos = [
   { name: "BAT", logo: "/logos/image.png" },
@@ -12,7 +12,7 @@ const logos = [
   { name: "Asset Avenue", logo: "/pertner-logos/Asset.png" },
   { name: "Atlas", logo: "/pertner-logos/Atlas.png" },
   { name: "Big Moe's Kitchen", logo: "/pertner-logos/Big-Moe's-Kitchen-Logo.png" },
-  { name: "I Am Design", logo: "/pertner-logos/I-am-design.jpg" },
+  { name: "I Am Design", logo: "/pertner-logos/I-am-design.png" },
   { name: "Promethean", logo: "/pertner-logos/Promeathean.png" },
   { name: "Recession Proof Anchored", logo: "/pertner-logos/Recession.PNG" },
   { name: "Verdent", logo: "/pertner-logos/VERDENT.jpg" },
@@ -20,95 +20,142 @@ const logos = [
 
 export default function PartnersSection() {
   const controls = useAnimation();
-  const cardWidth = 320; // desktop card width
+  const cardWidth = 300;
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
+  // Auto-scroll logic
   useEffect(() => {
+    if (isDragging) return;
+
+    let index = 0;
     const totalSteps = logos.length;
-    let currentIndex = 0;
 
-    const stepScroll = () => {
-      currentIndex += 1;
-
+    const scrollLoop = () => {
+      index++;
       controls.start({
-        x: `-${currentIndex * cardWidth}px`,
+        x: `-${index * cardWidth}px`,
         transition: { duration: 0.7, ease: "easeInOut" },
       });
 
-      if (currentIndex >= totalSteps) {
+      if (index >= totalSteps) {
         setTimeout(() => {
           controls.set({ x: 0 });
-          currentIndex = 0;
+          index = 0;
         }, 800);
       }
     };
 
-    const interval = setInterval(stepScroll, 3000);
-
+    const interval = setInterval(scrollLoop, 3000);
     return () => clearInterval(interval);
-  }, [controls]);
+  }, [controls, isDragging]);
 
-  const duplicatedLogos = [...logos, ...logos];
+  // Mouse drag handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => setIsDragging(false);
+  const handleMouseLeave = () => setIsDragging(false);
+
+  // Touch drag handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!scrollRef.current) return;
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    const x = e.touches[0].pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchEnd = () => setIsDragging(false);
 
   return (
-    <div>
-      {/* Top Heading Section */}
-      <section className="py-12 sm:py-16 bg-white text-center">
-        <h3 className="text-sm sm:text-base md:text-lg text-gray-600 uppercase tracking-widest inline-block border-b-2 border-blue-300 pb-1">
-          Know more about us
-        </h3>
-      </section>
+    <section className="bg-white py-12">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Animated Heading */}
+        <motion.div
+          className="text-left mb-10"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold leading-snug">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-purple-600">
+              We help businesses
+            </span>
+            <br />
+            all around the world to grow.
+          </h2>
+        </motion.div>
 
-      {/* Partners Section */}
-      <section className="bg-white mt-10 sm:mt-16">
-        <div className="max-w-7xl mx-auto flex items-start gap-4 relative px-4">
-          {/* Vertical Side Text */}
-          <div className="hidden sm:flex absolute left-16 sm:left-32 md:left-48 top-1/2 transform -translate-y-1/2 items-center">
-            <div className="absolute h-[1px] w-20 sm:w-32 bg-gray-500 opacity-50 transform rotate-90 origin-left"></div>
-            <p className="text-xs sm:text-sm tracking-widest text-gray-500 uppercase transform -rotate-90 origin-left whitespace-nowrap relative z-10 pl-4">
-              Some of our clients
-            </p>
-          </div>
+        {/* Scrollable Logos */}
+        <div
+          ref={scrollRef}
+          className="overflow-x-scroll w-full cursor-grab active:cursor-grabbing"
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          }}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Hide scrollbar */}
+          <style jsx>{`
+            div::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
 
-          {/* Main Heading */}
-          <div className="flex-1 pl-0 sm:pl-40 md:pl-64">
-            <div className="text-left mb-8 sm:mb-16">
-              <h2 className="text-2xl sm:text-4xl md:text-6xl font-semibold leading-snug">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-purple-600 font-bold">
-                  We help businesses
-                </span>
-                <br />
-                all around the world to grow.
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        {/* Scrolling Logos */}
-        <div className="overflow-hidden w-full">
           <motion.div
             className="flex gap-6 sm:gap-10 items-center py-6 sm:py-8"
             animate={controls}
             initial={{ x: 0 }}
           >
-            {duplicatedLogos.map((partner, idx) => (
-              <div
+            {[...logos, ...logos].map((partner, idx) => (
+              <motion.div
                 key={idx}
-                className="relative flex-shrink-0 w-56 h-36 sm:w-72 sm:h-44 md:w-80 md:h-52 bg-white shadow-xl rounded-2xl flex items-center justify-center p-4 sm:p-6"
+                className="relative flex-shrink-0 p-4 sm:p-6 rounded-xl hover:scale-[1.03] transition-transform duration-300"
+                whileHover={{ y: -10 }}
               >
-                <div className="w-full h-full relative">
+                <div className="w-[260px] h-[190px] relative flex items-center justify-center bg-white shadow-md rounded-xl">
                   <Image
                     src={partner.logo}
                     alt={partner.name}
                     fill
-                    className="object-contain max-w-full max-h-full"
+                    className="object-contain"
                   />
                 </div>
-                <div className="absolute right-[-12px] top-4 bottom-4 sm:top-6 sm:bottom-6 w-[2px] bg-gradient-to-b from-gray-500 to-transparent opacity-70"></div>
-              </div>
+
+                {/* Divider */}
+                <div className="absolute right-[-12px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-gray-300 to-transparent opacity-70"></div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
