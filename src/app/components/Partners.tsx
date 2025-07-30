@@ -88,7 +88,7 @@ export default function PartnersSection() {
   const handleTouchEnd = () => setIsDragging(false);
 
   return (
-    <section className="bg-white py-12">
+    <section className="bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Animated Heading */}
         <motion.div
