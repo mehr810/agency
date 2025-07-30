@@ -71,6 +71,7 @@ const ServicesSection = () => {
   return (
     <section className="bg-white text-black py-16 px-6 md:px-12 font-sans overflow-x-hidden">
       <div className="max-w-[1800px] mx-auto">
+        {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -83,12 +84,15 @@ const ServicesSection = () => {
           </h2>
         </motion.div>
 
+        {/* Cards Container */}
         <div className="relative border border-gray-300 rounded-2xl py-10 px-6 w-full overflow-hidden">
+          {/* Decorative Lines on Right Side (Desktop Only) */}
           <div className="absolute top-8 bottom-8 right-6 z-0 hidden lg:block">
             <div className="w-[2px] h-20 bg-gray-300 mb-6"></div>
             <div className="w-[2px] h-20 bg-gray-300"></div>
           </div>
 
+          {/* Services Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 z-10 relative">
             {services.map((service, index) => (
               <motion.div
@@ -97,14 +101,16 @@ const ServicesSection = () => {
                 initial="hidden"
                 whileInView="visible"
                 variants={cardVariants}
-viewport={{ amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }}
                 className={clsx(
                   "relative group border border-gray-200 rounded-2xl transition-all duration-300 transform",
-                  "w-full h-[320px] flex flex-col justify-center px-8 bg-white",
-                  isLargeScreen && "hover:scale-[1.04] hover:bg-[#FFDE21] hover:text-black hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)]"
+                  "w-full h-[320px] flex flex-col justify-center px-8",
+                  isLargeScreen
+                    ? "bg-white hover:scale-[1.04] hover:bg-[#FFDE21] hover:text-black hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)]"
+                    : "bg-[#FFDE21] text-black shadow-[0_10px_30px_rgba(0,0,0,0.1)]"
                 )}
               >
-                {/* Optional: You can disable or test without this SVG */}
+                {/* Optional Side SVG */}
                 <svg
                   className="absolute right-0 top-0 h-full w-[80px] z-0 pointer-events-none hidden sm:block"
                   xmlns="http://www.w3.org/2000/svg"
@@ -125,6 +131,7 @@ viewport={{ amount: 0.3 }}
                   />
                 </svg>
 
+                {/* Content */}
                 <div className="relative z-10">
                   <h3 className="text-xl md:text-2xl font-extrabold uppercase tracking-wide mb-3">
                     {service.title}
@@ -144,6 +151,7 @@ viewport={{ amount: 0.3 }}
 
 export default ServicesSection;
 
+// Optional export if needed in some layout file
 export const ServicesCard = () => {
   return <ServicesSection />;
 };
