@@ -14,7 +14,7 @@ const HeroSection = () => {
     video.muted = false;
     video.play().catch(() => {
       // If autoplay with sound is blocked, fallback to muted autoplay
-      video.muted = true;
+      video.muted = false;
       video.play().catch(() => {
         console.warn("Autoplay blocked even after mute");
       });
