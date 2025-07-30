@@ -7,31 +7,20 @@ const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Try autoplay unmuted immediately
-    video.muted = false;
-    video.play().catch(() => {
-      // If autoplay with sound is blocked, fallback to muted autoplay
-      video.muted = false;
-      video.play().catch(() => {
-        console.warn("Autoplay blocked even after mute");
-      });
-    });
-
     const handleScroll = () => {
+      const video = videoRef.current;
+      if (!video) return;
+
       const rect = video.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      const isVisible = rect.bottom > 100 && rect.top < windowHeight - 100;
-
-      if (isVisible) {
-        video.muted = false;
-        video.play().catch(() => {});
-      } else {
+      // If video is mostly out of view vertically, pause or mute it
+      if (rect.bottom < 100 || rect.top > windowHeight - 100) {
         video.muted = true;
         video.pause();
+      } else {
+        video.muted = false;
+        video.play().catch(() => {});
       }
     };
 
@@ -86,31 +75,33 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Video */}
-      <div className="relative w-full bg-white py-2 sm:py-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-full aspect-video sm:max-w-3xl md:max-w-5xl lg:max-w-none lg:px-0"
-        >
-          <video
-            ref={videoRef}
-            autoPlay
-            playsInline
-            loop
-            preload="auto"
-            className="w-full h-full object-contain sm:object-cover rounded-lg shadow-lg"
-            poster={media.poster}
-            title={media.title}
-          >
-            <source src={media.src} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </motion.div>
-      </div>
-    </section>
+    {/* Video */}
+<div className="relative w-full bg-white py-2 sm:py-4">
+  <motion.div
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className="relative w-full aspect-video sm:max-w-3xl md:max-w-5xl lg:max-w-none lg:px-0"
+  >
+    <video
+      ref={videoRef}
+      autoPlay
+      playsInline
+      loop
+      preload="auto"
+      muted // 🔈 Optional: ensures autoplay works on all devices
+      className="w-full h-full object-contain sm:object-cover rounded-lg shadow-lg"
+      poster={media.poster}
+      title={media.title}
+    >
+      <source src={media.src} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </motion.div>
+</div>
+</section>
   );
 };
 
 export default HeroSection;
+ 
