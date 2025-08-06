@@ -6,49 +6,48 @@ import { useEffect, useRef, useState } from "react";
 const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
-  const [hasInteracted, setHasInteracted] = useState(false);
   const [soundIndicatorVisible, setSoundIndicatorVisible] = useState(false);
+  const interactionRegistered = useRef(false);
 
   // Handle user interaction to enable sound
   useEffect(() => {
-    if (hasInteracted) return;
-
     const handleInteraction = () => {
-      setHasInteracted(true);
+      if (interactionRegistered.current || !videoRef.current) return;
       
-      // Unmute the video if it's playing
-      if (videoRef.current && !videoRef.current.paused) {
-        try {
-          videoRef.current.muted = false;
-          setIsMuted(false);
-          
-          // Show sound indicator briefly
-          setSoundIndicatorVisible(true);
-          setTimeout(() => setSoundIndicatorVisible(false), 3000);
-        } catch (e) {
-          console.error("Error unmuting video:", e);
-        }
+      interactionRegistered.current = true;
+      
+      try {
+        // Unmute the video
+        videoRef.current.muted = false;
+        setIsMuted(false);
+        
+        // Show sound indicator briefly
+        setSoundIndicatorVisible(true);
+        setTimeout(() => setSoundIndicatorVisible(false), 2000);
+        
+        // Remove event listeners after first interaction
+        document.removeEventListener("mousedown", handleInteraction);
+        document.removeEventListener("touchstart", handleInteraction);
+        document.removeEventListener("keydown", handleInteraction);
+        document.removeEventListener("scroll", handleInteraction);
+      } catch (e) {
+        console.error("Error unmuting video:", e);
       }
     };
 
     // Add event listeners for various interaction types
-    const events = [
-      "click", "dblclick", "mousedown", "mouseup", "mousemove", 
-      "touchstart", "touchend", "touchmove", "touchcancel",
-      "keydown", "keyup", "keypress",
-      "scroll", "wheel"
-    ];
-
-    events.forEach(event => {
-      document.addEventListener(event, handleInteraction, { once: true });
-    });
+    document.addEventListener("mousedown", handleInteraction);
+    document.addEventListener("touchstart", handleInteraction);
+    document.addEventListener("keydown", handleInteraction);
+    document.addEventListener("scroll", handleInteraction);
 
     return () => {
-      events.forEach(event => {
-        document.removeEventListener(event, handleInteraction);
-      });
+      document.removeEventListener("mousedown", handleInteraction);
+      document.removeEventListener("touchstart", handleInteraction);
+      document.removeEventListener("keydown", handleInteraction);
+      document.removeEventListener("scroll", handleInteraction);
     };
-  }, [hasInteracted]);
+  }, []);
 
   // Attempt to automatically unmute when MEI allows it
   useEffect(() => {
@@ -56,13 +55,14 @@ const HeroSection = () => {
     if (!video) return;
     
     const handleCanPlay = () => {
-      // Try unmuting if the browser allows it (high MEI)
       try {
-        if (!hasInteracted && video.muted) {
+        // Try unmuting if browser allows it (high MEI)
+        if (!interactionRegistered.current) {
           video.muted = false;
           setIsMuted(false);
           setSoundIndicatorVisible(true);
-          setTimeout(() => setSoundIndicatorVisible(false), 3000);
+          setTimeout(() => setSoundIndicatorVisible(false), 2000);
+          interactionRegistered.current = true;
         }
       } catch (e) {
         console.log("Automatic unmute not allowed yet");
@@ -74,7 +74,7 @@ const HeroSection = () => {
     return () => {
       video.removeEventListener("canplay", handleCanPlay);
     };
-  }, [hasInteracted]);
+  }, []);
 
   const media = [
     {
@@ -93,7 +93,7 @@ const HeroSection = () => {
       
       if (!videoRef.current.muted) {
         setSoundIndicatorVisible(true);
-        setTimeout(() => setSoundIndicatorVisible(false), 3000);
+        setTimeout(() => setSoundIndicatorVisible(false), 2000);
       }
     }
   };
@@ -122,7 +122,7 @@ const HeroSection = () => {
             Your browser does not support the video tag.
           </video>
           
-          {/* Mute button - visible only when video is muted */}
+          {/* Mute button - always visible when muted */}
           {isMuted && (
             <motion.button
               initial={{ opacity: 0, scale: 0.8 }}
@@ -140,7 +140,6 @@ const HeroSection = () => {
                 fill="none" 
                 viewBox="0 0 24 24" 
                 stroke="currentColor"
-                
               >
                 <path 
                   strokeLinecap="round" 
@@ -158,9 +157,7 @@ const HeroSection = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.3 }}
-              className="absolute bottom-4 right-4 bg-green-500 text-white text-xs font-medium rounded-full px-3 py-1 z-10 flex items-center gap-2"
+              className="absolute bottom-4 right-4 bg-green-500 text-white text-xs font-medium rounded-full px-3 py-1 z-10 flex items-center gap-2 shadow-lg"
             >
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -182,16 +179,15 @@ const HeroSection = () => {
         </motion.div>
       </div>
       
-      {/* Instructional text that fades out after interaction */}
-      {!hasInteracted && (
+      {/* Subtle instructional text at bottom */}
+      {!interactionRegistered.current && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center text-gray-600 text-sm mt-4 px-4"
+          transition={{ delay: 2 }}
+          className="text-center text-gray-500 text-sm mt-4 px-4"
         >
-          <p>Scroll, click, or interact anywhere to enable sound</p>
+          <p>Interact with the page to enable sound</p>
         </motion.div>
       )}
     </section>
