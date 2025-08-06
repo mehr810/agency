@@ -35,6 +35,27 @@ const services = [
     description:
       "Flexible, remote support to handle tasks, scheduling, and communication efficiently.",
   },
+  {
+    title: "SEO",
+    description:
+      "Boost visibility with expert SEO to rank higher, attract quality traffic, and grow your business.",
+  },
+  {
+    title: "Email Marketing and Automation",
+    description:
+      "Engage customers with personalized email campaigns that drive conversions and build loyalty",
+  },
+  {
+    title: "Branding & Creative Design",
+    description:
+      "Crafting unique brand identities and visuals that captivate audiences and inspire lasting loyalty.",
+  },
+  {
+    title: "Website",
+    description:
+      "Designing and building responsive websites that engage visitors and drive measurable business growth.",
+  },
+  
 ];
 
 const cardVariants: Variants = {
@@ -68,6 +89,28 @@ const ServicesSection = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // ✅ Reorder + Center-Last-One logic
+  const reorderServices = (list: typeof services) => {
+    const reordered: (typeof services[0] | null)[] = [];
+
+    for (let i = 0; i < list.length; i += 3) {
+      const chunk = list.slice(i, i + 3);
+      if (chunk.length === 3) {
+        reordered.push(chunk[1], chunk[0], chunk[2]); // [2,1,3]
+      } else if (chunk.length === 1) {
+        reordered.push(null, chunk[0], null); // center the single card
+      } else if (chunk.length === 2) {
+        reordered.push(chunk[0], null, chunk[1]); // spread two cards
+      } else {
+        reordered.push(...chunk);
+      }
+    }
+
+    return reordered;
+  };
+
+  const finalServices = reorderServices(services);
+
   return (
     <section className="bg-white text-black py-16 px-6 md:px-12 font-sans overflow-x-hidden">
       <div className="max-w-[1800px] mx-auto">
@@ -94,53 +137,56 @@ const ServicesSection = () => {
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 z-10 relative">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                custom={index}
-                initial="hidden"
-                whileInView="visible"
-                variants={cardVariants}
-                viewport={{ once: true, amount: 0.3 }}
-                className={clsx(
-                  "relative group border border-gray-200 rounded-2xl transition-all duration-300 transform",
-                  "w-full h-[320px] flex flex-col justify-center px-8",
-                  isLargeScreen
-                    ? "bg-white hover:scale-[1.04] hover:bg-[#FFDE21] hover:text-black hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)]"
-                    : "bg-[#FFDE21] text-black shadow-[0_10px_30px_rgba(0,0,0,0.1)]"
-                )}
-              >
-                {/* Optional Side SVG */}
-                <svg
-                  className="absolute right-0 top-0 h-full w-[80px] z-0 pointer-events-none hidden sm:block"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 80 320"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M80,0 Q60,160 0,320"
-                    stroke="#d1d5db"
-                    strokeWidth="1"
-                    fill="none"
-                  />
-                  <path
-                    d="M0,0 Q20,160 80,320"
-                    stroke="#d1d5db"
-                    strokeWidth="1"
-                    fill="none"
-                  />
-                </svg>
+            {finalServices.map((service, index) => (
+              <div key={index} className="w-full">
+                {service && (
+                  <motion.div
+                    custom={index}
+                    initial="hidden"
+                    whileInView="visible"
+                    variants={cardVariants}
+                    viewport={{ once: true, amount: 0.3 }}
+                    className={clsx(
+                      "relative group border border-gray-200 rounded-2xl transition-all duration-300 transform",
+                      "w-full h-[320px] flex flex-col justify-center px-8",
+                      isLargeScreen
+                        ? "bg-white hover:scale-[1.04] hover:bg-[#FFDE21] hover:text-black hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)]"
+                        : "bg-[#FFDE21] text-black shadow-[0_10px_30px_rgba(0,0,0,0.1)]"
+                    )}
+                  >
+                    {/* Optional Side SVG */}
+                    <svg
+                      className="absolute right-0 top-0 h-full w-[80px] z-0 pointer-events-none hidden sm:block"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 80 320"
+                      preserveAspectRatio="none"
+                    >
+                      <path
+                        d="M80,0 Q60,160 0,320"
+                        stroke="#d1d5db"
+                        strokeWidth="1"
+                        fill="none"
+                      />
+                      <path
+                        d="M0,0 Q20,160 80,320"
+                        stroke="#d1d5db"
+                        strokeWidth="1"
+                        fill="none"
+                      />
+                    </svg>
 
-                {/* Content */}
-                <div className="relative z-10">
-                  <h3 className="text-xl md:text-2xl font-extrabold uppercase tracking-wide mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-base md:text-lg leading-snug text-gray-700 group-hover:text-black transition-colors duration-300">
-                    {service.description}
-                  </p>
-                </div>
-              </motion.div>
+                    {/* Content */}
+                    <div className="relative z-10">
+                      <h3 className="text-xl md:text-2xl font-extrabold uppercase tracking-wide mb-3">
+                        {service.title}
+                      </h3>
+                      <p className="text-base md:text-lg leading-snug text-gray-700 group-hover:text-black transition-colors duration-300">
+                        {service.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
             ))}
           </div>
         </div>
@@ -151,7 +197,6 @@ const ServicesSection = () => {
 
 export default ServicesSection;
 
-// Optional export if needed in some layout file
 export const ServicesCard = () => {
   return <ServicesSection />;
 };
