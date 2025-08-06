@@ -75,10 +75,10 @@ const Testimonials: React.FC = () => {
         viewport={{ once: true, amount: 0.4 }}
       >
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-10">
-          WHAT MARKETERS SAY ABOUT{' '}
-          <span className="text-black underline decoration-[#FFDE21]">
-            MIGHTY FIVE
-          </span>
+          What Our Partners Think of Us{' '}
+        {/* <span className="text-black underline decoration-[#FFDE21]">
+          MIGHTY FIVE
+        </span> */}
         </h2>
       </motion.div>
 
