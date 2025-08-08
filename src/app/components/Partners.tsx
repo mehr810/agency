@@ -15,7 +15,7 @@ const logos = [
   { name: "I Am Design", logo: "/pertner-logos/I-am-design.png", width: 240, height: 140 },
   { name: "Promethean", logo: "/pertner-logos/Promeathean.png" },
   { name: "Recession Proof Anchored", logo: "/pertner-logos/Recession.webp", width: 220, height: 130 }, 
-  { name: "Verdent", logo: "/pertner-logos/VERDENT.jpg" },
+  { name: "Verdent", logo: "/pertner-logos/VERDENT.JPG" },
   { name: "aroma", logo: "/pertner-logos/aroma-land.webp" },
   { name: "banners", logo: "/pertner-logos/banners.webp" },
   { name: "cabanit", logo: "/pertner-logos/cabanit.webp" },
