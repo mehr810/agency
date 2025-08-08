@@ -12,7 +12,7 @@ const HeroSection = () => {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-
+  video.playbackRate = 1.5; // 🔥 Speed up video to 1.5x
     video.muted = true;
     video
       .play()
