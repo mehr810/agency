@@ -28,6 +28,7 @@ export default function Home() {
       <section className="py-8 md:py-12">
         <Testimonials />
       </section>
+
     </main>
   );
 }

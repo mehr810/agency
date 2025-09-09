@@ -55,7 +55,6 @@ const services = [
     description:
       "Designing and building responsive websites that engage visitors and drive measurable business growth.",
   },
-  
 ];
 
 const cardVariants: Variants = {
@@ -150,8 +149,8 @@ const ServicesSection = () => {
                       "relative group border border-gray-200 rounded-2xl transition-all duration-300 transform",
                       "w-full h-[320px] flex flex-col justify-center px-8",
                       isLargeScreen
-                        ? "bg-white hover:scale-[1.04] hover:bg-[#FFDE21] hover:text-black hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)]"
-                        : "bg-[#FFDE21] text-black shadow-[0_10px_30px_rgba(0,0,0,0.1)]"
+                        ? "bg-white hover:scale-[1.04] hover:bg-gradient-to-r hover:from-red-500 hover:to-purple-500 hover:text-white hover:shadow-[0_10px_40px_rgba(0,0,0,0.2)]"
+                        : "bg-[#FFFFFF] text-black shadow-[0_10px_30px_rgba(0,0,0,0.1)]"
                     )}
                   >
                     {/* Optional Side SVG */}

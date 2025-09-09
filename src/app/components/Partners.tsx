@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 const logos = [
@@ -11,10 +11,10 @@ const logos = [
   { name: "UNICEF", logo: "/logos/logo3.webp" },
   { name: "Asset Avenue", logo: "/pertner-logos/Asset.png" },
   { name: "Atlas", logo: "/pertner-logos/Atlas.png", width: 220, height: 200 },
-  { name: "Big Moe's Kitchen", logo: "/pertner-logos/Big-Moe's-Kitchen-Logo.png", width: 240, height: 140 }, 
+  { name: "Big Moe's Kitchen", logo: "/pertner-logos/Big-Moe's-Kitchen-Logo.png", width: 240, height: 140 },
   { name: "I Am Design", logo: "/pertner-logos/I-am-design.png", width: 240, height: 140 },
   { name: "Promethean", logo: "/pertner-logos/Promeathean.png" },
-  { name: "Recession Proof Anchored", logo: "/pertner-logos/Recession.webp", width: 220, height: 130 }, 
+  { name: "Recession Proof Anchored", logo: "/pertner-logos/Recession.webp", width: 220, height: 130 },
   { name: "Verdent", logo: "/pertner-logos/VERDENT.JPG" },
   { name: "aroma", logo: "/pertner-logos/aroma-land.webp" },
   { name: "banners", logo: "/pertner-logos/banners.webp" },
@@ -22,69 +22,28 @@ const logos = [
   { name: "fish chips", logo: "/pertner-logos/fish-chips.webp" },
   { name: "kings", logo: "/pertner-logos/kings-pointe.webp", width: 180, height: 200 },
   { name: "zen", logo: "/pertner-logos/zen-living.webp" },
-  { name: "dance again", logo: "/pertner-logos/dance-again.webp", width: 200, height: 230 }, 
+  { name: "dance again", logo: "/pertner-logos/dance-again.webp", width: 200, height: 230 },
 ];
 
 export default function PartnersSection() {
   const controls = useAnimation();
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
 
-  // Auto-scroll
+  // Calculate total width of one logos set (needed for infinite scroll)
+  const totalWidth = logos.reduce((acc, logo) => acc + (logo.width || 200) + 40, 0); // 40 = gap approx
+
   useEffect(() => {
-    if (isDragging) return;
-
-    let index = 0;
-    const scrollLoop = () => {
-      index++;
-      controls.start({
-        x: `-${index * 220}px`, // scroll step
-        transition: { duration: 0.7, ease: "easeInOut" },
-      });
-
-      if (index >= logos.length) {
-        setTimeout(() => {
-          controls.set({ x: 0 });
-          index = 0;
-        }, 800);
-      }
-    };
-
-    const interval = setInterval(scrollLoop, 3000);
-    return () => clearInterval(interval);
-  }, [controls, isDragging]);
-
-  // Mouse drag
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!scrollRef.current) return;
-    setIsDragging(true);
-    setStartX(e.pageX - scrollRef.current.offsetLeft);
-    setScrollLeft(scrollRef.current.scrollLeft);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollRef.current) return;
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    scrollRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  // Touch drag
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (!scrollRef.current) return;
-    setIsDragging(true);
-    setStartX(e.touches[0].pageX - scrollRef.current.offsetLeft);
-    setScrollLeft(scrollRef.current.scrollLeft);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || !scrollRef.current) return;
-    const x = e.touches[0].pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    scrollRef.current.scrollLeft = scrollLeft - walk;
-  };
+    controls.start({
+      x: [0, -totalWidth],
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 90, // adjust speed here
+          ease: "linear",
+        },
+      },
+    });
+  }, [controls, totalWidth]);
 
   return (
     <section className="bg-white">
@@ -106,41 +65,21 @@ export default function PartnersSection() {
         </motion.div>
 
         {/* Logos */}
-        <div
-          ref={scrollRef}
-          className="overflow-x-scroll w-full cursor-grab active:cursor-grabbing"
-          style={{
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          }}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={() => setIsDragging(false)}
-          onMouseLeave={() => setIsDragging(false)}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={() => setIsDragging(false)}
-        >
-          <style jsx>{`
-            div::-webkit-scrollbar {
-              display: none;
-            }
-          `}</style>
-
+        <div className="overflow-hidden w-full">
           <motion.div
             className="flex gap-6 sm:gap-10 items-center py-6 sm:py-8"
             animate={controls}
             initial={{ x: 0 }}
+            style={{ willChange: "transform" }}
           >
             {[...logos, ...logos].map((partner, idx) => {
-              const width = partner.width || 200; // default width
-              const height = partner.height || 120; // default height
+              const width = partner.width || 250; // default width
+              const height = partner.height || 170; // default height
 
               return (
                 <motion.div
                   key={idx}
-                  className="relative flex-shrink-0 hover:scale-[1.03] transition-transform duration-300"
-                  whileHover={{ y: -10 }}
+                  className="relative flex-shrink-0"
                   style={{
                     width,
                     height,
@@ -156,7 +95,7 @@ export default function PartnersSection() {
                     className="object-contain"
                   />
                   {/* Divider */}
-                  <div className="absolute right-[-12px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-gray-300 to-transparent opacity-70"></div>
+                  <div className="absolute right-[-12px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-gray-600 to-transparent opacity-70"></div>
                 </motion.div>
               );
             })}
