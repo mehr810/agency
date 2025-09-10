@@ -64,9 +64,8 @@ export default function TeamSection() {
               <Image
                 src={member.image}
                 alt={`${member.name} - ${member.role}`}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="top"
+                fill
+                style={{ objectFit: "cover", objectPosition: "top" }}
                 sizes="256px"
                 priority={i === 0}
               />

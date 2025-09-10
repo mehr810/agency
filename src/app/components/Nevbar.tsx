@@ -70,7 +70,7 @@ export default function Navbar() {
             "block font-medium transition-all duration-200",
             isMobile
               ? "text-[38px] text-gray-600 hover:text-black"
-              : "text-9xl text-gray-600 hover:text-black hover:scale-105"
+              : "text-8xl text-gray-600 hover:text-black hover:scale-105"
           )}
           onClick={() => setMenuOpen(false)}
         >
@@ -93,7 +93,7 @@ export default function Navbar() {
           "px-4 sm:px-6 md:px-12",
           showNavbar ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-10 pointer-events-none"
         )}
-        style={{ paddingTop: "12px", paddingBottom: "[-5px]px" }} // ↓ tighter padding here ↓
+        style={{ paddingTop: "13px", paddingBottom: "[-5px]px" }} // ↓ tighter padding here ↓
       >
         <div className="flex items-center justify-between">
           <Link

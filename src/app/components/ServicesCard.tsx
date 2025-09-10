@@ -36,7 +36,7 @@ const services = [
       "Flexible, remote support to handle tasks, scheduling, and communication efficiently.",
   },
   {
-    title: "SEO",
+    title: "SEO Services",
     description:
       "Boost visibility with expert SEO to rank higher, attract quality traffic, and grow your business.",
   },
