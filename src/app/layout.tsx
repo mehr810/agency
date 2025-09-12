@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Nevbar";
 import Footer from "./components/Footer";
 
+// Default Next.js fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -12,6 +13,17 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// Your project fonts
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const grotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-grotesk",
 });
 
 export const metadata: Metadata = {
@@ -27,11 +39,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${grotesk.variable} antialiased`}
       >
         <Navbar />
-              <div className="h-[100px]" />
-
+        <div className="h-[100px]" />
         {children}
         <Footer />
       </body>

@@ -89,11 +89,11 @@ export default function Navbar() {
       <div
         className={cn(
           "fixed top-0 left-0 w-full z-50 transition-transform duration-300 ease-in-out",
-          menuOpen ? "bg-transparent" : "bg-white",
+          menuOpen ? "bg-transparent " : "bg-white",
           "px-4 sm:px-6 md:px-12",
           showNavbar ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-10 pointer-events-none"
         )}
-        style={{ paddingTop: "13px", paddingBottom: "[-5px]px" }} // ↓ tighter padding here ↓
+        style={{ paddingTop: "[-6px]", paddingBottom: "0px" }} // ↓ tighter padding here ↓
       >
         <div className="flex items-center justify-between">
           <Link
@@ -123,7 +123,7 @@ export default function Navbar() {
 
           {/* Hamburger / X */}
           <button
-            className="relative w-9 h-9 flex items-center justify-center focus:outline-none z-50"
+            className="relative w-9 h-9 flex items-center justify-center focus:outline-none z-[220]"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
@@ -158,7 +158,7 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 backdrop-blur-md bg-white/80 z-30"
+              className="fixed inset-0 backdrop-blur-md bg-white/80 z-[200]"
             >
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -181,7 +181,7 @@ export default function Navbar() {
               exit={{ x: "100%" }}
               transition={{ type: "tween", ease: [0.22, 1, 0.36, 1] }}
               className={cn(
-                "fixed inset-0 z-40 px-6 overflow-y-auto max-h-screen",
+                "fixed inset-0 z-[210] px-6 overflow-y-auto max-h-screen",
                 isMobile
                   ? "pt-[90px] flex items-start justify-center"
                   : "pt-[90px] flex items-start justify-end pr-24"
