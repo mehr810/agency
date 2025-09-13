@@ -1,39 +1,102 @@
+/* eslint-disable */
 "use client";
 
 import Image from "next/image";
 import { FC } from "react";
 import AnimatedTeamProfiles from "../components/AnimatedTeamProfiles";
+import { motion } from "framer-motion";
+import { Space_Grotesk } from "next/font/google";
+import LeftBlur from "../components/LeftBlur";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
 
 const AboutPage: FC = () => {
   return (
-    <main className="bg-white text-gray-900 relative">
+    <main className={`${spaceGrotesk.className} bg-white text-gray-900 relative`}>
 
       {/* HERO */}
-      <section className="py-24 text-center">
-        <h1 className="text-6xl md:text-9xl font-bold">. About Us .</h1>
+      <section className="py-12 md:py-24 text-center overflow-hidden relative">
+        {/* Static heading for mobile */}
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="text-4xl sm:text-6xl md:hidden font-bold px-4"
+        >
+          . About Us .
+        </motion.h1>
+
+        {/* Infinite marquee for md+ */}
+        <div className="hidden md:block w-full overflow-hidden relative">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="flex whitespace-nowrap
+            [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
+            [-webkit-mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
+          "
+          >
+            {/* Duplicate text for smooth looping */}
+            <motion.h1
+              className="text-[200px] font-bold px-8"
+              animate={{ x: ["0%", "-100%"] }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 20,
+                ease: "linear",
+              }}
+            >
+              . About Us . &nbsp; . About Us . &nbsp; . About Us . &nbsp;
+            </motion.h1>
+            <motion.h1
+              className="text-[200px] font-bold px-8"
+              animate={{ x: ["0%", "-100%"] }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 20,
+                ease: "linear",
+              }}
+            >
+              . About Us . &nbsp; . About Us . &nbsp; . About Us . &nbsp;
+            </motion.h1>
+          </motion.div>
+        </div>
       </section>
 
+
       {/* INTRO + MISSION */}
-      <section className="container mx-auto px-6 grid md:grid-cols-2 pl-15 gap-[60px] py-20 items-start">
+      <section className="container mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 md:pl-15 gap-8 md:gap-[60px] py-5 md:py-5 items-start">
         {/* LEFT CONTENT */}
-        <div className="sticky top-24">
-          <h2 className="text-2xl md:text-4xl font-bold mb-7">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}          // when page first loads
+          animate={{ opacity: 1, y: 0 }}           // fade in on load
+          transition={{ duration: 1, ease: "easeOut" }}
+          whileInView={{ opacity: 1, y: 0 }}       // fade in on scroll into view
+          viewport={{ once: false, amount: 0.3 }}  // triggers again when re-scrolled into view
+          className="md:sticky md:top-24"
+        >
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-4 md:mb-7">
             Elevating brands through digital marketing.
           </h2>
-          <p className="text-gray-600 mb-6">
-            At <span className="font-bold">Mighty Five Agency,</span> we don’t just run campaigns — we create
-            digital strategies that inspire, engage, and convert. We believe
-            impactful marketing starts with meaningful insights. That’s why we
-            work closely with our clients to understand their vision, goals, and
-            audience, ensuring every campaign delivers measurable results.
+          <p className="text-gray-600 mb-6 text-sm sm:text-base">
+            At <span className="font-bold">Mighty Five Agency,</span> we don’t
+            just run campaigns — we create digital strategies that inspire,
+            engage, and convert. We believe impactful marketing starts with
+            meaningful insights. That’s why we work closely with our clients to
+            understand their vision, goals, and audience, ensuring every campaign
+            delivers measurable results.
           </p>
-
-          {/* ANIMATED TEAM PROFILES */}
           <AnimatedTeamProfiles />
-        </div>
-
+        </motion.div>
         {/* RIGHT CARDS */}
-        <div className="relative pl-19 min-h-[280vh] flex flex-col items-center">
+        <div className="relative flex flex-col gap-20">
           {[
             {
               title: "Our Mission",
@@ -68,8 +131,8 @@ const AboutPage: FC = () => {
           ].map((item, i) => (
             <div
               key={i}
-              className="sticky top-24 bg-[#1C1C1F] text-white p-6 rounded-2xl shadow-xl flex flex-col items-center text-center w-[85%] h-[100%] mx-auto"
-              style={{ zIndex: 10 - i, transform: `translateY(${i * 40}px)` }}
+              className="md:sticky md:top-24 bg-[#1C1C1F] text-white p-4 md:p-6 rounded-2xl shadow-xl flex flex-col items-center text-center w-full md:w-[85%] h-auto md:h-[100%] mx-auto mb-2 md:mb-0"
+              style={{ zIndex: 10 + i, transform: `translateY(${i * 20}px)` }}
             >
               {item.icon}
               <h3 className="font-bold text-xl mb-2">{item.title}</h3>
@@ -77,51 +140,66 @@ const AboutPage: FC = () => {
             </div>
           ))}
 
-          {/* Sticky logo panel (starts after the cards) */}
-          <div
-            className="sticky top-24 w-[85%] h-[100%] mx-auto"
-            style={{ zIndex: 1, transform: "translateY(120px)" }}
-          >
+          <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: false, amount: 0.3 }}
+          className="sticky top-10 w-full md:w-[75%] mx-auto" style={{ zIndex: 1 }}>
             <img
               src="/logo-mighty-five.png"
               alt="Background Logo"
-              className="absolute left-[-25%] md:left-[-35%] top-72 md:top-96 opacity-10 w-90 h-90 object-contain pointer-events-none"
+              className="absolute left-0 md:left-[-67%] top-7 md:top-[-70px] opacity-10 w-34 md:w-55 object-contain pointer-events-none"
             />
-          </div>
+          </motion.div>
+
+
         </div>
 
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="container mx-auto px-10 py-20">
-        <div className="flex flex-col md:flex-row items-center pl-6 gap-6">
-          <div className="md:w-1/3">
-            <h4 className="text-yellow-500 text-xl font-semibold mb-2">Why Choose Us?</h4>
-            <h2 className="text-2xl md:text-[44px] font-bold mb-2">
+      <section className="container mx-auto px-4 md:px-10 py-10 md:py-20">
+        <LeftBlur/>
+        <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: false, amount: 0.3 }}
+        className="flex flex-col md:flex-row items-center md:pl-6 gap-4 md:gap-6"
+        >
+          <div className="w-full md:w-1/3">
+            <h4 className="text-yellow-500 text-lg md:text-xl font-semibold mb-2">Why Choose Us?</h4>
+            <h2 className="text-xl sm:text-2xl md:text-[44px] font-bold mb-2">
               We are offering the best solutions
             </h2>
           </div>
-          <div className="md:w-1/2">
-            <p className="text-gray-600 text-[20px] mb-1 max-w-3xl">
+          <div className="w-full md:w-1/2">
+            <p className="text-gray-600 text-base md:text-[20px] mb-1 max-w-3xl">
               We offer a full range of digital services to help your brand stand out, connect, and grow.
             </p>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 px-6">
+        <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: true, amount: 0.3 }}
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 sm:px-6 md:px-6">
           {/* Card 1: Regular Card */}
-          <div className="relative bg-[#1C1C1F] text-white rounded-2xl overflow-hidden h-[450px]">
+          <div className="relative bg-[#1C1C1F] text-white rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px]">
             {/* Gradient image in top-left corner */}
             <img
               src="/Gradient+Blur.png"
               alt="Top Left Gradient"
-              className="absolute top-0 left-0 w-62 h-62 object-contain opacity-70 pointer-events-none"
+              className="absolute top-0 left-0 w-40 h-40 sm:w-52 sm:h-52 md:w-62 md:h-62 object-contain opacity-70 pointer-events-none"
             />
 
             {/* Text content at the bottom */}
-            <div className="absolute bottom-10 p-10">
-              <h3 className="font-semibold text-5xl items-center">Data-Driven Strategies</h3>
-              <p className="text-sm text-gray-300 mt-1 py-2">
+            <div className="absolute bottom-6 sm:bottom-10 p-6 sm:p-10">
+              <h3 className="font-semibold text-3xl sm:text-4xl md:text-5xl items-center">Data-Driven Strategies</h3>
+              <p className="text-xs sm:text-sm md:text-base text-gray-300 mt-1 py-2">
                 Informed decisions powered by insights and analytics to maximize impact.
               </p>
             </div>
@@ -129,135 +207,144 @@ const AboutPage: FC = () => {
 
 
           {/* Card 2: Glass Effect */}
-          <div className="relative rounded-2xl overflow-hidden h-[450px] w-[350px]">
-            <img
-              src="/card2.png"
-              alt="Seamless Collaboration"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            {/* Text container positioned slightly above the bottom */}
-            <div className="absolute bottom-20 p-4 backdrop-blur-md rounded-2xl flex gap-2 max-w-[480px] h-[190px]">
-              {/* Inline SVG replacing the thunder icon */}
-              <svg
-                width="48px"
-                height="48px"
-                viewBox="-2.98 0 20.004 20.004"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="#ffffff"
-                className="flex-shrink-0"
-              >
-                <g id="thunder" transform="translate(-4.967 -1.996)">
-                  <path
-                    id="secondary"
-                    fill="#ffffff"
-                    d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
-                  ></path>
-                  <path
-                    id="primary"
-                    fill="none"
-                    stroke="#ffffff"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="0.06"
-                    d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
-                  ></path>
-                </g>
-              </svg>
+<div className="relative rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px] w-full sm:w-[350px]">
+  <img
+    src="/card2.png"
+    alt="Seamless Collaboration"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+  {/* Text container positioned at the bottom */}
+  <div className="absolute bottom-0 left-0 p-3 sm:p-4 backdrop-blur-md bg-white/20 rounded-t-2xl flex gap-2 items-center w-full sm:max-w-[480px] h-[160px] sm:h-[190px]">
+    {/* Inline SVG */}
+    <svg
+      width="40px"
+      height="40px"
+      viewBox="-2.98 0 20.004 20.004"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="#ffffff"
+      className="flex-shrink-0"
+    >
+      <g id="thunder" transform="translate(-4.967 -1.996)">
+        <path
+          id="secondary"
+          fill="#ffffff"
+          d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
+        ></path>
+        <path
+          id="primary"
+          fill="none"
+          stroke="#ffffff"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="0.06"
+          d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
+        ></path>
+      </g>
+    </svg>
 
-              <h3 className="font-semibold text-white text-4xl leading-snug">
-                Seamless Collaboration
-              </h3>
-            </div>
-          </div>
+    <h3 className="font-semibold text-white text-3xl sm:text-4xl leading-snug">
+      Seamless Collaboration
+    </h3>
+  </div>
+</div>
 
           {/* Card 3: Glass Effect */}
-          <div className="relative rounded-2xl overflow-hidden h-[450px]">
+          <div className="relative rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px]">
             <img
               src="/c1-img-2.png"
               alt="5+ Years"
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute bottom-0 w-full p-6 bg-white/10 backdrop-blur-md rounded-b-2xl text-white">
-              <h3 className="font-semibold text-5xl">5+ Years Experience</h3>
-              <p className="text-sm text-gray-200 mt-1 py-5">
+            <div className="absolute bottom-0 w-full p-4 sm:p-6 bg-white/10 backdrop-blur-md rounded-b-2xl text-white">
+              <h3 className="font-semibold text-3xl sm:text-5xl">5+ Years Experience</h3>
+              <p className="text-xs sm:text-sm md:text-base text-gray-200 mt-1 py-3 sm:py-5">
                 Over 5 years of experience delivering innovative digital solutions.
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
 
         {/* SECOND ROW (2 WIDE CARDS) */}
-        <div className="grid md:grid-cols-2 gap-20 mt-10 px-6">
-          <div className="bg-[#1C1C1F] text-white p-10 rounded-2xl flex items-center justify-between relative w-[814.7px] h-[170px]"
+        <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: false, amount: 0.3 }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 mt-10 px-4 md:px-6">
+
+          {/* First Card */}
+          <div
+            className="bg-[#1C1C1F] text-white p-6 md:p-10 rounded-2xl flex flex-col md:flex-row items-center justify-between relative w-full md:w-[814.7px] h-auto md:h-[170px]"
             style={{
               backgroundImage: `radial-gradient(circle, rgba(243, 243, 243, 0.3) 2%, transparent 2%), 
-                      radial-gradient(circle, rgba(243, 243, 243, 0.3) 2%, transparent 2%)`,
-              backgroundSize: '9px 9px', // Adjust size of dots
-              backgroundPosition: '0 0, 2.5px 2.5px', // Offset to make the dots staggered
-              backgroundRepeat: 'repeat', // Ensure the dots repeat
+                        radial-gradient(circle, rgba(243, 243, 243, 0.3) 2%, transparent 2%)`,
+              backgroundSize: "9px 9px",
+              backgroundPosition: "0 0, 2.5px 2.5px",
+              backgroundRepeat: "repeat",
             }}
           >
-
             {/* Top Left Gradient */}
             <img
               src="/Gradient+Blur.png"
               alt="Top Left Gradient"
-              className="absolute top-0 left-0 w-30 h-50 object-fill opacity-70 pointer-events-none"
+              className="absolute top-0 left-0 w-20 md:w-30 h-20 md:h-50 object-fill opacity-70 pointer-events-none"
             />
 
             {/* Bottom Right Gradient */}
             <img
               src="/Gradient+Blur.png"
               alt="Bottom Right Gradient"
-              className="absolute bottom-0 right-0 w-40 h-50 object-contain opacity-70 pointer-events-none"
+              className="absolute bottom-0 right-0 w-28 md:w-40 h-28 md:h-50 object-contain opacity-70 pointer-events-none"
             />
 
-            <div>
-              <h3 className="font-semibold text-2xl mb-2">⭐⭐⭐⭐⭐</h3>
-              <p className="text-2xl text-white">99+ Happy Clients</p>
+            <div className="text-center md:text-left mb-4 md:mb-0">
+              <h3 className="font-semibold text-lg md:text-2xl mb-2">⭐⭐⭐⭐⭐</h3>
+              <p className="text-lg md:text-2xl">99+ Happy Clients</p>
             </div>
 
-            <div className="flex -space-x-2">
-              {/* Displaying profile images */}
+            <div className="flex -space-x-2 justify-center md:justify-end">
               {[1, 2, 3, 4].map((i) => (
                 <Image
                   key={i}
-                  src={`/client${i}.png`} // Use actual image paths for your clients
+                  src={`/client${i}.png`}
                   alt="client"
-                  width={80}
-                  height={80}
-                  className="rounded-full border-2 border-white"
+                  width={50} // smaller for mobile
+                  height={50}
+                  className="md:w-[80px] md:h-[80px] rounded-full border-2 border-white"
                 />
               ))}
             </div>
           </div>
 
-          <div className="bg-[#1C1C1F] text-white p-5 rounded-2xl flex items-center w-80 ml-auto h-40 relative"
+          {/* Second Card */}
+          <div
+            className="bg-[#1C1C1F] text-white p-6 md:p-5 rounded-2xl flex items-center justify-start md:justify-center w-full md:w-80 h-auto md:h-43 relative ml-0 md:ml-auto"
             style={{
               backgroundImage: `radial-gradient(circle, rgba(243, 243, 243, 0.3) 2%, transparent 2%), 
-                      radial-gradient(circle, rgba(243, 243, 243, 0.3) 2%, transparent 2%)`,
-              backgroundSize: '9px 9px', // Adjust size of dots
-              backgroundPosition: '0 0, 2.5px 2.5px', // Offset to make the dots staggered
-              backgroundRepeat: 'repeat', // Ensure the dots repeat
+                        radial-gradient(circle, rgba(243, 243, 243, 0.3) 2%, transparent 2%)`,
+              backgroundSize: "9px 9px",
+              backgroundPosition: "0 0, 2.5px 2.5px",
+              backgroundRepeat: "repeat",
             }}
-
           >
-            <span className="text-yellow-400 text-2xl mb-2 mr-4">
+            <span className="text-yellow-400 text-xl md:text-2xl mb-2 mr-4">
+              {/* Your SVG */}
               <svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M42.7856 33C42.7856 33.5556 42.98 34.0556 43.3689 34.5C43.7578 34.9445 44.2578 35.1667 44.8689 35.1667C45.48 35.1667 45.98 34.9445 46.3689 34.5C46.7578 34.0556 46.9522 33.5556 46.9522 33C46.9522 32.4445 46.7578 31.9722 46.3689 31.5834C45.98 31.1945 45.48 31 44.8689 31C44.2578 31 43.7578 31.1945 43.3689 31.5834C42.98 31.9722 42.7856 32.4445 42.7856 33ZM38.2856 39.6667C38.2856 40.2222 38.48 40.7222 38.8689 41.1667C39.2578 41.6111 39.73 41.8334 40.2856 41.8334C40.8411 41.8334 41.3411 41.6111 41.7856 41.1667C42.23 40.7222 42.4522 40.2222 42.4522 39.6667C42.4522 39.1111 42.23 38.6389 41.7856 38.25C41.3411 37.8611 40.8411 37.6667 40.2856 37.6667C39.73 37.6667 39.2578 37.8611 38.8689 38.25C38.48 38.6389 38.2856 39.1111 38.2856 39.6667ZM44.2856 25C44.2856 25.5556 44.5078 26.0556 44.9522 26.5C45.3967 26.9445 45.8967 27.1667 46.4522 27.1667C47.0078 27.1667 47.48 26.9445 47.8689 26.5C48.2578 26.0556 48.4522 25.5556 48.4522 25C48.4522 24.4445 48.2578 23.9722 47.8689 23.5834C47.48 23.1945 47.0078 23 46.4522 23C45.8967 23 45.3967 23.1945 44.9522 23.5834C44.5078 23.9722 44.2856 24.4445 44.2856 25ZM31.4522 44.3334C31.4522 44.8889 31.6744 45.3611 32.1189 45.75C32.5633 46.1389 33.0633 46.3334 33.6189 46.3334C34.1744 46.3334 34.6467 46.1389 35.0356 45.75C35.4244 45.3611 35.6189 44.8611 35.6189 44.25C35.6189 43.6389 35.4244 43.1389 35.0356 42.75C34.6467 42.3611 34.1744 42.1667 33.6189 42.1667C33.0633 42.1667 32.5633 42.3611 32.1189 42.75C31.6744 43.1389 31.4522 43.6667 31.4522 44.3334ZM25.6189 43.6667C21.5078 43.7778 17.7856 42.5834 14.4522 40.0834C11.1189 37.5834 8.84111 34.3889 7.61889 30.5C6.39667 26.6111 6.48 22.7222 7.86889 18.8334C9.25778 14.9445 11.6744 11.8334 15.1189 9.50002C18.5633 7.16669 22.3411 6.08335 26.4522 6.25002C30.5633 6.41669 34.23 7.7778 37.4522 10.3334H33.9522C33.3967 10.4445 32.8967 10.6945 32.4522 11.0834C32.0078 11.4722 31.8133 11.9445 31.8689 12.5C31.9244 13.0556 32.1467 13.5556 32.5356 14C32.9244 14.4445 33.3967 14.6667 33.9522 14.6667H42.2856C42.8411 14.5556 43.3411 14.3056 43.7856 13.9167C44.23 13.5278 44.4522 13.0556 44.4522 12.5V4.16669C44.4522 3.61113 44.23 3.11113 43.7856 2.66669C43.3411 2.22225 42.8411 2.00002 42.2856 2.00002C41.73 2.00002 41.2578 2.22225 40.8689 2.66669C40.48 3.11113 40.23 3.61113 40.1189 4.16669V7.33335C37.5633 5.22224 34.7022 3.75002 31.5356 2.91669C28.3689 2.08336 25.1744 1.91669 21.9522 2.41669C18.73 2.91669 15.73 4.08335 12.9522 5.91669C10.1744 7.75002 7.92445 10.0834 6.20223 12.9167C4.48 15.75 3.39667 18.7778 2.95222 22C2.50778 25.2222 2.75778 28.4445 3.70222 31.6667C4.64667 34.8889 6.20222 37.7222 8.36889 40.1667C10.5356 42.6111 13.1189 44.5278 16.1189 45.9167C19.1189 47.3056 22.2856 47.9445 25.6189 47.8334C26.1744 47.8334 26.6744 47.6389 27.1189 47.25C27.5633 46.8611 27.7856 46.3889 27.7856 45.8334C27.7856 45.2778 27.5633 44.7778 27.1189 44.3334C26.6744 43.8889 26.1744 43.6667 25.6189 43.6667ZM33.2856 32.6667C33.73 32.3334 33.9522 31.8611 33.9522 31.25C33.9522 30.6389 33.73 30.1667 33.2856 29.8334L27.7856 24.1667V12.5C27.7856 11.9445 27.5633 11.4445 27.1189 11C26.6744 10.5556 26.1744 10.3611 25.6189 10.4167C25.0633 10.4722 24.5633 10.6945 24.1189 11.0834C23.6744 11.4722 23.4522 11.9445 23.4522 12.5V25C23.5633 25.5556 23.7856 26.0556 24.1189 26.5L30.4522 32.6667C30.7856 33.1111 31.2578 33.3334 31.8689 33.3334C32.48 33.3334 32.9522 33.1111 33.2856 32.6667Z" fill="#FFDE21" />
               </svg>
             </span>
-            <h3 className="font-semibold text-xl">7 Day Turnaround</h3>
+            <h3 className="font-semibold text-lg md:text-xl">7 Day Turnaround</h3>
 
             {/* Bottom Right Gradient */}
             <img
               src="/Gradient+Blur.png"
               alt="Bottom Right Gradient"
-              className="absolute bottom-0 right-0 w-45 h-60 object-contain opacity-40 pointer-events-none"
+              className="absolute bottom-0 right-0 w-28 md:w-45 h-28 md:h-60 object-contain opacity-40 pointer-events-none"
             />
           </div>
-        </div>
+        </motion.div>
+
 
       </section>
 
@@ -268,7 +355,7 @@ const AboutPage: FC = () => {
             3 easy steps to get
             <span className="block text-gray-600 mb-5">started</span>
           </h2>
-          <p className="text-gray-600 text-xl mb-16">
+          <p className="text-gray-600 text-lg md:text-xl mb-16">
             Our three-step method blends strategy and creativity
             <span className="block text-gray-600 mt-2">
               while keeping you in the loop.
@@ -276,17 +363,23 @@ const AboutPage: FC = () => {
           </p>
 
           {/* TIMELINE */}
-          <div className="relative max-w-3xl mx-auto">
+          <div className="relative max-w-4xl mx-auto">
             {/* Vertical line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-yellow-400 -translate-x-1/2"></div>
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-yellow-400 -translate-x-1/2"></div>
 
             {/* STEP 1 */}
-            <div className="mb-20 flex justify-end relative">
+            <motion.div
+              className="mb-16 md:mb-20 flex flex-col md:flex-row md:justify-end relative"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: false, amount: 0.3 }}
+            >
               {/* Number on the line */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-6 bg-yellow-400 text-black font-bold rounded-full w-10 h-10 flex items-center justify-center z-10">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-5 md:top-6 bg-yellow-400 text-black font-bold rounded-full w-10 h-10 flex items-center justify-center z-10">
                 01
               </div>
-              <div className="bg-gray-900 text-white p-6 rounded-2xl w-90 text-left relative">
+              <div className="bg-gray-900 text-white p-6 rounded-2xl w-full md:w-96 text-left relative mt-12 md:mt-0 md:ml-10">
                 <span className="absolute -top-3 right-3 bg-yellow-400 text-black text-xs px-3 py-1 rounded-full">
                   3-5 days
                 </span>
@@ -295,15 +388,21 @@ const AboutPage: FC = () => {
                   We start by understanding your goals, audience, and challenges. Together, we define the vision and roadmap.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* STEP 2 */}
-            <div className="mb-20 flex justify-start relative">
+            <motion.div
+              className="mb-16 md:mb-20 flex flex-col md:flex-row md:justify-start relative"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              viewport={{ once: false, amount: 0.3 }}
+            >
               {/* Number on the line */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-6 bg-yellow-400 text-black font-bold rounded-full w-10 h-10 flex items-center justify-center z-10">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-5 md:top-6 bg-yellow-400 text-black font-bold rounded-full w-10 h-10 flex items-center justify-center z-10">
                 02
               </div>
-              <div className="bg-gray-900 text-white p-6 rounded-2xl w-80 text-left relative">
+              <div className="bg-gray-900 text-white p-6 rounded-2xl w-full md:w-96 text-left relative mt-12 md:mt-0 md:mr-10">
                 <span className="absolute -top-3 left-3 bg-yellow-400 text-black text-xs px-3 py-1 rounded-full">
                   1 week
                 </span>
@@ -312,15 +411,21 @@ const AboutPage: FC = () => {
                   Our team crafts modern, user-friendly designs that reflect your brand and engage your users.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* STEP 3 */}
-            <div className="flex justify-end relative">
+            <motion.div
+              className="flex flex-col md:flex-row md:justify-end relative"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+              viewport={{ once: false, amount: 0.3 }}
+            >
               {/* Number on the line */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-6 bg-yellow-400 text-black font-bold rounded-full w-10 h-10 flex items-center justify-center z-10">
+              <div className="absolute left-1/2 -translate-x-1/2 -top-5 md:top-6 bg-yellow-400 text-black font-bold rounded-full w-10 h-10 flex items-center justify-center z-10">
                 03
               </div>
-              <div className="bg-[#1C1C1F] text-white p-6 rounded-2xl w-80 text-left relative">
+              <div className="bg-[#1C1C1F] text-white p-6 rounded-2xl w-full md:w-96 text-left relative mt-12 md:mt-0 md:ml-10">
                 <span className="absolute -top-3 right-3 bg-yellow-400 text-black text-xs px-3 py-1 rounded-full">
                   6-7 days
                 </span>
@@ -329,10 +434,13 @@ const AboutPage: FC = () => {
                   After launch, we stay by your side with updates, optimizations and long-term support.
                 </p>
               </div>
-            </div>
+            </motion.div>
+
           </div>
         </div>
       </section>
+
+
       {/* Overlay with Blur Effect */}
       <div className="absolute bottom-10 right-0 w-[300px] h-[300px] bg-[#2346E9] opacity-50 filter blur-[200px] rounded-full"></div>
     </main>

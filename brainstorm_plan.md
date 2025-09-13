@@ -1,44 +1,21 @@
-# About Page Fix Plan
+# Portfolio Page Variants Fix Plan
 
-## Issues Identified:
-1. **Incomplete SVG**: SVG element in mission section is not closed and has no content
-2. **Broken Array Structure**: Started array `{[` for mission cards but never completed
-3. **Missing Mission Cards**: The mission section is incomplete and not rendered
-4. **Structural Problems**: Improper nesting and unclosed elements
-5. **Animation Considerations**: Need to maintain scroll progress functionality
+## Problem Analysis
+The `letterVariants` object has a `visible` property that's a function expecting a custom parameter, but Framer Motion's variants system doesn't work well with dynamic functions in this context.
 
-## Fix Strategy:
+## Solution Strategy
+1. **Fix the variants structure**: Remove the function-based approach and use direct animation props
+2. **Maintain animation behavior**: Keep the staggered letter animation effect
+3. **Simplify the code**: Use `transition.delay` directly instead of variants with custom functions
 
-### 1. Complete Mission Cards Section
-- Create proper mission cards array with complete data
-- Add appropriate SVG icons for each card
-- Implement proper mapping and rendering
-- Maintain responsive design
+## Implementation Steps
+1. Remove the problematic `letterVariants` object
+2. Update the `motion.span` to use direct animation props
+3. Calculate the delay directly in the transition object
+4. Test that the staggered animation still works properly
 
-### 2. Fix SVG Issues
-- Complete the incomplete SVG element
-- Add proper mission icon SVG
-- Ensure all SVG elements are properly closed
-
-### 3. Structural Fixes
-- Fix broken array structure
-- Ensure proper section closing
-- Maintain proper component hierarchy
-- Fix any misplaced elements
-
-### 4. Animation Enhancements
-- Keep existing scroll progress functionality
-- Add smooth transitions where appropriate
-- Ensure animations work with fixed structure
-
-### 5. Code Cleanup
-- Fix indentation and formatting
-- Remove any orphaned code
-- Ensure consistent styling classes
-
-## Implementation Steps:
-1. Fix the incomplete mission section with proper cards
-2. Add complete SVG icons
-3. Ensure all sections are properly structured
-4. Test responsive design
-5. Maintain existing animations and add smooth transitions
+## Expected Outcome
+- No TypeScript/variants errors
+- Maintained staggered letter animation effect
+- Cleaner, more maintainable code
+- Same visual result for users
