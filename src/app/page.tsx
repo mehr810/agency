@@ -9,7 +9,7 @@ import Testimonials from "./components/Testimonials";
 export default function Home() {
   return (
     <main>
-      <section className="py-0 md:py-4">
+      <section className="py-0 md:py-15">
         <Hero />
       </section>
 

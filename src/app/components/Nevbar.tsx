@@ -94,7 +94,7 @@ export default function Navbar() {
       <div
         className={cn(
           "fixed top-0 left-0 w-full z-50 transition-transform duration-300 ease-in-out",
-          menuOpen ? "bg-transparent" : "bg-white",
+          menuOpen ? "bg-transparent" : "bg-gradient-to-b from-white via-white/90 to-white/0",
           "px-4 sm:px-6 md:px-12",
           showNavbar ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-10 pointer-events-none"
         )}

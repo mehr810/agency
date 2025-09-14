@@ -148,7 +148,6 @@ function Page() {
     <main
       className={`${inter.className} text-gray-900 relative overflow-hidden`}
     >
-
       {/* HERO */}
       <section className="py-12 md:py-24 text-center relative">
         {/* Mobile Marquee */}

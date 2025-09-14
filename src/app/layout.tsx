@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Nevbar";
 import Footer from "./components/Footer";
+import BlurredBackground from "./components/BlurredBackground";
 
 // Default Next.js fonts
 const geistSans = Geist({
@@ -41,6 +42,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${grotesk.variable} antialiased`}
       >
+        {/* This background is now global */}
+        <BlurredBackground />
+
         <Navbar />
         <div className="h-[100px]" />
         {children}
