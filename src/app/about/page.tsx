@@ -143,7 +143,7 @@ const AboutPage: FC = () => {
             <img
               src="/logo-mighty-five.png"
               alt="Background Logo"
-              className="absolute left-0 md:left-[-67%] top-7 md:top-[-70px] opacity-10 w-34 md:w-55 object-contain pointer-events-none"
+              className="absolute left-0 md:left-[-67%] top-7 md:top-[-90px] opacity-10 w-34 md:w-55 object-contain pointer-events-none"
             />
           </motion.div>
 
@@ -152,7 +152,7 @@ const AboutPage: FC = () => {
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="container mx-auto px-4 md:px-10 py-12 md:py-20">
+      <section className="container mx-auto px-4 md:px-10 py-12 md:py-40">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
