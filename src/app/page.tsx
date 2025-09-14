@@ -8,7 +8,7 @@ import Testimonials from "./components/Testimonials";
 
 export default function Home() {
   return (
-    <main className="bg-white">
+    <main>
       <section className="py-0 md:py-4">
         <Hero />
       </section>

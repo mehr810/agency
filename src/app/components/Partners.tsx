@@ -46,7 +46,7 @@ export default function PartnersSection() {
   }, [controls, totalWidth]);
 
   return (
-    <section className="bg-white">
+    <section>
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
         <motion.div

@@ -146,7 +146,7 @@ function Page() {
 
   return (
     <main
-      className={`${inter.className} bg-white text-gray-900 relative overflow-hidden`}
+      className={`${inter.className} text-gray-900 relative overflow-hidden`}
     >
 
       {/* HERO */}
@@ -577,7 +577,7 @@ function Page() {
       <h2 className="text-2xl sm:text-2xl text-[#4B4B4B] underline underline-offset-4 tracking-wide uppercase py-9 ml-10 md:mb-[-24px]">
         Services We Offer
       </h2>
-      <section className="py-16 sm:py-10 md:ml-90 bg-white">
+      <section className="py-16 sm:py-10 md:ml-90">
         <div className="max-w-6xl mx-auto px-4">
           {/* Services List */}
           <div className="space-y-12 sm:space-y-16">
@@ -718,7 +718,7 @@ function Page() {
         </section>
       </section>
 
-      <section className="relative bg-white py-16 sm:py-20 px-4 sm:px-8 lg:px-16">
+      <section className="relative py-16 sm:py-20 px-4 sm:px-8 lg:px-16">
         {/* Heading */}
         <h2 className="text-3xl sm:text-4xl md:text-9xl font-bold text-[#4b4b4b] tracking-widest flex flex-col">
           {/* Mobile Animation */}

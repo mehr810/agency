@@ -17,7 +17,7 @@ const inter = Inter({
 
 const AboutPage: FC = () => {
   return (
-    <main className={`${inter.className} bg-white text-gray-900 relative`}>
+    <main className={`${inter.className} text-gray-900 relative`}>
 
       {/* HERO */}
 <section className="py-12 md:py-24 text-center overflow-hidden relative">
@@ -341,7 +341,7 @@ const AboutPage: FC = () => {
       </section>
 
       {/* PROCESS STEPS (TIMELINE) */}
-      <section className="bg-white py-20">
+      <section className="py-20">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-gray-600 text-4xl md:text-5xl font-bold mb-3">
             3 easy steps to get
@@ -371,7 +371,7 @@ const AboutPage: FC = () => {
               <div className="absolute left-1/2 -translate-x-1/2 -top-5 md:top-6 bg-yellow-400 text-black font-bold rounded-full w-10 h-10 flex items-center justify-center z-10">
                 01
               </div>
-              <div className="bg-gray-900 text-white p-6 rounded-2xl w-full md:w-96 text-left relative mt-12 md:mt-0 md:ml-10">
+              <div className="bg-[#151515] text-white p-6 rounded-2xl w-full md:w-96 text-left relative mt-12 md:mt-0 md:ml-10">
                 <span className="absolute -top-3 right-3 bg-yellow-400 text-black text-xs px-3 py-1 rounded-full">
                   3-5 days
                 </span>
@@ -394,7 +394,7 @@ const AboutPage: FC = () => {
               <div className="absolute left-1/2 -translate-x-1/2 -top-5 md:top-6 bg-yellow-400 text-black font-bold rounded-full w-10 h-10 flex items-center justify-center z-10">
                 02
               </div>
-              <div className="bg-gray-900 text-white p-6 rounded-2xl w-full md:w-96 text-left relative mt-12 md:mt-0 md:mr-10">
+              <div className="bg-[#151515] text-white p-6 rounded-2xl w-full md:w-96 text-left relative mt-12 md:mt-0 md:mr-10">
                 <span className="absolute -top-3 left-3 bg-yellow-400 text-black text-xs px-3 py-1 rounded-full">
                   1 week
                 </span>
@@ -417,7 +417,7 @@ const AboutPage: FC = () => {
               <div className="absolute left-1/2 -translate-x-1/2 -top-5 md:top-6 bg-yellow-400 text-black font-bold rounded-full w-10 h-10 flex items-center justify-center z-10">
                 03
               </div>
-              <div className="bg-[#1C1C1F] text-white p-6 rounded-2xl w-full md:w-96 text-left relative mt-12 md:mt-0 md:ml-10">
+              <div className="bg-[#151515] text-white p-6 rounded-2xl w-full md:w-96 text-left relative mt-12 md:mt-0 md:ml-10">
                 <span className="absolute -top-3 right-3 bg-yellow-400 text-black text-xs px-3 py-1 rounded-full">
                   6-7 days
                 </span>

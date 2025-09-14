@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { Playfair_Display } from "next/font/google";
+import { useRouter } from "next/navigation";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -25,6 +26,8 @@ export default function Navbar() {
   const [isMobile, setIsMobile] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down" | "initial">("initial");
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  const router = useRouter();
 
   // Detect mobile
   useEffect(() => {
@@ -66,6 +69,8 @@ export default function Navbar() {
       >
         <Link
           href={item.href}
+          prefetch={true} // 👈 add this
+          onMouseEnter={() => router.prefetch(item.href)} // 👈 triggers fetch on hover
           className={cn(
             "block font-medium transition-all duration-200",
             isMobile
@@ -93,7 +98,7 @@ export default function Navbar() {
           "px-4 sm:px-6 md:px-12",
           showNavbar ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-10 pointer-events-none"
         )}
-        style={{ paddingTop: "13px", paddingBottom: "[-5px]px" }} // ↓ tighter padding here ↓
+        style={{ paddingTop: "5px", paddingBottom: "[-7px]px" }} // ↓ tighter padding here ↓
       >
         <div className="flex items-center justify-between">
           <Link
@@ -158,7 +163,7 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 backdrop-blur-md bg-white/80 z-30"
+              className="fixed inset-0 backdrop-blur-md bg-white/80 z-40"
             >
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -187,7 +192,7 @@ export default function Navbar() {
                   : "pt-[90px] flex items-start justify-end pr-24"
               )}
             >
-              <div className="space-y-10 text-right text-amber-300 pb-20">
+              <div className="space-y-10 text-right text-amber-300 pb-20 mt-10">
                 {navItems.map(renderNavItem)}
               </div>
             </motion.div>

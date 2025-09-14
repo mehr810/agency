@@ -36,7 +36,7 @@ const cardVariants: Variants = {
 
 export default function TeamSection() {
   return (
-    <section className="bg-white max-w-7xl mx-auto px-6 md:px-20">
+    <section className="max-w-7xl mx-auto px-6 md:px-20">
       {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: 50 }}

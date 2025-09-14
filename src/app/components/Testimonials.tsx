@@ -63,7 +63,7 @@ const cardVariants: Variants = {
 const Testimonials: React.FC = () => {
   return (
     <section
-      className="bg-white px-6 md:px-20 text-center"
+      className=" px-6 md:px-20 text-center"
       role="region"
       aria-label="Client Testimonials"
     >
