@@ -130,14 +130,19 @@ const AboutPage: FC = () => {
             },
           ].map((item, i) => (
             <div
-              key={i}
-              className="md:sticky md:top-24 bg-[#1C1C1F] text-white p-4 md:p-6 rounded-2xl shadow-xl flex flex-col items-center text-center w-full md:w-[85%] h-auto md:h-[100%] mx-auto mb-2 md:mb-0"
-              style={{ zIndex: 10 + i, transform: `translateY(${i * 20}px)` }}
-            >
-              {item.icon}
-              <h3 className="font-bold text-xl mb-2">{item.title}</h3>
-              <p className="text-gray-300 text-sm leading-relaxed">{item.text}</p>
-            </div>
+  key={i}
+  className="md:sticky md:top-24 bg-[#1C1C1F] text-white p-4 md:p-6 rounded-2xl shadow-xl flex flex-col items-center text-center w-full md:w-[85%] h-auto md:h-[100%] mx-auto mb-2 md:mb-0 z-auto"
+  style={{ 
+    transform: `translateY(${i * 20}px)`,
+    // Only apply zIndex on md screens and up
+    zIndex: window.innerWidth >= 768 ? 10 + i : 'auto'
+  }}
+>
+  {item.icon}
+  <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+  <p className="text-gray-300 text-sm leading-relaxed">{item.text}</p>
+</div>
+
           ))}
 
           <motion.div 
