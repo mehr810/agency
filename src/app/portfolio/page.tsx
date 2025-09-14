@@ -675,7 +675,7 @@ function Page() {
             Reviews
           </motion.span>
         </h2>
-        <section className="bg-white py-20 px-4 sm:px-8 lg:px-16 overflow-x-hidden">
+        <section className=" py-20 px-4 sm:px-8 lg:px-16 overflow-x-hidden">
           <div className="relative w-full">
             <motion.div
               className="flex gap-6 w-max"
