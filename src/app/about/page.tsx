@@ -5,72 +5,60 @@ import Image from "next/image";
 import { FC } from "react";
 import AnimatedTeamProfiles from "../components/AnimatedTeamProfiles";
 import { motion } from "framer-motion";
-import LeftBlur from "../components/LeftBlur";
-import { Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  weight: ['100', '400', '700'], // whatever weights you want
-
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 
 const AboutPage: FC = () => {
   return (
-    <main className={`${inter.className} bg-white text-gray-900 relative`}>
+    <main className={`${spaceGrotesk.className} bg-white text-gray-900 relative`}>
 
       {/* HERO */}
-      <section className="py-12 md:py-24 text-center overflow-hidden relative">
-        {/* Static heading for mobile */}
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="text-4xl sm:text-6xl md:hidden font-bold px-4"
-        >
-          . About Us .
-        </motion.h1>
+<section className="py-12 md:py-24 text-center overflow-hidden relative">
+  {/* Infinite marquee for all screen sizes */}
+  <div className="w-full overflow-hidden relative">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
+      className="flex whitespace-nowrap
+      [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
+      [-webkit-mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
+    "
+    >
+      {/* Duplicate text for smooth looping */}
+      <motion.h1
+        className="text-4xl sm:text-6xl md:text-[200px] font-bold px-4 md:px-8"
+        animate={{ x: ["0%", "-100%"] }}
+        transition={{
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 20,
+          ease: "linear",
+        }}
+      >
+        . About Us . &nbsp; . About Us . &nbsp; . About Us . &nbsp;
+      </motion.h1>
+      <motion.h1
+        className="text-4xl sm:text-6xl md:text-[200px] font-bold px-4 md:px-8"
+        animate={{ x: ["0%", "-100%"] }}
+        transition={{
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 20,
+          ease: "linear",
+        }}
+      >
+        . About Us . &nbsp; . About Us . &nbsp; . About Us . &nbsp;
+      </motion.h1>
+    </motion.div>
+  </div>
+</section>
 
-        {/* Infinite marquee for md+ */}
-        <div className="hidden md:block w-full overflow-hidden relative">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="flex whitespace-nowrap
-            [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
-            [-webkit-mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
-          "
-          >
-            {/* Duplicate text for smooth looping */}
-            <motion.h1
-              className="text-[200px] font-bold px-8"
-              animate={{ x: ["0%", "-100%"] }}
-              transition={{
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 20,
-                ease: "linear",
-              }}
-            >
-              . About Us . &nbsp; . About Us . &nbsp; . About Us . &nbsp;
-            </motion.h1>
-            <motion.h1
-              className="text-[200px] font-bold px-8"
-              animate={{ x: ["0%", "-100%"] }}
-              transition={{
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 20,
-                ease: "linear",
-              }}
-            >
-              . About Us . &nbsp; . About Us . &nbsp; . About Us . &nbsp;
-            </motion.h1>
-          </motion.div>
-        </div>
-      </section>
 
 
       {/* INTRO + MISSION */}
@@ -132,51 +120,43 @@ const AboutPage: FC = () => {
             },
           ].map((item, i) => (
             <div
-      key={i}
-      className={`
-        md:sticky md:top-24
-        bg-[#1C1C1F] text-white p-4 md:p-6 rounded-2xl shadow-xl 
-        flex flex-col items-center text-center w-full md:w-[85%] h-auto md:h-[100%]
-        z-${10 + i} md:z-auto
-      `}
-      style={{
-        transform: `translateY(${i * 20}px)`,
-      }}
-    >
-      {item.icon}
-      <h3 className="font-bold text-xl mb-2">{item.title}</h3>
-      <p className="text-gray-300 text-sm leading-relaxed">{item.text}</p>
-    </div>
-
+              key={i}
+              className="md:sticky md:top-24 bg-[#1C1C1F] text-white p-4 md:p-6 rounded-2xl shadow-xl flex flex-col items-center text-center w-full md:w-[85%] h-auto md:h-[100%] mx-auto mb-2 md:mb-0"
+              style={{ zIndex: 10 + i, transform: `translateY(${i * 20}px)` }}
+            >
+              {item.icon}
+              <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+              <p className="text-gray-300 text-sm leading-relaxed">{item.text}</p>
+            </div>
           ))}
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: false, amount: 0.3 }}
-            className="sticky top-10 w-full md:w-[75%] mx-auto" style={{ zIndex: 1 }}>
-            <img
-              src="/logo-mighty-five.png"
-              alt="Background Logo"
-              className="absolute left-0 md:left-[-67%] top-7 md:top-[-70px] opacity-10 w-34 md:w-55 object-contain pointer-events-none"
-            />
-          </motion.div>
-
+          <motion.div 
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  viewport={{ once: false, amount: 0.3 }}
+  className="sticky top-10 w-full md:w-[75%] mx-auto hidden md:block" 
+  style={{ zIndex: 1 }}
+>
+  <img
+    src="/logo-mighty-five.png"
+    alt="Background Logo"
+    className="absolute left-0 md:left-[-67%] top-7 md:top-[-70px] opacity-10 w-34 md:w-55 object-contain pointer-events-none"
+  />
+</motion.div>
 
         </div>
 
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="container mx-auto px-4 md:px-10 py-10 md:py-20">
-        <LeftBlur />
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: false, amount: 0.3 }}
-          className="flex flex-col md:flex-row items-center md:pl-6 gap-4 md:gap-6"
+      <section className="container mx-auto px-4 md:px-10 py-12 md:py-20">
+        <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: false, amount: 0.3 }}
+        className="flex flex-col md:flex-row items-center md:pl-6 gap-4 md:gap-6"
         >
           <div className="w-full md:w-1/3">
             <h4 className="text-yellow-500 text-lg md:text-xl font-semibold mb-2">Why Choose Us?</h4>
@@ -191,12 +171,12 @@ const AboutPage: FC = () => {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 sm:px-6 md:px-6">
+        <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: true, amount: 0.3 }}
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 sm:px-6 md:px-6">
           {/* Card 1: Regular Card */}
           <div className="relative bg-[#1C1C1F] text-white rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px]">
             {/* Gradient image in top-left corner */}
@@ -217,46 +197,46 @@ const AboutPage: FC = () => {
 
 
           {/* Card 2: Glass Effect */}
-          <div className="relative rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px] w-full sm:w-[350px]">
-            <img
-              src="/card2.png"
-              alt="Seamless Collaboration"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            {/* Text container positioned at the bottom */}
-            <div className="absolute bottom-0 left-0 p-3 sm:p-4 backdrop-blur-md bg-white/20 rounded-t-2xl flex gap-2 items-center w-full sm:max-w-[480px] h-[160px] sm:h-[190px]">
-              {/* Inline SVG */}
-              <svg
-                width="40px"
-                height="40px"
-                viewBox="-2.98 0 20.004 20.004"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="#ffffff"
-                className="flex-shrink-0"
-              >
-                <g id="thunder" transform="translate(-4.967 -1.996)">
-                  <path
-                    id="secondary"
-                    fill="#ffffff"
-                    d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
-                  ></path>
-                  <path
-                    id="primary"
-                    fill="none"
-                    stroke="#ffffff"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="0.06"
-                    d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
-                  ></path>
-                </g>
-              </svg>
+<div className="relative rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px] w-full sm:w-[350px]">
+  <img
+    src="/card2.png"
+    alt="Seamless Collaboration"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+  {/* Text container positioned at the bottom */}
+  <div className="absolute bottom-0 left-0 p-3 sm:p-4 backdrop-blur-md bg-white/20 rounded-t-2xl flex gap-2 items-center w-full sm:max-w-[480px] h-[160px] sm:h-[190px]">
+    {/* Inline SVG */}
+    <svg
+      width="40px"
+      height="40px"
+      viewBox="-2.98 0 20.004 20.004"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="#ffffff"
+      className="flex-shrink-0"
+    >
+      <g id="thunder" transform="translate(-4.967 -1.996)">
+        <path
+          id="secondary"
+          fill="#ffffff"
+          d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
+        ></path>
+        <path
+          id="primary"
+          fill="none"
+          stroke="#ffffff"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="0.06"
+          d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
+        ></path>
+      </g>
+    </svg>
 
-              <h3 className="font-semibold text-white text-3xl sm:text-4xl leading-snug">
-                Seamless Collaboration
-              </h3>
-            </div>
-          </div>
+    <h3 className="font-semibold text-white text-3xl sm:text-4xl leading-snug">
+      Seamless Collaboration
+    </h3>
+  </div>
+</div>
 
           {/* Card 3: Glass Effect */}
           <div className="relative rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px]">
@@ -276,12 +256,12 @@ const AboutPage: FC = () => {
 
 
         {/* SECOND ROW (2 WIDE CARDS) */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: false, amount: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 mt-10 px-4 md:px-6">
+        <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    viewport={{ once: false, amount: 0.3 }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 mt-10 px-4 md:px-6">
 
           {/* First Card */}
           <div
@@ -449,10 +429,6 @@ const AboutPage: FC = () => {
           </div>
         </div>
       </section>
-
-
-      {/* Overlay with Blur Effect */}
-      <div className="absolute bottom-10 right-0 w-[300px] h-[300px] bg-[#2346E9] opacity-50 filter blur-[200px] rounded-full"></div>
     </main>
   );
 };
