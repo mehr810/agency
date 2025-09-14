@@ -5,17 +5,19 @@ import Image from "next/image";
 import { FC } from "react";
 import AnimatedTeamProfiles from "../components/AnimatedTeamProfiles";
 import { motion } from "framer-motion";
-import { Space_Grotesk } from "next/font/google";
+import { Inter } from "next/font/google";
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['100','400','700'], // whatever weights you want
+  variable: '--font-inter',
 });
+
 
 
 const AboutPage: FC = () => {
   return (
-    <main className={`${spaceGrotesk.className} bg-white text-gray-900 relative`}>
+    <main className={`${inter.className} bg-white text-gray-900 relative`}>
 
       {/* HERO */}
 <section className="py-12 md:py-24 text-center overflow-hidden relative">

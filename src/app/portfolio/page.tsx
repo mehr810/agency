@@ -1,14 +1,15 @@
 "use client"
 import { motion } from "framer-motion"
-import { Space_Grotesk } from "next/font/google"
 import Link from "next/link"
 import Image from "next/image"
+import { Inter } from "next/font/google";
 
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-})
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['100', '400', '700'], // whatever weights you want
+  variable: '--font-inter',
+});
 
 type StatCard = {
   number: string
@@ -145,30 +146,59 @@ function Page() {
 
   return (
     <main
-      className={`${spaceGrotesk.className} bg-white text-gray-900 relative overflow-hidden`}
+      className={`${inter.className} bg-white text-gray-900 relative overflow-hidden`}
     >
 
       {/* HERO */}
       <section className="py-12 md:py-24 text-center relative">
-        {/* Static heading for mobile */}
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="text-4xl sm:text-5xl md:hidden font-bold px-4"
-        >
-          . Portfolio .
-        </motion.h1>
+        {/* Mobile Marquee */}
+        <div className="block md:hidden w-full overflow-hidden relative">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="flex whitespace-nowrap
+        [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
+        [-webkit-mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
+      "
+          >
+            <motion.h1
+              className="text-4xl sm:text-5xl font-bold px-4"
+              animate={{ x: ["0%", "-100%"] }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 25, // a bit slower for mobile
+                ease: "linear",
+              }}
+            >
+              . Portfolio . &nbsp; . Portfolio . &nbsp; . Portfolio . &nbsp;
+            </motion.h1>
+            <motion.h1
+              className="text-4xl sm:text-5xl font-bold px-4"
+              animate={{ x: ["0%", "-100%"] }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 25,
+                ease: "linear",
+              }}
+            >
+              . Portfolio . &nbsp; . Portfolio . &nbsp; . Portfolio . &nbsp;
+            </motion.h1>
+          </motion.div>
+        </div>
 
-        {/* Infinite marquee for md+ */}
+        {/* Desktop Marquee */}
         <div className="hidden md:block w-full overflow-hidden relative">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="flex whitespace-nowrap
-              [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
-              [-webkit-mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]"
+        [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
+        [-webkit-mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
+      "
           >
             <motion.h1
               className="text-[200px] font-bold px-8"
@@ -205,7 +235,7 @@ function Page() {
               whileInView={{ x: 0, opacity: 1, color: "#1C1C1F" }}
               transition={{ duration: 1.2, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="text-[#4B4B4B] text-xl font-semibold mb-6 leading-relaxed"
+              className="text-[#4B4B4B] text-xl mb-6 leading-relaxed"
             >
               Mighty Five specializes in building
               <span className="block"> intuitive and innovative digital solutions </span>
@@ -252,9 +282,10 @@ function Page() {
         </div>
       </section>
 
+
       {/* COMPLETED PROJECTS */}
       <div className="mt-10 md:mt-5 overflow-hidden">
-        <h2 className="text-4xl sm:text-6xl md:text-9xl font-bold text-black tracking-widest ml-4 md:ml-10 flex flex-col">
+        <h2 className="text-4xl sm:text-6xl md:text-9xl font-bold text-[#4B4B4B] tracking-widest ml-4 md:ml-10 flex flex-col">
           {/* Mobile Animation */}
           <motion.span
             initial={{ opacity: 0, y: 30 }}
@@ -304,9 +335,9 @@ function Page() {
             whileInView={{ x: 0, opacity: 1, color: "#1C1C1F" }}
             viewport={{ amount: 0.3 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="text-left font-semibold text-base sm:text-lg md:text-2xl text-gray-600 max-w-md"
+            className="text-left font-medium text-base sm:text-lg md:text-lg text-gray-600 max-w-md"
           >
-            In digital landscape, our strategies rely on data and insights to
+            In digital landscape, our strategies rely<span className="block"> on data and insights to</span>
             drive success and deliver results.
           </motion.p>
           <Link href="/services">
@@ -335,7 +366,7 @@ function Page() {
             viewport={{ once: false, amount: 0.3 }}
             className="max-w-md text-left"
           >
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 text-[#1C1C1F] uppercase">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 text-[#4B4B4B] uppercase">
               Big Moe&apos;s
             </h3>
             <p className="text-base sm:text-lg md:text-xl text-[#4B4B4B] leading-relaxed mb-4 md:mb-6">
@@ -383,7 +414,7 @@ function Page() {
             viewport={{ once: false, amount: 0.3 }}
             className="max-w-md text-left"
           >
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 text-[#1C1C1F] uppercase">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 text-[#4B4B4B] uppercase">
               Verdent
             </h3>
             <p className="text-base sm:text-lg md:text-xl text-[#4B4B4B] leading-relaxed mb-4 md:mb-6">
@@ -430,7 +461,7 @@ function Page() {
             viewport={{ once: false, amount: 0.3 }}
             className="max-w-md text-left"
           >
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 text-[#1C1C1F] uppercase">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 text-[#4B4B4B] uppercase">
               Asset Avenue
             </h3>
             <p className="text-base sm:text-lg md:text-xl text-[#4B4B4B] leading-relaxed mb-4 md:mb-6">
@@ -515,8 +546,8 @@ function Page() {
       </section>
 
       {/* SERVICES Section */}
-      <section className="mt-20 md:mt-28 overflow-hidden px-4 md:px-12">
-        <h2 className="text-5xl sm:text-6xl md:text-9xl font-bold text-black tracking-widest flex flex-col">
+      <section className="mt-20 md:mt-28 overflow-hidden px-4 md:px-12 text-center">
+        <h2 className="text-5xl sm:text-6xl md:text-9xl font-bold text-[#4B4B4B] tracking-widest flex flex-col items-center justify-center">
           {/* Mobile Animation */}
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -539,15 +570,15 @@ function Page() {
             SERVICES
           </motion.span>
         </h2>
+
       </section>
+      {/* Section Title */}
 
-      <section className="py-16 sm:py-20 bg-white">
+      <h2 className="text-2xl sm:text-2xl text-[#4B4B4B] underline underline-offset-4 tracking-wide uppercase py-9 ml-10 md:mb-[-24px]">
+        Services We Offer
+      </h2>
+      <section className="py-16 sm:py-10 md:ml-90 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          {/* Section Title */}
-          <h2 className="text-2xl sm:text-2xl text-black underline underline-offset-4 tracking-wide uppercase mb-5 md:mb-[-24px] text-center md:text-left">
-            Services We Offer
-          </h2>
-
           {/* Services List */}
           <div className="space-y-12 sm:space-y-16">
             {services.map((service, index) => (
@@ -560,7 +591,7 @@ function Page() {
                   <span className="text-gray-400 font-semibold text-xs sm:text-sm">
                     {service.id}
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#1C1C1F] mt-1 sm:mt-2">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#4B4B4B] mt-1 sm:mt-2">
                     {service.title}
                   </h3>
                   <p className="text-gray-600 mt-2 text-xs sm:text-sm leading-relaxed max-w-xs sm:max-w-xl">
@@ -602,8 +633,9 @@ function Page() {
         </div>
       </section>
 
+
       <section className="mt-20 md:mt-28 overflow-hidden px-4 md:px-12">
-        <h2 className="text-4xl text-left uppercase sm:text-6xl md:text-9xl font-bold text-black tracking-widest flex flex-col">
+        <h2 className="text-4xl text-left uppercase sm:text-6xl md:text-9xl font-bold text-[#4B4B4B] tracking-widest flex flex-col">
           {/* Mobile Animation */}
           <motion.span
             initial={{ opacity: 0, y: 30 }}
@@ -665,7 +697,7 @@ function Page() {
                   <p className="text-sm text-gray-500 mb-4">{testimonial.title}</p>
 
                   <div className="flex items-center mb-4">
-                    <span className="text-4xl font-bold text-black">{testimonial.rating.toFixed(1)}</span>
+                    <span className="text-4xl font-bold text-[#4B4B4B]">{testimonial.rating.toFixed(1)}</span>
                     <span className="ml-2 text-yellow-400 text-lg">
                       {Array.from({ length: Math.floor(testimonial.rating) }).map((_, i) => (
                         <span key={i}>★</span>
@@ -677,7 +709,7 @@ function Page() {
 
                   <p className="text-gray-700 text-sm italic break-words">
                     &quot;{testimonial.quote}&quot;
-                    </p>
+                  </p>
                 </div>
 
               ))}
