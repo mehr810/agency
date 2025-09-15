@@ -92,35 +92,31 @@ const AnimatedTeamProfiles = () => {
     <p className="text-sm text-gray-500 mb-2">{currentMember.role}</p>
 
     {/* Social links under description */}
-    <div className="flex gap-4 mt-1">
-      {/* LinkedIn */}
-      <a
-        href={currentMember.linkedin}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-600 hover:text-blue-600 transition-colors"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-          <path d="M19 0h-14C2.2 0 0 2.2 0 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5V5c0-2.8-2.2-5-5-5zM8 19H5V9h3v10zM6.5 7.8c-1 0-1.7-.8-1.7-1.7 0-1 .8-1.7 1.7-1.7s1.7.8 1.7 1.7c0 1-.8 1.7-1.7 1.7zM20 19h-3v-5.5c0-1.3-.5-2.2-1.7-2.2-1 0-1.6.7-1.9 1.4-.1.2-.1.6-.1.9V19h-3s.1-9 0-10h3v1.4c.4-.7 1.2-1.7 3-1.7 2.1 0 3.7 1.4 3.7 4.3V19z"/>
-        </svg>
-      </a>
+<div className="flex gap-4 mt-1">
+  {/* LinkedIn */}
+  <div
+    onClick={() => window.open(currentMember.linkedin, "_blank")}
+    className="text-gray-600 hover:text-blue-600 transition-colors cursor-pointer"
+    role="link"
+    aria-label={`${currentMember.name} LinkedIn`}
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+      <path d="M19 0h-14C2.2 0 0 2.2 0 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5V5c0-2.8-2.2-5-5-5zM8 19H5V9h3v10zM6.5 7.8c-1 0-1.7-.8-1.7-1.7 0-1 .8-1.7 1.7-1.7s1.7.8 1.7 1.7c0 1-.8 1.7-1.7 1.7zM20 19h-3v-5.5c0-1.3-.5-2.2-1.7-2.2-1 0-1.6.7-1.9 1.4-.1.2-.1.6-.1.9V19h-3s.1-9 0-10h3v1.4c.4-.7 1.2-1.7 3-1.7 2.1 0 3.7 1.4 3.7 4.3V19z"/>
+    </svg>
+  </div>
 
-      {/* Instagram */}
-      <a
-        href={currentMember.instagram}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-600 hover:text-pink-500 transition-colors"
-      >
-        <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-        className="w-5 h-5"
-      >
-        <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2.2a2.8 2.8 0 110 5.6 2.8 2.8 0 010-5.6zM17.5 6a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/>
-      </svg>      </a>
-    </div>
+  {/* Instagram */}
+  <div
+    onClick={() => window.open(currentMember.instagram, "_blank")}
+    className="text-gray-600 hover:text-pink-500 transition-colors cursor-pointer"
+    role="link"
+    aria-label={`${currentMember.name} Instagram`}
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+      <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2.2a2.8 2.8 0 110 5.6 2.8 2.8 0 010-5.6zM17.5 6a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/>
+    </svg>
+  </div>
+</div>
   </div>
 </motion.div>
         </AnimatePresence>

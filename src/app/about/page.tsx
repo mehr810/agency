@@ -173,84 +173,86 @@ const AboutPage: FC = () => {
           </div>
         </motion.div>
 
-<motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
-  viewport={{ once: true, amount: 0.3 }}
-  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 md:px-8 lg:px-10"
->
-  {/* Card 1 */}
-  <div className="relative bg-[#1C1C1F] text-white rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] w-full">
-    <img
-      src="/Gradient+Blur.png"
-      alt="Top Left Gradient"
-      className="absolute top-0 left-0 w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60 lg:w-64 lg:h-64 object-contain opacity-70 pointer-events-none"
-    />
-    <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 p-6 sm:p-8 md:p-10">
-      <h3 className="font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl">Data-Driven Strategies</h3>
-      <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 mt-1 py-2">
-        Informed decisions powered by insights and analytics to maximize impact.
-      </p>
-    </div>
-  </div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 md:px-8 lg:px-10"
+        >
+          {/* Card 1 */}
+          <div className="relative bg-[#1C1C1F] text-white rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] w-full">
+            <Image
+              src="/Gradient+Blur.png"
+              alt="Top Left Gradient"
+              fill
+              className="absolute top-0 left-0 w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60 lg:w-64 lg:h-64 object-contain opacity-70 pointer-events-none"
+            />
+            <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 p-6 sm:p-8 md:p-10">
+              <h3 className="font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl">Data-Driven Strategies</h3>
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 mt-1 py-2">
+                Informed decisions powered by insights and analytics to maximize impact.
+              </p>
+            </div>
+          </div>
 
-  {/* Card 2 */}
-  <div className="relative rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] w-full">
-    <img
-      src="/card2.png"
-      alt="Seamless Collaboration"
-      className="absolute inset-0 w-full h-full object-cover"
-    />
-    <div className="absolute bottom-0 left-0 p-3 sm:p-4 md:p-5 lg:p-6 backdrop-blur-md bg-white/20 rounded-t-2xl flex  -ml-6 items-center max-w-max">
-  <svg
-    width="40px"
-    height="40px"
-    viewBox="-2.98 0 20.004 20.004"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="#ffffff"
-    className="flex-shrink-0"
-  >
-    <g id="thunder" transform="translate(-4.967 -1.996)">
-      <path
-        id="secondary"
-        fill="#ffffff"
-        d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
-      ></path>
-      <path
-        id="primary"
-        fill="none"
-        stroke="#ffffff"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="0.06"
-        d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
-      ></path>
-    </g>
-  </svg>
+          {/* Card 2 */}
+          <div className="relative rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] w-full">
+            <img
+              src="/card2.png"
+              alt="Seamless Collaboration"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute bottom-0 left-0 p-3 sm:p-4 md:p-5 lg:p-6 backdrop-blur-md bg-white/20 rounded-t-2xl flex  -ml-6 items-center max-w-max">
+              <svg
+                width="40px"
+                height="40px"
+                viewBox="-2.98 0 20.004 20.004"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="#ffffff"
+                className="flex-shrink-0"
+              >
+                <g id="thunder" transform="translate(-4.967 -1.996)">
+                  <path
+                    id="secondary"
+                    fill="#ffffff"
+                    d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
+                  ></path>
+                  <path
+                    id="primary"
+                    fill="none"
+                    stroke="#ffffff"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="0.06"
+                    d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
+                  ></path>
+                </g>
+              </svg>
 
-  <h3 className="font-semibold text-white text-2xl sm:text-3xl md:text-3xl lg:text-5xl xl:text-5xl leading-snug">
-    Seamless Collaboration
-  </h3>
-</div>
+  <h3 className="font-semibold text-white text-2xl sm:text-3xl md:text-3xl lg:text-5xl xl:text-5xl leading-snug ml-4 pr-4">
+                Seamless Collaboration
+              </h3>
+            </div>
 
-  </div>
+          </div>
 
-  {/* Card 3 */}
-  <div className="relative rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] w-full">
-    <img
-      src="/c1-img-2.png"
-      alt="5+ Years"
-      className="absolute inset-0 w-full h-full object-cover"
-    />
-    <div className="absolute bottom-0 w-full p-4 sm:p-6 md:p-8 lg:p-10 bg-white/10 backdrop-blur-md rounded-b-2xl text-white text-left">
-      <h3 className="font-semibold text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl">5+ Years <span className="block">Experience</span></h3>
-      <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-200 mt-1 py-3 sm:py-5 md:py-6 lg:py-7 xl:py-8">
-        Over 5 years of experience delivering innovative digital solutions.
-      </p>
-    </div>
-  </div>
-</motion.div>
+          {/* Card 3 */}
+          <div className="relative rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] w-full">
+            <Image
+              src="/c1-img-2.png"
+              alt="5+ Years"
+              fill
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute bottom-0 w-full p-4 sm:p-6 md:p-8 lg:p-10 text-white">
+              <h3 className="font-semibold flex-row md:text-5xl text-3xl">5+ Years Experience</h3>
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-200 mt-1 py-3 sm:py-5 md:py-6 lg:py-7 xl:py-8">
+                Over 5 years of experience delivering innovative digital solutions.
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
 
 
