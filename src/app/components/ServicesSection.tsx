@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Inter } from 'next/font/google';
-const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 
 type Service = {
@@ -15,7 +13,7 @@ type Service = {
 export default function ServicesSection({ services }: { services: Service[] }) {
   return (
     <>
-      <section className={`${inter.className} mt-20 md:mt-28 overflow-hidden px-4 md:px-12 text-center`}>
+      <section className="mt-20 md:mt-28 overflow-hidden px-4 md:px-12 text-center">
         <h2 className="text-5xl sm:text-6xl md:text-9xl font-bold text-[#4B4B4B] tracking-widest flex flex-col items-center justify-center">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
