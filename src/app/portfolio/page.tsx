@@ -2,13 +2,14 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { Inter } from "next/font/google";
-
+import { Inter } from "next/font/google"
+import dynamic from "next/dynamic"
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['100', '400', '700'], // whatever weights you want
+  weight: ['100', '400', '700'],
   variable: '--font-inter',
+  display: 'swap',
 });
 
 type StatCard = {
@@ -140,6 +141,9 @@ const testimonials: Testimonial[] = [
   },
 ];
 
+// Dynamically import heavy sections
+const ServicesSection = dynamic(() => import('../components/ServicesSection'), { ssr: false });
+const TestimonialsSection = dynamic(() => import('../components/TestimonialsSection'), { ssr: false });
 
 function Page() {
   const stats = defaultStats
@@ -155,7 +159,7 @@ function Page() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex whitespace-nowrap
         [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
         [-webkit-mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
@@ -167,7 +171,7 @@ function Page() {
               transition={{
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 25, // a bit slower for mobile
+                duration: 25,
                 ease: "linear",
               }}
             >
@@ -193,7 +197,7 @@ function Page() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex whitespace-nowrap
         [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
         [-webkit-mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]
@@ -232,7 +236,7 @@ function Page() {
             <motion.p
               initial={{ x: -100, opacity: 0, color: "#4B4B4B" }}
               whileInView={{ x: 0, opacity: 1, color: "#1C1C1F" }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
               className="text-[#4B4B4B] text-xl mb-6 leading-relaxed"
             >
@@ -244,7 +248,7 @@ function Page() {
               <motion.button
                 initial={{ x: 100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
-                transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                 viewport={{ once: true }}
                 className="px-10 py-4 text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md"
               >
@@ -259,7 +263,7 @@ function Page() {
           <motion.p
             initial={{ x: -100, opacity: 0, color: "#4B4B4B" }}
             whileInView={{ x: 0, opacity: 1, color: "#1C1C1F" }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ amount: 0.3 }}
             className="text-lg sm:text-xl mb-6 leading-relaxed font-semibold tracking-wide"
           >
@@ -271,7 +275,7 @@ function Page() {
             <motion.button
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               viewport={{ amount: 0.3 }}
               className="px-8 py-3 text-base sm:text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md"
             >
@@ -281,77 +285,78 @@ function Page() {
         </div>
       </section>
 
-
       {/* COMPLETED PROJECTS */}
-      <div className="mt-10 md:mt-5 overflow-hidden">
-        <h2 className="text-4xl sm:text-6xl md:text-9xl font-bold text-[#4B4B4B] tracking-widest ml-4 md:ml-10 flex flex-col">
-          {/* Mobile Animation */}
-          <motion.span
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ amount: 0.3 }}
-            className="inline-block md:hidden"
-          >
-            COMPLETED
-          </motion.span>
+<div className="sm:mt-10 md:mt-5 overflow-hidden">
+  <h2 className="text-4xl sm:text-6xl md:text-9xl font-bold text-[#4B4B4B] tracking-widest flex flex-col items-center md:items-start">
+    {/* Mobile Animation */}
+    <motion.span
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ amount: 0.3 }}
+      className="inline-block md:hidden"
+    >
+      COMPLETED
+    </motion.span>
 
-          <motion.span
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-            viewport={{ amount: 0.3 }}
-            className="inline-block md:hidden"
-          >
-            PROJECTS
-          </motion.span>
+    <motion.span
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+      viewport={{ amount: 0.3 }}
+      className="inline-block md:hidden"
+    >
+      PROJECTS
+    </motion.span>
 
-          {/* Desktop Animation */}
-          <motion.span
-            initial={{ x: -300, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            viewport={{ amount: 0.3 }}
-            className="hidden md:inline-block"
-          >
-            COMPLETED
-          </motion.span>
+    {/* Desktop Animation */}
+    <motion.span
+      initial={{ x: -300, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      viewport={{ amount: 0.3 }}
+      className="hidden md:inline-block"
+    >
+      COMPLETED
+    </motion.span>
 
-          <motion.span
-            initial={{ x: 800, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeOut", delay: 0.9 }}
-            viewport={{ amount: 0.3 }}
-            className="hidden md:inline-block md:mr-40"
-          >
-            PROJECTS
-          </motion.span>
-        </h2>
+    <motion.span
+      initial={{ x: 800, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      transition={{ duration: 1, ease: "easeOut", delay: 0.7 }}
+      viewport={{ amount: 0.3 }}
+      className="hidden md:inline-block md:mr-40"
+    >
+      PROJECTS
+    </motion.span>
+  </h2>
 
-        <div className="mt-6 flex flex-col md:flex-row justify-between items-start md:items-center w-full px-4 md:px-12 gap-6 md:gap-0">
-          <motion.p
-            initial={{ x: -100, opacity: 0, color: "#4B4B4B" }}
-            whileInView={{ x: 0, opacity: 1, color: "#1C1C1F" }}
-            viewport={{ amount: 0.3 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="text-left font-medium text-base sm:text-lg md:text-lg text-gray-600 max-w-md"
-          >
-            In digital landscape, our strategies rely<span className="block"> on data and insights to</span>
-            drive success and deliver results.
-          </motion.p>
-          <Link href="/services">
-            <motion.button
-              initial={{ x: 100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ amount: 0.3 }}
-              transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-              className="px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md"
-            >
-              Explore work
-            </motion.button>
-          </Link>
-        </div>
-      </div>
+  <div className="mt-6 flex flex-col md:flex-row justify-center md:justify-between items-center md:items-start w-full px-4 md:px-12 gap-6 md:gap-0 text-center md:text-left">
+    <motion.p
+      initial={{ x: -100, opacity: 0, color: "#4B4B4B" }}
+      whileInView={{ x: 0, opacity: 1, color: "#1C1C1F" }}
+      viewport={{ amount: 0.3 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="font-medium text-base sm:text-lg md:text-lg text-gray-600 max-w-md"
+    >
+      In digital landscape, our strategies rely<span className="block"> on data and insights to</span>
+      drive success and deliver results.
+    </motion.p>
+
+    <Link href="/services">
+      <motion.button
+        initial={{ x: 100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ amount: 0.3 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        className="px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md"
+      >
+        Explore work
+      </motion.button>
+    </Link>
+  </div>
+</div>
+
 
       {/* PROJECTS GRID */}
       <section className="mt-24 flex flex-col gap-24 px-4 md:px-12">
@@ -361,7 +366,7 @@ function Page() {
           <motion.div
             initial={{ x: -150, opacity: 0, rotate: -5 }}
             whileInView={{ x: 0, opacity: 1, rotate: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
             className="max-w-md text-left"
           >
@@ -374,7 +379,7 @@ function Page() {
             <motion.div
               initial={{ x: -80, opacity: 0, rotate: -3 }}
               whileInView={{ x: 0, opacity: 1, rotate: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               viewport={{ once: false, amount: 0.3 }}
             >
               <Link href="/services">
@@ -389,7 +394,7 @@ function Page() {
           <motion.div
             initial={{ x: 150, opacity: 0, rotate: 5 }}
             whileInView={{ x: 0, opacity: 1, rotate: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
             className="w-full md:w-[841px] aspect-[16/9] relative overflow-hidden rounded-2xl"
           >
@@ -397,8 +402,8 @@ function Page() {
               src="/images/Big-moes.svg"
               alt="Project showcase"
               fill
+              sizes="(max-width: 768px) 100vw, 841px"
               className="object-cover"
-              priority
             />
           </motion.div>
         </div>
@@ -409,7 +414,7 @@ function Page() {
           <motion.div
             initial={{ x: 150, opacity: 0, rotate: 5 }}
             whileInView={{ x: 0, opacity: 1, rotate: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
             className="max-w-md text-left"
           >
@@ -422,7 +427,7 @@ function Page() {
             <motion.div
               initial={{ x: 80, opacity: 0, rotate: 3 }}
               whileInView={{ x: 0, opacity: 1, rotate: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               viewport={{ once: false, amount: 0.3 }}
             >
               <Link href="/services">
@@ -437,7 +442,7 @@ function Page() {
           <motion.div
             initial={{ x: -150, opacity: 0, rotate: -5 }}
             whileInView={{ x: 0, opacity: 1, rotate: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
             className="w-full md:w-[841px] aspect-[16/9] relative overflow-hidden rounded-2xl"
           >
@@ -445,6 +450,8 @@ function Page() {
               src="/images/verdent.png"
               alt="Project showcase"
               fill
+              sizes="(max-width: 768px) 100vw, 841px"
+              loading="lazy"
               className="object-cover"
             />
           </motion.div>
@@ -456,7 +463,7 @@ function Page() {
           <motion.div
             initial={{ x: -150, opacity: 0, rotate: -5 }}
             whileInView={{ x: 0, opacity: 1, rotate: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
             className="max-w-md text-left"
           >
@@ -469,7 +476,7 @@ function Page() {
             <motion.div
               initial={{ x: -80, opacity: 0, rotate: -3 }}
               whileInView={{ x: 0, opacity: 1, rotate: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               viewport={{ once: false, amount: 0.3 }}
             >
               <Link href="/services">
@@ -484,7 +491,7 @@ function Page() {
           <motion.div
             initial={{ x: 150, opacity: 0, rotate: 5 }}
             whileInView={{ x: 0, opacity: 1, rotate: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
             className="w-full md:w-[841px] aspect-[16/9] relative overflow-hidden rounded-2xl"
           >
@@ -492,18 +499,19 @@ function Page() {
               src="/images/real-estate.png"
               alt="Project showcase"
               fill
+              sizes="(max-width: 768px) 100vw, 841px"
+              loading="lazy"
               className="object-cover"
             />
           </motion.div>
         </div>
       </section>
 
-
       {/* Closing Paragraph */}
       <motion.p
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: false, amount: 0.3 }}
         className="mt-32 text-center text-lg sm:text-xl md:text-2xl text-[#4B4B4B] font-medium max-w-3xl mx-auto leading-relaxed px-4"
       >
@@ -511,6 +519,7 @@ function Page() {
         <span className="block">your brand with transparency and </span>{" "}
         <span className="block">efficiency at every step.</span>
       </motion.p>
+
       {/* STATS */}
       <section className="py-16">
         <div className="max-w-5xl mx-auto px-4 text-left">
@@ -528,7 +537,7 @@ function Page() {
                   x: 0,
                   rotate: 0,
                 }}
-                transition={{ duration: 1, ease: "easeOut", delay: index * 0.2 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.2 }}
                 viewport={{ once: false, amount: 0.3 }}
                 className="rounded-2xl border border-gray-200 shadow-md p-6 sm:p-8 bg-white flex flex-col text-left"
               >
@@ -545,93 +554,7 @@ function Page() {
       </section>
 
       {/* SERVICES Section */}
-      <section className="mt-20 md:mt-28 overflow-hidden px-4 md:px-12 text-center">
-        <h2 className="text-5xl sm:text-6xl md:text-9xl font-bold text-[#4B4B4B] tracking-widest flex flex-col items-center justify-center">
-          {/* Mobile Animation */}
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: false, amount: 0.3 }}
-            className="inline-block md:hidden text-[#1C1C1F]"
-          >
-            SERVICES
-          </motion.span>
-
-          {/* Desktop Animation */}
-          <motion.span
-            initial={{ x: -300, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: false, amount: 0.3 }}
-            className="hidden md:inline-block text-[#1C1C1F]"
-          >
-            SERVICES
-          </motion.span>
-        </h2>
-
-      </section>
-      {/* Section Title */}
-
-      <h2 className="text-2xl sm:text-2xl text-[#4B4B4B] underline underline-offset-4 tracking-wide uppercase py-9 ml-10 md:mb-[-24px]">
-        Services We Offer
-      </h2>
-      <section className="py-16 sm:py-10 md:ml-90">
-        <div className="max-w-6xl mx-auto px-4">
-          {/* Services List */}
-          <div className="space-y-12 sm:space-y-16">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-12"
-              >
-                {/* Left Side - Content */}
-                <div className="md:w-2/3 flex flex-col items-center md:items-start text-center md:text-left">
-                  <span className="text-gray-400 font-semibold text-xs sm:text-sm">
-                    {service.id}
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#4B4B4B] mt-1 sm:mt-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 mt-2 text-xs sm:text-sm leading-relaxed max-w-xs sm:max-w-xl">
-                    {service.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mt-3 sm:mt-4 justify-center md:justify-start">
-                    {service.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="px-3 sm:px-4 py-1 rounded-full border border-gray-300 bg-gray-100 text-[10px] sm:text-xs font-medium text-gray-700"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Right Side - Image */}
-                <div className="md:w-1/3 flex justify-center mt-4 md:mt-0">
-                  <div className="w-32 h-32 sm:w-40 sm:h-40 bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden relative">
-                    {service.image ? (
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        className="object-cover rounded-lg"
-                        priority={index < 3} // lazy load all except first few
-                      />
-                    ) : (
-                      <span className="text-gray-400 text-xs sm:text-sm">Image</span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <ServicesSection services={services} />
 
       <section className="mt-20 md:mt-28 overflow-hidden px-4 md:px-12">
         <h2 className="text-4xl text-left uppercase sm:text-6xl md:text-9xl font-bold text-[#4B4B4B] tracking-widest flex flex-col">
@@ -639,7 +562,7 @@ function Page() {
           <motion.span
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
             className="inline-block md:hidden"
           >
@@ -648,7 +571,7 @@ function Page() {
           <motion.span
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
             viewport={{ once: false, amount: 0.3 }}
             className="inline-block md:hidden"
           >
@@ -659,7 +582,7 @@ function Page() {
           <motion.span
             initial={{ x: -300, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeOut" }}
+            transition={{ duration: 1, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
             className="hidden md:inline-block"
           >
@@ -668,63 +591,24 @@ function Page() {
           <motion.span
             initial={{ x: 800, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeOut", delay: 0.7 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
             viewport={{ once: false, amount: 0.3 }}
             className="hidden md:inline-block"
           >
             Reviews
           </motion.span>
         </h2>
-        <section className=" py-20 px-4 sm:px-8 lg:px-16 overflow-x-hidden">
-          <div className="relative w-full">
-            <motion.div
-              className="flex gap-6 w-max"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 25,
-                ease: "linear",
-              }}
-            >
-              {[...testimonials, ...testimonials].map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="rounded-xl shadow-md p-6 bg-gray-50 flex-shrink-0 hover:shadow-lg transition-shadow max-w-xs"
-                >
-                  <h3 className="text-lg font-semibold text-gray-800">{testimonial.name}</h3>
-                  <p className="text-sm text-gray-500 mb-4">{testimonial.title}</p>
-
-                  <div className="flex items-center mb-4">
-                    <span className="text-4xl font-bold text-[#4B4B4B]">{testimonial.rating.toFixed(1)}</span>
-                    <span className="ml-2 text-yellow-400 text-lg">
-                      {Array.from({ length: Math.floor(testimonial.rating) }).map((_, i) => (
-                        <span key={i}>★</span>
-                      ))}
-                      {testimonial.rating % 1 >= 0.5 ? '½' : ''}
-                    </span>
-
-                  </div>
-
-                  <p className="text-gray-700 text-sm italic break-words">
-                    &quot;{testimonial.quote}&quot;
-                  </p>
-                </div>
-
-              ))}
-            </motion.div>
-          </div>
-        </section>
+        <TestimonialsSection testimonials={testimonials} />
       </section>
 
       <section className="relative py-12 sm:py-16 px-4 sm:px-8 lg:px-16">
   {/* Heading */}
-  <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-[#4b4b4b] tracking-widest flex flex-col">
+  <h2 className="text-3xl sm:text-4xl md:text-8xl lg:text-8xl font-bold text-[#4b4b4b] tracking-widest flex flex-col">
     {/* Mobile Animation */}
     <motion.span
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, ease: "easeOut" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: false, amount: 0.3 }}
       className="inline-block md:hidden"
     >
@@ -735,7 +619,7 @@ function Page() {
     <motion.span
       initial={{ x: -300, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
-      transition={{ duration: 1, ease: "easeOut" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: false, amount: 0.3 }}
       className="hidden md:inline-block"
     >
@@ -757,8 +641,6 @@ function Page() {
     </Link>
   </div>
 </section>
-
-
     </main>
   )
 }
