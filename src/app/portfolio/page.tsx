@@ -241,8 +241,8 @@ function Page() {
               className="text-[#4B4B4B] text-xl mb-6 leading-relaxed"
             >
               Mighty Five specializes in building
-              <span className="block"> intuitive and innovative digital solutions </span>
-              <span className="block">for the modern world</span>
+              <span className="block"> intuitive and innovative digital </span>
+              <span className="block"> solutions for the modern world</span>
             </motion.p>
             <Link href="/services">
               <motion.button
@@ -286,76 +286,76 @@ function Page() {
       </section>
 
       {/* COMPLETED PROJECTS */}
-<div className="sm:mt-10 md:mt-5 overflow-hidden">
-  <h2 className="text-4xl sm:text-6xl md:text-9xl font-bold text-[#4B4B4B] tracking-widest flex flex-col items-center md:items-start">
-    {/* Mobile Animation */}
-    <motion.span
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ amount: 0.3 }}
-      className="inline-block md:hidden"
-    >
-      COMPLETED
-    </motion.span>
+      <div className="sm:mt-10 md:mt-5 overflow-hidden">
+        <h2 className="text-4xl sm:text-6xl md:text-9xl font-bold text-[#4B4B4B] tracking-widest flex flex-col items-center md:items-start">
+          {/* Mobile Animation */}
+          <motion.span
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ amount: 0.3 }}
+            className="inline-block md:hidden"
+          >
+            COMPLETED
+          </motion.span>
 
-    <motion.span
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-      viewport={{ amount: 0.3 }}
-      className="inline-block md:hidden"
-    >
-      PROJECTS
-    </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            viewport={{ amount: 0.3 }}
+            className="inline-block md:hidden"
+          >
+            PROJECTS
+          </motion.span>
 
-    {/* Desktop Animation */}
-    <motion.span
-      initial={{ x: -300, opacity: 0 }}
-      whileInView={{ x: 0, opacity: 1 }}
-      transition={{ duration: 1, ease: "easeOut" }}
-      viewport={{ amount: 0.3 }}
-      className="hidden md:inline-block"
-    >
-      COMPLETED
-    </motion.span>
+          {/* Desktop Animation */}
+          <motion.span
+            initial={{ x: -300, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            viewport={{ amount: 0.3 }}
+            className="hidden md:inline-block"
+          >
+            COMPLETED
+          </motion.span>
 
-    <motion.span
-      initial={{ x: 800, opacity: 0 }}
-      whileInView={{ x: 0, opacity: 1 }}
-      transition={{ duration: 1, ease: "easeOut", delay: 0.7 }}
-      viewport={{ amount: 0.3 }}
-      className="hidden md:inline-block md:mr-40"
-    >
-      PROJECTS
-    </motion.span>
-  </h2>
+          <motion.span
+            initial={{ x: 800, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.7 }}
+            viewport={{ amount: 0.3 }}
+            className="hidden md:inline-block md:mr-40"
+          >
+            PROJECTS
+          </motion.span>
+        </h2>
 
-  <div className="mt-6 flex flex-col md:flex-row justify-center md:justify-between items-center md:items-start w-full px-4 md:px-12 gap-6 md:gap-0 text-center md:text-left">
-    <motion.p
-      initial={{ x: -100, opacity: 0, color: "#4B4B4B" }}
-      whileInView={{ x: 0, opacity: 1, color: "#1C1C1F" }}
-      viewport={{ amount: 0.3 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="font-medium text-base sm:text-lg md:text-lg text-gray-600 max-w-md"
-    >
-      In digital landscape, our strategies rely<span className="block"> on data and insights to</span>
-      drive success and deliver results.
-    </motion.p>
+        <div className="mt-6 flex flex-col md:flex-row justify-center md:justify-between items-center md:items-start w-full px-4 md:px-12 gap-6 md:gap-0 text-center md:text-left">
+          <motion.p
+            initial={{ x: -100, opacity: 0, color: "#4B4B4B" }}
+            whileInView={{ x: 0, opacity: 1, color: "#1C1C1F" }}
+            viewport={{ amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="font-medium text-base sm:text-lg md:text-lg text-gray-600 max-w-md"
+          >
+            In digital landscape, our strategies rely<span className="block"> on data and insights to</span>
+            drive success and deliver results.
+          </motion.p>
 
-    <Link href="/services">
-      <motion.button
-        initial={{ x: 100, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        viewport={{ amount: 0.3 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className="px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md"
-      >
-        Explore work
-      </motion.button>
-    </Link>
-  </div>
-</div>
+          <Link href="/services">
+            <motion.button
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ amount: 0.3 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              className="px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md"
+            >
+              Explore work
+            </motion.button>
+          </Link>
+        </div>
+      </div>
 
 
       {/* PROJECTS GRID */}
@@ -368,7 +368,7 @@ function Page() {
             whileInView={{ x: 0, opacity: 1, rotate: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
-            className="max-w-md text-left"
+            className="max-w-md text-center md:text-left flex flex-col items-center md:items-start"
           >
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 text-[#4B4B4B] uppercase">
               Big Moe&apos;s
@@ -416,7 +416,7 @@ function Page() {
             whileInView={{ x: 0, opacity: 1, rotate: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
-            className="max-w-md text-left"
+            className="max-w-md text-center md:text-left flex flex-col items-center md:items-start"
           >
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 text-[#4B4B4B] uppercase">
               Verdent
@@ -465,7 +465,7 @@ function Page() {
             whileInView={{ x: 0, opacity: 1, rotate: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.3 }}
-            className="max-w-md text-left"
+            className="max-w-md text-center md:text-left flex flex-col items-center md:items-start"
           >
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 md:mb-4 text-[#4B4B4B] uppercase">
               Asset Avenue
@@ -506,6 +506,7 @@ function Page() {
           </motion.div>
         </div>
       </section>
+
 
       {/* Closing Paragraph */}
       <motion.p
@@ -556,8 +557,8 @@ function Page() {
       {/* SERVICES Section */}
       <ServicesSection services={services} />
 
-      <section className="mt-20 md:mt-28 overflow-hidden px-4 md:px-12">
-        <h2 className="text-4xl text-left uppercase sm:text-6xl md:text-9xl font-bold text-[#4B4B4B] tracking-widest flex flex-col">
+      <section className="mt-8 md:mt-28 overflow-hidden px-4 md:px-12">
+        <h2 className="text-6xl text-left uppercase sm:text-6xl md:text-9xl font-bold text-[#4B4B4B] tracking-widest flex flex-col">
           {/* Mobile Animation */}
           <motion.span
             initial={{ opacity: 0, y: 30 }}
@@ -602,45 +603,45 @@ function Page() {
       </section>
 
       <section className="relative py-12 sm:py-16 px-4 sm:px-8 lg:px-16">
-  {/* Heading */}
-  <h2 className="text-3xl sm:text-4xl md:text-8xl lg:text-8xl font-bold text-[#4b4b4b] tracking-widest flex flex-col">
-    {/* Mobile Animation */}
-    <motion.span
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ once: false, amount: 0.3 }}
-      className="inline-block md:hidden"
-    >
-      TIME TO ROAR!
-    </motion.span>
+        {/* Heading */}
+        <h2 className="text-3xl sm:text-4xl md:text-8xl lg:text-8xl font-bold text-[#4b4b4b] tracking-widest flex flex-col">
+          {/* Mobile Animation */}
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.3 }}
+            className="inline-block md:hidden"
+          >
+            TIME TO ROAR!
+          </motion.span>
 
-    {/* Desktop Animation */}
-    <motion.span
-      initial={{ x: -300, opacity: 0 }}
-      whileInView={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ once: false, amount: 0.3 }}
-      className="hidden md:inline-block"
-    >
-      TIME TO <span className="block">ROAR!</span>
-    </motion.span>
-  </h2>
+          {/* Desktop Animation */}
+          <motion.span
+            initial={{ x: -300, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.3 }}
+            className="hidden md:inline-block"
+          >
+            TIME TO <span className="block">ROAR!</span>
+          </motion.span>
+        </h2>
 
-  {/* Button at bottom-right corner */}
-  <div className="mt-8 md:mt-16 flex justify-end">
-    <Link href="/contact">
-      <motion.button
-        initial={{ scale: 0.8, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className="px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md"
-      >
-        Let&apos;s Talk
-      </motion.button>
-    </Link>
-  </div>
-</section>
+        {/* Button at bottom-right corner */}
+        <div className="mt-8 md:mt-16 flex justify-end">
+          <Link href="/contact">
+            <motion.button
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              className="px-6 sm:px-10 py-3 sm:py-4 text-base sm:text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md"
+            >
+              Let&apos;s Talk
+            </motion.button>
+          </Link>
+        </div>
+      </section>
     </main>
   )
 }

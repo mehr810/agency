@@ -10,14 +10,14 @@ import { usePathname } from "next/navigation";
 const Footer: React.FC = () => {
   const pathname = usePathname();
 
-  // agar loading page hai, to footer hide
+  // hide footer if on loading page
   if (pathname?.includes("loading")) {
     return null;
   }
 
   return (
     <footer
-      className=" text-black w-full px-4 py-1 md:px-12 md:py-12 font-sans"
+      className="text-black w-full px-4 py-1 md:px-12 md:py-12 font-sans"
       aria-label="Website Footer"
     >
       <motion.div
@@ -28,9 +28,7 @@ const Footer: React.FC = () => {
         variants={{
           hidden: {},
           show: {
-            transition: {
-              staggerChildren: 0.2,
-            },
+            transition: { staggerChildren: 0.2 },
           },
         }}
       >
@@ -99,46 +97,31 @@ const Footer: React.FC = () => {
 
           {/* Social Icons */}
           <div className="flex justify-end space-x-3 pt-2">
-            <a
-              href="https://www.instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            <SocialIcon
+              url="https://www.instagram.com"
+              bgColor="#000"
+              fgColor="#fff"
+              style={{ height: 30, width: 30 }}
               aria-label="Instagram"
-              className="cursor-pointer"
-            >
-              <SocialIcon
-                url="https://www.instagram.com"
-                bgColor="#000"
-                fgColor="#fff"
-                style={{ height: 30, width: 30 }}
-              />
-            </a>
-            <a
-              href="https://www.linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
+            />
+            <SocialIcon
+              url="https://www.linkedin.com"
+              bgColor="#000"
+              fgColor="#fff"
+              style={{ height: 30, width: 30 }}
               aria-label="LinkedIn"
-              className="cursor-pointer"
-            >
-              <SocialIcon
-                url="https://www.linkedin.com"
-                bgColor="#000"
-                fgColor="#fff"
-                style={{ height: 30, width: 30 }}
-              />
-            </a>
-            <a
-              href="mailto:info@mightyfive.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+            <SocialIcon
+              url="mailto:info@mightyfive.com"
+              bgColor="#000"
+              fgColor="#fff"
+              style={{ height: 30, width: 30 }}
               aria-label="Email"
-              className="cursor-pointer"
-            >
-              <SocialIcon
-                url="mailto:info@mightyfive.com"
-                bgColor="#000"
-                fgColor="#fff"
-                style={{ height: 30, width: 30 }}
-              />
-            </a>
+            />
           </div>
         </motion.address>
 

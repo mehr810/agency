@@ -167,7 +167,7 @@ const AboutPage: FC = () => {
             </h2>
           </div>
           <div className="w-full md:w-1/2">
-            <p className="text-gray-600 text-base md:text-[20px] mb-1 max-w-3xl">
+            <p className="text-gray-600 text-base md:text-[20px] mb-6 max-w-3xl">
               We offer a full range of digital services to help your brand stand out, connect, and grow.
             </p>
           </div>
@@ -178,15 +178,16 @@ const AboutPage: FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 md:px-8 lg:px-10"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 sm:gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 md:px-8 lg:px-10"
         >
           {/* Card 1 */}
           <div className="relative bg-[#1C1C1F] text-white rounded-2xl overflow-hidden h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] w-full">
             <Image
               src="/Gradient+Blur.png"
               alt="Top Left Gradient"
-              fill
-              className="absolute top-0 left-0 w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60 lg:w-64 lg:h-64 object-contain opacity-70 pointer-events-none"
+              width={199.21}
+              height={200}
+              className="opacity-60 pointer-events-none"
             />
             <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 p-6 sm:p-8 md:p-10">
               <h3 className="font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl">Data-Driven Strategies</h3>
@@ -203,36 +204,14 @@ const AboutPage: FC = () => {
               alt="Seamless Collaboration"
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute bottom-0 left-0 p-3 sm:p-4 md:p-5 lg:p-6 backdrop-blur-md bg-white/20 rounded-t-2xl flex  -ml-6 items-center max-w-max">
-              <svg
-                width="40px"
-                height="40px"
-                viewBox="-2.98 0 20.004 20.004"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="#ffffff"
-                className="flex-shrink-0"
-              >
-                <g id="thunder" transform="translate(-4.967 -1.996)">
-                  <path
-                    id="secondary"
-                    fill="#ffffff"
-                    d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
-                  ></path>
-                  <path
-                    id="primary"
-                    fill="none"
-                    stroke="#ffffff"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="0.06"
-                    d="M17.76,10.63,9,21l2.14-8H7.05a1,1,0,0,1-1-1.36l3.23-8a1.05,1.05,0,0,1,1-.64h4.34a1,1,0,0,1,1,1.36L13.7,9H17a1,1,0,0,1,.76,1.63Z"
-                  ></path>
-                </g>
-              </svg>
-
-  <h3 className="font-semibold text-white text-2xl sm:text-3xl md:text-3xl lg:text-5xl xl:text-5xl leading-snug ml-4 pr-4">
-                Seamless Collaboration
-              </h3>
+            <div className="absolute bottom-0 right-0">
+              <Image
+                src="/images/blur-overly.png"
+                alt="Collaboration Icon"
+                width={407.39}
+                height={206}
+              className="mr-1"
+              />
             </div>
 
           </div>
