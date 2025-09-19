@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "Portfolio | Mighty Five Client Success Stories & Results",
     description:
       "See real results in Mighty Five’s portfolio: client success stories, growth projects, and proven expertise in marketing and 24/7 support.",
-    url: "https://yourdomain.com/portfolio", // update with your domain
+    url: "https://mighy-five.vercel.app/portfolio", // update with your domain
     siteName: "Mighty Five",
     images: [
       {

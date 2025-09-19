@@ -9,7 +9,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Mighty Five | Digital Marketing & Call Center",
   description:
-    "Mighty Five is a top branding and digital marketing agency with 24/7 call center solutions. We help brands grow through strategy, web development, and customer engagement.",
+      "Discover Mighty Five, a result-driven digital marketing and 24/7 call center agency helping brands grow with creative strategy, branding, and customer support.",
   keywords: [
     "Digital Marketing Specialist",
     "Top Branding Agency",
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Mighty Five | Digital Marketing & Call Center",
     description:
-      "Mighty Five is a top branding and digital marketing agency with 24/7 call center solutions. We help brands grow through strategy, web development, and customer engagement.",
-    url: "https://yourdomain.com/about", // update this
+      "Discover Mighty Five, a result-driven digital marketing and 24/7 call center agency helping brands grow with creative strategy, branding, and customer support.",
+    url: "https://mighy-five.vercel.app/about", // update this
     siteName: "Mighty Five",
     images: [
       {
