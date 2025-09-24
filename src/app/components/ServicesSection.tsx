@@ -59,6 +59,7 @@ const imageVariants: Variants = {
 export default function ServicesSection({ services }: { services: Service[] }) {
   return (
     <section
+    id="services"
       className={`${inter.className} mt-20 md:mt-28 overflow-hidden px-4 md:px-12 text-center`}
     >
       {/* Heading */}

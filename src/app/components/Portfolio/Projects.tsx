@@ -62,7 +62,7 @@ function Projects() {
             drive success and deliver results.
           </motion.p>
 
-          <Link href="/services">
+          <Link href="/portfolio/#services">
             <motion.button
               initial={{ x: 100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}

@@ -77,7 +77,7 @@ function ProjectsGrid() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               viewport={{ once: false, amount: 0.3 }}
             >
-              <Link href="/services">
+              <Link href="/portfolio/#services">
                 <button className="px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md">
                   View Project
                 </button>

@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 
 const navItems = [
   { label: "01 About", href: "/about" },
-  { label: "02 Services", href: "/services" },
+  { label: "02 Services", href: "/portfolio/#services" },
   { label: "03 Portfolio", href: "/portfolio" },
   { label: "04 Contact", href: "/contact" },
 ];
