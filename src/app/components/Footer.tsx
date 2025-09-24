@@ -113,9 +113,8 @@ const Footer: React.FC = () => {
           <h4 className="font-bold mb-3">Quick Navigation</h4>
           <ul className="space-y-2 text-sm">
             <li><Link href="/about">About us</Link></li>
-            <li><Link href="/features">Features</Link></li>
-            <li><Link href="/pricing">Pricing</Link></li>
-            <li><Link href="/testimonials">Testimonials</Link></li>
+            <li><Link href="/#our-services">Features</Link></li>
+            <li><Link href="/#Testimonials">Testimonials</Link></li>
             {/* <li><Link href="/faq">FAQ&apos;s</Link></li> */}
           </ul>
         </motion.div>

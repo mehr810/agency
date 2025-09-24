@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"], weight: ["100", "400", "700"] });
 type FaqItem = { id: string; question: string; answer: string };
 
 export default function ContactFaq(): JSX.Element {
-  const [activeIds, setActiveIds] = useState<Set<string>>(new Set(["q1"]));
+  const [activeIds, setActiveIds] = useState<Set<string>>(new Set());
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -111,11 +111,11 @@ export default function ContactFaq(): JSX.Element {
 
   return (
     <div className={`${inter.className} min-h-screen text-white`}>
-      <main className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-8 md:grid-cols-[590px_1fr] md:px-6 md:py-12 items-start">
+      <main className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-8 sm:px-6 md:grid-cols-2 md:py-12 lg:px-8 items-start">
         {/* Contact Card */}
         <section
           aria-labelledby="contact-heading"
-          className="w-full max-w-[590px] min-h-[630px] rounded-2xl bg-[#1b1b1e] p-6 shadow-2xl md:p-7"
+          className="w-full max-w-xl rounded-2xl bg-[#1b1b1e] p-6 shadow-2xl sm:p-7"
         >
           <div className="mb-1 flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-yellow-300 shadow-[0_0_0_6px_rgba(255,210,46,0.15)]" />
@@ -123,8 +123,8 @@ export default function ContactFaq(): JSX.Element {
               Get in touch
             </h2>
           </div>
-          <h3 className="mt-1 text-xl font-bold sm:text-2xl">Tell Details About Your Project</h3>
-          <p className="mt-2 text-sm text-zinc-400">
+          <h3 className="mt-1 text-xl font-bold sm:text-2xl lg:text-3xl">Tell Details About Your Project</h3>
+          <p className="mt-2 text-sm text-zinc-400 sm:text-base">
             Connect with us for smart digital marketing solutions that grow your brand.
           </p>
 
@@ -194,8 +194,8 @@ export default function ContactFaq(): JSX.Element {
         </section>
 
         {/* FAQ */}
-        <section aria-labelledby="faq-heading">
-          <h2 id="faq-heading" className="mb-3 text-2xl font-bold text-[#2c2d31] sm:text-4xl">
+        <section aria-labelledby="faq-heading" className="w-full">
+          <h2 id="faq-heading" className="mb-3 text-2xl font-bold text-[#2c2d31] sm:text-4xl lg:text-5xl">
             Learn More From FAQs
           </h2>
 
@@ -211,49 +211,47 @@ export default function ContactFaq(): JSX.Element {
           </div>
 
           <div role="tabpanel" aria-labelledby="faq-heading" className="mt-2">
-  <div className="space-y-2 sm:space-y-3">
-    {faqs.map(item => {
-      const open = activeIds.has(item.id);
-      return (
-        <div
-          key={item.id}
-          className="overflow-hidden rounded-xl border border-[#2c2d31] bg-[#222327]"
-        >
-          <button
-            type="button"
-            onClick={() => toggleId(item.id)}
-            className="flex w-full items-center gap-2 sm:gap-3 p-3 sm:p-4 text-left"
-            aria-expanded={open}
-            aria-controls={`panel-${item.id}`}
-          >
-            <span className="rounded-md bg-[#2b2c30] px-2 py-0.5 sm:px-2.5 sm:py-1 text-[10px] sm:text-xs font-bold text-zinc-200">
-              {item.id.slice(1).padStart(2, "0")}
-            </span>
-            <span className="font-medium text-sm sm:text-base md:text-lg">
-              {item.question}
-            </span>
-            <span
-              aria-hidden
-              className="ml-auto grid h-7 w-7 sm:h-[29px] sm:w-[29px] place-items-center rounded-full bg-[#FFDE21] text-base sm:text-lg font-bold text-black"
-            >
-              {open ? "✕" : "+"}
-            </span>
-          </button>
-          {open && (
-  <div
-    id={`panel-${item.id}`}
-    className="px-3 sm:px-4 pb-3 sm:pb-4 text-sm sm:text-base leading-relaxed text-white break-words"
-  >
-    {item.answer}
-  </div>
-)}
-
-        </div>
-      );
-    })}
-  </div>
-</div>
-
+            <div className="space-y-2 sm:space-y-3">
+              {faqs.map(item => {
+                const open = activeIds.has(item.id);
+                return (
+                  <div
+                    key={item.id}
+                    className="overflow-hidden rounded-xl border border-[#2c2d31] bg-[#222327]"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => toggleId(item.id)}
+                      className="flex w-full items-center gap-2 sm:gap-3 p-3 sm:p-4 text-left"
+                      aria-expanded={open}
+                      aria-controls={`panel-${item.id}`}
+                    >
+                      <span className="rounded-md bg-[#2b2c30] px-2 py-0.5 sm:px-2.5 sm:py-1 text-[10px] sm:text-xs font-bold text-zinc-200">
+                        {item.id.slice(1).padStart(2, "0")}
+                      </span>
+                      <span className="font-medium text-sm sm:text-base md:text-lg lg:text-xl">
+                        {item.question}
+                      </span>
+                      <span
+                        aria-hidden
+                        className="ml-auto flex aspect-square min-h-7 min-w-7 sm:min-h-[29px] sm:min-w-[29px] items-center justify-center rounded-full bg-[#FFDE21] text-base sm:text-lg font-bold text-black"
+                      >
+                        {open ? "✕" : "+"}
+                      </span>
+                    </button>
+                    {open && (
+                      <div
+                        id={`panel-${item.id}`}
+                        className="px-3 sm:px-4 pb-3 sm:pb-4 text-sm sm:text-base lg:text-lg leading-relaxed text-white break-words"
+                      >
+                        {item.answer}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </section>
       </main>
 

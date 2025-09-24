@@ -15,7 +15,7 @@ const logos = [
   { name: "I Am Design", logo: "/pertner-logos/I-am-design.png", width: 240, height: 140 },
   { name: "Promethean", logo: "/pertner-logos/Promeathean.png" },
   { name: "Recession Proof Anchored", logo: "/pertner-logos/Recession.webp", width: 220, height: 130 },
-  { name: "Verdent", logo: "/pertner-logos/VERDENT.JPG" },
+  { name: "Verdent", logo: "/pertner-logos/verdent-Logo.png" },
   { name: "aroma", logo: "/pertner-logos/aroma-land.webp" },
   { name: "banners", logo: "/pertner-logos/banners.webp" },
   { name: "cabanit", logo: "/pertner-logos/cabanit.webp" },
@@ -25,7 +25,7 @@ const logos = [
   { name: "dance again", logo: "/pertner-logos/dance-again.webp", width: 200, height: 230 },
 ];
 
-export default function PartnersSection() {
+export default function PartnersSection() { 
   const controls = useAnimation();
 
   // Calculate total width of one logos set (needed for infinite scroll)

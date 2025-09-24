@@ -111,7 +111,9 @@ const ServicesSection = () => {
   const finalServices = reorderServices(services);
 
   return (
-    <section className=" text-black py-16 px-6 md:px-12 font-sans overflow-x-hidden">
+    <section 
+    id="our-services"
+    className=" text-black py-16 px-6 md:px-12 font-sans overflow-x-hidden">
       <div className="max-w-[1800px] mx-auto">
         {/* Section Heading */}
         <motion.div
