@@ -62,13 +62,13 @@ function Projects() {
             drive success and deliver results.
           </motion.p>
 
-          <Link href="/portfolio/#services">
+          <Link href="/portfolio/Bigmoes">
             <motion.button
               initial={{ x: 100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ amount: 0.3 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-              className="px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md"
+              className="px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md cursor-pointer"
             >
               Explore work
             </motion.button>
