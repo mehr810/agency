@@ -99,10 +99,6 @@ const Footer: React.FC = () => {
               </a>
             </p>
           </div>
-
-          <p className="text-yellow-500 font-semibold flex items-center gap-2">
-            ● Available for hire!
-          </p>
         </motion.div>
 
         {/* Quick Navigation */}
@@ -142,9 +138,9 @@ const Footer: React.FC = () => {
         >
           <h4 className="font-bold">Social Media</h4>
           <div className="flex space-x-3">
-            <SocialIcon url="linkedin.com/posts/mighty-five-agency_leadership-operationalexcellence-digitalmarketing-activity-7349151167639093250-AJgn?utm_source=share&utm_medium=member_ios&rcm=ACoAAAyXtXUBD-jaC5i1w-p4ZhgfOaajudF33n8" bgColor="#000" fgColor="#fff" style={{ height: 30, width: 30 }} />
+            <SocialIcon url="https://www.linkedin.com/company/mighty-five-agency/" bgColor="#000" fgColor="#fff" style={{ height: 30, width: 30 }} />
             <SocialIcon url="https://www.instagram.com/mightyfive.agency?igsh=YXJ2eWY1cTBjZHpp" bgColor="#000" fgColor="#fff" style={{ height: 30, width: 30 }} />
-            <SocialIcon url="mailto:info@mightyfive.com" bgColor="#000" fgColor="#fff" style={{ height: 30, width: 30 }} />
+            <SocialIcon url="mailto:sales@mighty-five.com " bgColor="#000" fgColor="#fff" style={{ height: 30, width: 30 }} />
           </div>
         </motion.div>
       </motion.div>

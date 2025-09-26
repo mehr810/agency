@@ -19,6 +19,59 @@ type Service = {
   image: string;
 };
 
+// ✅ Services data with image paths
+const services: Service[] = [
+  {
+    id: "001",
+    title: "Branding",
+    description:
+      "Our goal is your brand’s wide influence. Exclusive logos, mockups, and corporate identities make your unique value stand out.",
+    tags: ["Logo Design", "Brand Guidelines", "Visual Identity", "Presentations"],
+    image: "/images/servicepage/branding.jpg",
+  },
+  {
+    id: "002",
+    title: "Social Media Management",
+    description:
+      "We craft engaging content, manage campaigns, and grow your audience on all platforms to maximize brand visibility and engagement.",
+    tags: ["Content Creation", "Community Management", "Campaign Analytics", "Growth Strategy"],
+    image: "/images/servicepage/cmm.jpg",
+  },
+  {
+    id: "003",
+    title: "Service Design",
+    description:
+      "We design seamless, intuitive services that enhance customer experiences and streamline business operations.",
+    tags: ["User Journey Mapping", "Prototyping", "UX Strategy", "Business Optimization"],
+    image: "/images/servicepage/service-design.jpg",
+  },
+  {
+    id: "004",
+    title: "Website Development",
+    description:
+      "We build fast, responsive, and scalable websites that represent your brand and drive measurable results online.",
+    tags: ["Next.js", "React", "Responsive Design", "E-commerce Solutions"],
+    image: "/images/servicepage/web-dev.jpg",
+  },
+  {
+    id: "005",
+    title: "SEO",
+    description:
+      "Our SEO experts increase your visibility in search engines, drive organic traffic, and maximize conversions across digital campaigns.",
+    tags: ["Keyword Research", "On-page SEO", "Link Building", "Technical SEO"],
+    image: "/images/servicepage/seo.jpg",
+  },
+  {
+    id: "006",
+    title: "Customer Support",
+    description:
+      "We provide exceptional customer support solutions to keep your clients happy, loyal, and satisfied across every touchpoint.",
+    tags: ["Live Chat", "Ticketing Systems", "Knowledge Base", "Customer Relationship Solutions"],
+    image: "/images/servicepage/customer-support.jpg",
+  },
+];
+
+
 // Variants
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -56,10 +109,10 @@ const imageVariants: Variants = {
   },
 };
 
-export default function ServicesSection({ services }: { services: Service[] }) {
+export default function ServicesSection() {
   return (
     <section
-    id="services"
+      id="services"
       className={`${inter.className} mt-20 md:mt-28 overflow-hidden px-4 md:px-12 text-center`}
     >
       {/* Heading */}

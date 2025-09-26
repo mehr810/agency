@@ -19,6 +19,8 @@ const logos = [
   { name: "aroma", logo: "/pertner-logos/aroma-land.webp" },
   { name: "banners", logo: "/pertner-logos/banners.webp" },
   { name: "cabanit", logo: "/pertner-logos/cabanit.webp" },
+  { name: "Mood-Logo", logo: "/pertner-logos/Mood-Logo.png" },
+  { name: "juiceTV", logo: "/pertner-logos/juiceTV.png" },
   { name: "fish chips", logo: "/pertner-logos/fish-chips.webp" },
   { name: "kings", logo: "/pertner-logos/kings-pointe.webp", width: 180, height: 200 },
   { name: "zen", logo: "/pertner-logos/zen-living.webp" },
