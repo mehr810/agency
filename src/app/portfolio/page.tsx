@@ -58,56 +58,7 @@ const inter = Inter({
 
 
 
-const services = [
-  {
-    id: "[01]",
-    title: "Branding",
-    description:
-      "Our goal is your brand’s wild influence. Exclusive logos, mockups, and corporate identities make your unique value stand out.",
-    tags: ["Logo Design", "Brand Guidelines", "Visual Identity", "Presentations"],
-    image: "/images/branding.png",
-  },
-  {
-    id: "[02]",
-    title: "Social Media Management",
-    description:
-      "We craft engaging content, manage campaigns, and grow your audience on all platforms to maximize brand visibility and engagement.",
-    tags: ["Content Creation", "Community Management", "Campaign Analytics", "Growth Strategy"],
-    image: "/images/service-2.png",
-  },
-  {
-    id: "[03]",
-    title: "Service Design",
-    description:
-      "We design seamless, intuitive services that enhance customer experiences and streamline operations from start to finish.",
-    tags: ["User Journey Mapping", "Prototyping", "UX Strategy", "Service Optimization"],
-    image: "/images/service-3.png",
-  },
-  {
-    id: "[04]",
-    title: "Website Development",
-    description:
-      "We build fast, responsive, and scalable websites that represent your brand and drive measurable results online.",
-    tags: ["Next.js", "React", "Responsive Design", "E-commerce Solutions"],
-    image: "/images/service-4.png",
-  },
-  {
-    id: "[05]",
-    title: "SEO",
-    description:
-      "Our SEO experts increase your visibility in search engines, drive organic traffic, and improve conversion rates with proven strategies.",
-    tags: ["Keyword Research", "On-Page SEO", "Link Building", "Technical SEO"],
-    image: "/images/service-5.png",
-  },
-  {
-    id: "[06]",
-    title: "Customer Support",
-    description:
-      "We provide exceptional customer support solutions to keep your clients happy, loyal, and satisfied across every channel.",
-    tags: ["Live Chat", "Ticketing System", "Knowledge Base", "Customer Satisfaction Metrics"],
-    image: "/images/service-6.png",
-  },
-];
+
 
 
 // Dynamically import heavy sections
