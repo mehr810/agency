@@ -129,7 +129,7 @@ function Page() {
       {/* STATS */}
       <Stats />
       {/* SERVICES Section */}
-      <ServicesSection services={services} />
+      <ServicesSection/>
       {/* Reviews section */}
       <Reviews />
       {/* CTA Section */}
