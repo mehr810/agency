@@ -249,7 +249,7 @@ function AssetAvenue() {
       </section>
 
       <section className="w-full flex flex-col items-center py-8 md:py-16 space-y-4">
-        <h2 className="text-base md:text-lg font-semibold uppercase tracking-wide text-center">
+        <h2 className="text-base text-[#4B4B4B] md:text-lg font-semibold uppercase tracking-wide text-center">
           Social Media Creatives
         </h2>
 

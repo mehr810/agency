@@ -95,7 +95,7 @@ export default function PartnersSection() {
                     className="object-contain"
                   />
                   {/* Divider */}
-                  <div className="absolute right-[-12px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-gray-600 to-transparent opacity-70"></div>
+                  {/* <div className="absolute right-[-12px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-gray-600 to-transparent opacity-70"></div> */}
                 </motion.div>
               );
             })}

@@ -239,14 +239,14 @@ function Verdent() {
 
       {/* VerdentGallery */}
       <section className="w-full flex flex-col items-center py-10 space-y-12">
-        <h2 className="text-lg font-semibold mb-16 uppercase tracking-wide text-center">
+        <h2 className="text-lg font-semibold mb-16 uppercase text-[#4B4B4B] tracking-wide text-center">
           Social Media Creatives
         </h2>
 
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-6xl mb-2">
           {/* Left Big Image */}
-          <div className="relative w-full h-[500px]">
+          <div className="relative w-full h-[500px] md:h-[570px]">
             <Image
               src={bigImage}
               alt="Big showcase"
@@ -256,14 +256,15 @@ function Verdent() {
           </div>
 
           {/* Right Grid (2x2 images) */}
-          <div className="grid grid-cols-2 grid-rows-2 gap-2 h-[500px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 grid-rows-2 gap-2">
             {rightGridImages.map((img, i) => (
-              <div key={i} className="relative w-full h-full">
+              <div key={i} className="relative w-full aspect-square">
                 <Image
                   src={img}
                   alt={`Small ${i + 1}`}
                   fill
                   className="object-cover rounded-lg shadow-md"
+                  sizes="(max-width: 640px) 100vw, 50vw"
                 />
               </div>
             ))}
@@ -273,7 +274,7 @@ function Verdent() {
         {/* Bottom Row of 4 Images */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 w-full max-w-6xl">
           {bottomImages.map((img, i) => (
-            <div key={i} className="relative w-full h-[300px]">
+            <div key={i} className="relative w-full h-[400px] md:h-[300px]">
               <Image
                 src={img}
                 alt={`Bottom ${i + 1}`}
