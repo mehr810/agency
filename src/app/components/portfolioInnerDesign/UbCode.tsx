@@ -36,7 +36,7 @@ export default function UbCode() {
   >
     <div className="flex flex-col lg:flex-row items-center justify-center gap-4 md:gap-8 w-full max-w-4xl">
       {/* Centered Heading */}
-      <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-widest text-[#4B4B4B] lg:text-left md:mr-12 text-center">
+      <h2 className="text-3xl md:text-5xl font-bold uppercase text-[#4B4B4B] lg:text-left md:mr-12 text-center">
         ub code roofing
       </h2>
 
@@ -81,7 +81,7 @@ export default function UbCode() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <Image
-        src="/images/Ub-code.webp"
+        src="/images/Ub-Code.webp"
         alt="Big Image"
         width={700}
         height={400}

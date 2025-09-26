@@ -9,7 +9,7 @@ const logos = [
   { name: "VELO", logo: "/logos/image2.png" },
   { name: "PediaSure", logo: "/logos/logo1.png" },
   { name: "UNICEF", logo: "/logos/logo3.webp" },
-  { name: "Asset Avenue", logo: "/pertner-logos/Asset.png" },
+  { name: "Asset Avenue", logo: "/pertner-logos/assetavenue-logo-1.png" },
   { name: "Atlas", logo: "/pertner-logos/Atlas.png", width: 220, height: 200 },
   { name: "Big Moe's Kitchen", logo: "/pertner-logos/Big-Moe's-Kitchen-Logo.png", width: 240, height: 140 },
   { name: "I Am Design", logo: "/pertner-logos/I-am-design.png", width: 240, height: 140 },
