@@ -46,7 +46,7 @@ function ProjectsGrid() {
           className="w-full md:w-[841px] aspect-[16/9] relative overflow-hidden rounded-2xl"
         >
           <Image
-            src="/images/Big-moes.webp"
+            src="/images/Rectangle-9.png"
             alt="Project showcase"
             fill
             sizes="(max-width: 768px) 100vw, 841px"
