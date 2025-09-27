@@ -74,6 +74,7 @@ function Socials() {
         />
       </div>
     </Link>
+          </div>
           {/* Line with Arrow */}
           <div className="relative left-[450px] w-[750px] h-[1px] bg-[#4B4B4B] mt-12">
             <div className="absolute -left-28 top-1/2 -translate-y-1/2">

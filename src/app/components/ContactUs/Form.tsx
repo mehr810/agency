@@ -169,7 +169,7 @@ export default function ContactFaq(): JSX.Element {
               <small className="h-4 text-xs text-rose-300">{errors.message}</small>
             </label>
 
-            <label className="flex items-center gap-2 text-sm text-zinc-400">
+            {/* <label className="flex items-center gap-2 text-sm text-zinc-400">
               <input
                 type="checkbox"
                 className="h-4 w-4 rounded border-2 border-zinc-600 text-yellow-300 focus:ring-yellow-200"
@@ -178,7 +178,7 @@ export default function ContactFaq(): JSX.Element {
                 name="subscribe"
               />
               <span>Subscribe to Newsletter</span>
-            </label>
+            </label> */}
 
             <div className="flex justify-end">
               <button
