@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
             <li><Link href="/">Home</Link></li>
             <li><Link href="/contact">Contact us</Link></li>
             <li><Link href="/portfolio">Portfolio</Link></li>
-            <li><Link href="/services">services</Link></li>
+            <li><Link href="/portfolio/#services">services</Link></li>
             <li><Link href="/privacy">Privacy Policy</Link></li>
           </ul>
         </motion.div>
