@@ -246,12 +246,12 @@ function Verdent() {
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-6xl mb-2">
           {/* Left Big Image */}
-          <div className="relative w-full h-[500px] md:h-[570px]">
+          <div className="relative w-full h-[420px] md:h-[570px]">
             <Image
               src={bigImage}
               alt="Big showcase"
               fill
-              className="object-cover rounded-lg shadow-md"
+              className="object-contain md:object-cover rounded-lg "
             />
           </div>
 

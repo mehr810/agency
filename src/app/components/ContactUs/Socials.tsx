@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { SocialIcon } from "react-social-icons";
-
+import Link from "next/link";
 function Socials() {
   return (
     <div className="relative w-full my-10">
@@ -20,7 +20,7 @@ function Socials() {
           {/* 🔒 All your original desktop socials, line, info remain unchanged */}
           {/* Row 1 */}
           <div className="flex gap-6 ml-[400px]">
-            {[{ label: "LinkedIn", url: "https://linkedin.com" },
+            {[{ label: "LinkedIn", url: "https://www.linkedin.com/company/mighty-five-agency/" },
             { label: "Facebook", url: "https://facebook.com" }].map((item, i) => (
               <div
                 key={i}
@@ -42,7 +42,7 @@ function Socials() {
           {/* Row 2 */}
           <div className="flex gap-6 ml-[400px] relative">
             {[{ label: "X/Twitter", url: "https://x.com/" },
-            { label: "Instagram", url: "https://instagram.com" }].map((item, i) => (
+            { label: "Instagram", url: "https://www.instagram.com/mightyfive.agency?igsh=YXJ2eWY1cTBjZHpp" }].map((item, i) => (
               <div
                 key={i}
                 className="w-[258px] h-[82px] flex items-center justify-between rounded-lg bg-[#4B4B4B] text-white px-4"
@@ -60,14 +60,20 @@ function Socials() {
             ))}
 
             {/* Get in Touch */}
-            <div className="w-[258px] h-[82px] flex items-center justify-between rounded-lg bg-[#4B4B4B] text-white px-3">
-              <span className="text-2xl">Get in Touch</span>
-              <div className="relative z-10 w-[68px] h-[62px] rounded-md bg-[#FFDE21] flex items-center justify-center">
-                <Image src="/images/Vector.svg" alt="Get in Touch" width={32} height={32} />
-              </div>
-            </div>
-          </div>
-
+            <Link
+      href="mailto:sales@mighty-five.com"
+      className="w-[258px] h-[82px] flex items-center justify-between rounded-lg bg-[#4B4B4B] text-white px-3 transition-transform hover:scale-105 active:scale-95"
+    >
+      <span className="text-2xl">Get in Touch</span>
+      <div className="relative z-10 w-[68px] h-[62px] rounded-md bg-[#FFDE21] flex items-center justify-center">
+        <Image
+          src="/images/Vector.svg"
+          alt="Get in Touch"
+          width={32}
+          height={32}
+        />
+      </div>
+    </Link>
           {/* Line with Arrow */}
           <div className="relative left-[450px] w-[750px] h-[1px] bg-[#4B4B4B] mt-12">
             <div className="absolute -left-28 top-1/2 -translate-y-1/2">
