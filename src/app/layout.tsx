@@ -15,7 +15,7 @@ const inter = Inter({
 
 // ✅ Global SEO Metadata
 export const metadata: Metadata = {
-  title: "testing Five | Digital Marketing & 24/7 Call Center Support",
+  title: "Mighty Five | Digital Marketing & 24/7 Call Center Support",
   description:
     "Mighty Five delivers result-driven digital marketing and 24/7 call center support, helping brands win leads, sales, and loyal customers.",
   keywords: [
