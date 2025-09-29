@@ -64,6 +64,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://yourdomain.com",
   },
+  
 };
 
 export default function RootLayout({
