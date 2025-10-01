@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Nevbar";
 import Footer from "./components/Footer";
 import BlurredBackground from "./components/BlurredBackground";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Fonts
 
@@ -82,6 +83,8 @@ export default function RootLayout({
         <div className="h-[100px]" />
         {children}
         <Footer />
+        <SpeedInsights />
+
       </body>
     </html>
   );
