@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "./components/Nevbar";
 import Footer from "./components/Footer";
 import BlurredBackground from "./components/BlurredBackground";
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Fonts
 
@@ -31,11 +30,11 @@ export const metadata: Metadata = {
     title: "Mighty Five | Digital Marketing & 24/7 Call Center Support",
     description:
       "From First Click to Final Call, We’ve Got You Covered. Mighty Five delivers digital marketing and 24/7 call center support.",
-    url: "https://yourdomain.com",
+    url: "https://mighty-five.com/",
     siteName: "Mighty Five",
     images: [
       {
-        url: "https://yourdomain.com/og-image.jpg", // ⚡ ask designer to provide 1200x630 branded OG image
+        url: "/og_image.png", 
         width: 1200,
         height: 630,
         alt: "Mighty Five Digital Marketing and Call Center Support",
@@ -49,8 +48,8 @@ export const metadata: Metadata = {
     title: "Mighty Five | Digital Marketing & 24/7 Call Center Support",
     description:
       "From First Click to Final Call, We’ve Got You Covered. Mighty Five delivers result-driven digital marketing and 24/7 call center support.",
-    images: ["https://yourdomain.com/og-image.jpg"],
-    creator: "@mightyfive", // ⚡ update with real Twitter handle
+    // images: ["https://yourdomain.com/og-image.jpg"],
+    creator: "@mightyfive", 
   },
   robots: {
     index: true,
@@ -61,9 +60,9 @@ export const metadata: Metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
-  metadataBase: new URL("https://yourdomain.com"),
+  metadataBase: new URL("https://mighty-five.com/"),
   alternates: {
-    canonical: "https://yourdomain.com",
+    canonical: "https://mighty-five.com/",
   },
   
 };
@@ -83,7 +82,6 @@ export default function RootLayout({
         <div className="h-[100px]" />
         {children}
         <Footer />
-        <SpeedInsights />
 
       </body>
     </html>

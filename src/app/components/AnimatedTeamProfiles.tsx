@@ -80,6 +80,7 @@ const AnimatedTeamProfiles = () => {
                 alt={currentMember.alt}
                 width={80}
                 height={80}
+                priority={true}  // Eager load + preload for LCP
                 className="rounded-full shadow-md border-2 border-white w-16 h-16 sm:w-20 sm:h-20 object-cover"
               />
             </div>

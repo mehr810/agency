@@ -131,7 +131,10 @@ function AssetAvenue() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, ease: 'easeOut', delay: 0.5 }}
             >
-              <Link href="/portfolio/UbCode" className="block">
+              <Link href="/portfolio/UbCode"
+                prefetch={true}  // Enables auto-prefetch on viewport/hover
+
+                className="block">
                 <button
                   className="flex items-center justify-center gap-2 px-3 bg-[#FFDE21] text-black rounded-full hover:bg-[#FFE55C] transition-colors font-medium shadow-lg cursor-pointer"
                   style={{ width: "140px", height: "34px" }}

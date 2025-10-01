@@ -25,11 +25,11 @@ export const metadata: Metadata = {
     title: "Portfolio | Mighty Five Client Success Stories & Results",
     description:
       "See real results in Mighty Five’s portfolio: client success stories, growth projects, and proven expertise in marketing and 24/7 support.",
-    url: "https://mighy-five.vercel.app/portfolio", // update with your domain
+    url: "https://www.mighty-five.com/portfolio", // update with your domain
     siteName: "Mighty Five",
     images: [
       {
-        url: "https://yourdomain.com/og-portfolio.jpg", // replace with real OG image
+        url: "https://www.mighty-five.com/og-portfolio.jpg", // replace with real OG image
         width: 1200,
         height: 630,
         alt: "Mighty Five Portfolio - Client Success Stories",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "Portfolio | Mighty Five Client Success Stories & Results",
     description:
       "See real results in Mighty Five’s portfolio: client success stories, growth projects, and proven expertise in marketing and 24/7 support.",
-    images: ["https://yourdomain.com/og-portfolio.jpg"], // same OG image
+    // images: ["https://yourdomain.com/og-portfolio.jpg"], // same OG image
   },
 };
 

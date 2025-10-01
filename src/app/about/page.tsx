@@ -9,7 +9,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Mighty Five | Digital Marketing & Call Center",
   description:
-      "Discover Mighty Five, a result-driven digital marketing and 24/7 call center agency helping brands grow with creative strategy, branding, and customer support.",
+    "Discover Mighty Five, a result-driven digital marketing and 24/7 call center agency helping brands grow with creative strategy, branding, and customer support.",
   keywords: [
     "Digital Marketing Specialist",
     "Top Branding Agency",
@@ -22,11 +22,11 @@ export const metadata: Metadata = {
     title: "About Mighty Five | Digital Marketing & Call Center",
     description:
       "Discover Mighty Five, a result-driven digital marketing and 24/7 call center agency helping brands grow with creative strategy, branding, and customer support.",
-    url: "https://mighy-five.vercel.app/about", // update this
+    url: "https://www.mighty-five.com/about",
     siteName: "Mighty Five",
     images: [
       {
-        url: "https://yourdomain.com/og-about.jpg", // replace with your OG image
+        url: "https://www.mighty-five.com/og-about.jpg",
         width: 1200,
         height: 630,
         alt: "About Mighty Five - Digital Marketing & Call Center",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "About Mighty Five | Digital Marketing & Call Center",
     description:
       "Mighty Five delivers digital marketing, branding, and 24/7 call center solutions to help brands win leads, sales, and loyal customers.",
-    images: ["https://yourdomain.com/og-about.jpg"],
+    // images: ["https://yourdomain.com/og-about.jpg"],
   },
 };
 

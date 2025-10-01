@@ -1,6 +1,11 @@
 // app/privacy-policy/page.tsx (App Router)
 import React from "react";
 
+export const metadata = {
+  title: "Privacy Policy | Mighty Five",
+  description:
+    "Read Mighty Five's comprehensive Privacy Policy detailing how we collect, use, and protect your personal information while providing top-notch digital marketing and 24/7 call center services.",
+}
 export default function PrivacyPolicyPage() {
   return (
     <main className="max-w-4xl mx-auto p-6 text-gray-800 py-10">

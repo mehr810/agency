@@ -96,7 +96,9 @@ function HeroPortfolio() {
               <span className="block"> intuitive and innovative digital </span>
               <span className="block"> solutions for the modern world</span>
             </motion.p>
-            <Link href="/portfolio/Bigmoes">
+            <Link href="/portfolio/Bigmoes"
+            prefetch={true}  // Enables auto-prefetch on viewport/hover
+            >
               <motion.button
                 initial={{ x: 100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
@@ -123,7 +125,10 @@ function HeroPortfolio() {
             <span className="block"> intuitive and innovative digital solutions </span>
             <span className="block">for the modern world</span>
           </motion.p>
-          <Link href="/services">
+          <Link 
+          href="/portfolio/Bigmoes"
+            prefetch={true}  // Enables auto-prefetch on viewport/hover
+          >
             <motion.button
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}

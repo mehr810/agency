@@ -60,16 +60,16 @@ const services = [
 const cardVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 40,
-    filter: "blur(8px)",
+    y: 30,  // Slightly reduced for snappier start
+    filter: "blur(5px)",  // Reduced blur for quicker focus
   },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
     transition: {
-      delay: i * 0.12,
-      duration: 0.8,
+      delay: i * 0.08,  // Halved stagger for faster wave
+      duration: 0.6,  // 25% faster animation
       ease: [0.25, 1, 0.5, 1],
     },
   }),
@@ -119,7 +119,7 @@ const ServicesSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1, ease: "easeInOut" }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}  // Faster heading fade-in
           viewport={{ amount: 0.2 }}
           className="mb-16 text-center"
         >

@@ -29,7 +29,9 @@ function ProjectsGrid() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: false, amount: 0.3 }}
           >
-            <Link href="/portfolio/Bigmoes">
+            <Link href="/portfolio/Bigmoes"
+            prefetch={true}  // Enables auto-prefetch on viewport/hover
+            >
               <button className="px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md cursor-pointer">
                 View Project
               </button>
@@ -77,7 +79,9 @@ function ProjectsGrid() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: false, amount: 0.3 }}
           >
-            <Link href="/portfolio/verdent">
+            <Link href="/portfolio/verdent"
+            prefetch={true}  // Enables auto-prefetch on viewport/hover
+            >
               <button className="px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md cursor-pointer">
                 View Project
               </button>
@@ -126,7 +130,9 @@ function ProjectsGrid() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: false, amount: 0.3 }}
           >
-            <Link href="/portfolio/assetavenue">
+            <Link href="/portfolio/assetavenue"
+            prefetch={true}  // Enables auto-prefetch on viewport/hover
+            >
               <button className="px-8 sm:px-10 py-3 sm:py-4 text-base sm:text-lg bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md cursor-pointer">
                 View Project
               </button>
@@ -174,7 +180,9 @@ function ProjectsGrid() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: false, amount: 0.3 }}
           >
-            <Link href="/portfolio/UbCode">
+            <Link href="/portfolio/UbCode"
+            prefetch={true}  // Enables auto-prefetch on viewport/hover
+            >
               <button className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-yellow-400 text-black font-bold rounded-full hover:bg-yellow-500 transition duration-300 shadow-md cursor-pointer">
                 View Project
               </button>

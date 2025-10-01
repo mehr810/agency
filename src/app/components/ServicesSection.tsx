@@ -22,7 +22,7 @@ type Service = {
 // ✅ Services data with image paths
 const services: Service[] = [
   {
-    id: "001",
+    id: "[01]",
     title: "Branding",
     description:
       "Our goal is your brand’s wide influence. Exclusive logos, mockups, and corporate identities make your unique value stand out.",
@@ -30,7 +30,7 @@ const services: Service[] = [
     image: "/images/servicepage/branding.jpg",
   },
   {
-    id: "002",
+    id: "[02]",
     title: "Social Media Management",
     description:
       "We craft engaging content, manage campaigns, and grow your audience on all platforms to maximize brand visibility and engagement.",
@@ -38,7 +38,7 @@ const services: Service[] = [
     image: "/images/servicepage/cmm.jpg",
   },
   {
-    id: "003",
+    id: "[03]",
     title: "Service Design",
     description:
       "We design seamless, intuitive services that enhance customer experiences and streamline business operations.",
@@ -46,7 +46,7 @@ const services: Service[] = [
     image: "/images/servicepage/service-design.jpg",
   },
   {
-    id: "004",
+    id: "[04]",
     title: "Website Development",
     description:
       "We build fast, responsive, and scalable websites that represent your brand and drive measurable results online.",
@@ -54,7 +54,7 @@ const services: Service[] = [
     image: "/images/servicepage/web-dev.jpg",
   },
   {
-    id: "005",
+    id: "[05]",
     title: "SEO",
     description:
       "Our SEO experts increase your visibility in search engines, drive organic traffic, and maximize conversions across digital campaigns.",
@@ -62,7 +62,7 @@ const services: Service[] = [
     image: "/images/servicepage/seo.jpg",
   },
   {
-    id: "006",
+    id: "[06]",
     title: "Customer Support",
     description:
       "We provide exceptional customer support solutions to keep your clients happy, loyal, and satisfied across every touchpoint.",
