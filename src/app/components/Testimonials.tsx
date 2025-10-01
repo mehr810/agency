@@ -212,7 +212,7 @@ const Testimonials: React.FC = () => {
                 transition={{ duration: 0.8, delay: 0.5 }}
                 className="block h-6 bg-gradient-to-r from-transparent via-gray-50 to-transparent"
               />
-              "{t.quote}"
+              &quot;{t.quote}&quot;
             </motion.blockquote>
 
             {/* Name with bounce-up */}
