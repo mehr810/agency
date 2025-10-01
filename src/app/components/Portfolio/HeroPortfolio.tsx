@@ -125,10 +125,7 @@ function HeroPortfolio() {
             <span className="block"> intuitive and innovative digital solutions </span>
             <span className="block">for the modern world</span>
           </motion.p>
-          <Link 
-          href="/portfolio/Bigmoes"
-            prefetch={true}  // Enables auto-prefetch on viewport/hover
-          >
+          <Link href="/services">
             <motion.button
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
