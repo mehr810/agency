@@ -22,7 +22,7 @@ const teamMembers: TeamMember[] = [
     role: "Founder & CEO",
     image: "/team/mehr.webp",
     alt: "Mehr Haider - Founder & CEO",
-    linkedin: "https://www.linkedin.com/in/mehr-haider",
+    linkedin: "https://www.linkedin.com/in/syed-mehr-haider-1859065a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     // instagram: "https://www.instagram.com/mehrhaider"
 
   },
@@ -32,7 +32,7 @@ const teamMembers: TeamMember[] = [
     role: "Co-Founder",
     image: "/team/maheen.webp",
     alt: "Maheen - Co-Founder",
-    linkedin: "https://www.linkedin.com/in/maheen",
+    linkedin: "https://www.linkedin.com/in/maheen-khan-8a328636a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     // instagram: "https://www.instagram.com/maheen"
 
   },
