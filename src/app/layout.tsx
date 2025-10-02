@@ -4,14 +4,13 @@ import "./globals.css";
 import Navbar from "./components/Nevbar";
 import Footer from "./components/Footer";
 import BlurredBackground from "./components/BlurredBackground";
+import Script from "next/script"; // ✅ GA ke liye import
 
 // Fonts
-
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
-
 
 // ✅ Global SEO Metadata
 export const metadata: Metadata = {
@@ -34,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Mighty Five",
     images: [
       {
-        url: "/og_image.png", 
+        url: "/og_image.png",
         width: 1200,
         height: 630,
         alt: "Mighty Five Digital Marketing and Call Center Support",
@@ -48,8 +47,7 @@ export const metadata: Metadata = {
     title: "Mighty Five | Digital Marketing & 24/7 Call Center Support",
     description:
       "From First Click to Final Call, We’ve Got You Covered. Mighty Five delivers result-driven digital marketing and 24/7 call center support.",
-    // images: ["https://yourdomain.com/og-image.jpg"],
-    creator: "@mightyfive", 
+    creator: "@mightyfive",
   },
   robots: {
     index: true,
@@ -64,7 +62,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://mighty-five.com/",
   },
-  
 };
 
 export default function RootLayout({
@@ -74,15 +71,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} antialiased`}
-      >
+      <body className={`${inter.variable} antialiased`}>
         <BlurredBackground />
         <Navbar />
         <div className="h-[100px]" />
         {children}
         <Footer />
 
+        {/* ✅ Google Analytics Script */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-3V39WEE65J"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-3V39WEE65J');
+          `}
+        </Script>
       </body>
     </html>
   );

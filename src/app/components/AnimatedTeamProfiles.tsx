@@ -11,7 +11,7 @@ interface TeamMember {
   image: string;
   alt: string;
   linkedin: string;
-  instagram: string;
+  // instagram: string;
 
 }
 
@@ -23,7 +23,7 @@ const teamMembers: TeamMember[] = [
     image: "/team/mehr.webp",
     alt: "Mehr Haider - Founder & CEO",
     linkedin: "https://www.linkedin.com/in/mehr-haider",
-    instagram: "https://www.instagram.com/mehrhaider"
+    // instagram: "https://www.instagram.com/mehrhaider"
 
   },
   {
@@ -33,7 +33,7 @@ const teamMembers: TeamMember[] = [
     image: "/team/maheen.webp",
     alt: "Maheen - Co-Founder",
     linkedin: "https://www.linkedin.com/in/maheen",
-    instagram: "https://www.instagram.com/maheen"
+    // instagram: "https://www.instagram.com/maheen"
 
   },
   {
@@ -43,7 +43,7 @@ const teamMembers: TeamMember[] = [
     image: "/team/asma.webp",
     alt: "Asma - Creative Director",
     linkedin: "https://www.linkedin.com/in/asma",
-    instagram: "https://www.instagram.com/asma"
+    // instagram: "https://www.instagram.com/asma"
   },
 ];
 
@@ -106,7 +106,7 @@ const AnimatedTeamProfiles = () => {
                   </svg>
                 </div>
 
-                {/* Instagram */}
+                {/* Instagram
                 <div
                   onClick={() => window.open(currentMember.instagram, "_blank")}
                   className="text-black hover:text-pink-500 transition-colors cursor-pointer"
@@ -116,7 +116,7 @@ const AnimatedTeamProfiles = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
                     <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2.2a2.8 2.8 0 110 5.6 2.8 2.8 0 010-5.6zM17.5 6a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" />
                   </svg>
-                </div>
+                </div> */}
               </div>
             </div>
           </motion.div>
