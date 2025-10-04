@@ -122,18 +122,18 @@ function Socials() {
   <div className="flex flex-col items-center space-y-4">
     {/* Row 1 */}
     <div className="flex flex-wrap justify-center gap-3">
-      {[{ label: "LinkedIn", url: "https://www.linkedin.com/company/mighty-five-agency/", network: "linkedin" },
-      { label: "Facebook", url: "https://facebook.com", network: "facebook" }].map((item, i) => (
+      {[{ label: "LinkedIn", url: "https://www.linkedin.com/company/mighty-five-agency/" },
+      { label: "Facebook", url: "https://facebook.com" }].map((item, i) => (
         <Link
           key={i}
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-[143px] h-[37px] flex items-center justify-between rounded-lg bg-[#4B4B4B] text-white px-3 transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+          className="w-[143px] h-[37px] flex items-center justify-between rounded-lg bg-[#4B4B4B] text-white px-3 transition-transform hover:scale-105 active:scale-95"
         >
           <span className="text-sm">{item.label}</span>
-          <div className="w-8 h-8 rounded-md bg-[#FFDE21] flex items-center justify-center pointer-events-none">
-            <SocialIcon network={item.network} style={{ width: 40, height: 40 }} fgColor="#4B4B4B" bgColor="transparent" />
+          <div className="w-8 h-8 rounded-md bg-[#FFDE21] flex items-center justify-center">
+            <SocialIcon url={item.url} style={{ width: 40, height: 40 }} fgColor="#4B4B4B" bgColor="transparent" />
           </div>
         </Link>
       ))}
@@ -141,18 +141,18 @@ function Socials() {
 
     {/* Row 2 */}
     <div className="flex flex-wrap justify-center gap-3">
-      {[{ label: "X/Twitter", url: "https://x.com/", network: "twitter" },
-      { label: "Instagram", url: "https://www.instagram.com/mightyfive.agency/?igsh=YXJ2eWY1cTBjZHpp#", network: "instagram" }].map((item, i) => (
+      {[{ label: "X/Twitter", url: "https://x.com/" },
+      { label: "Instagram", url: "https://www.instagram.com/mightyfive.agency/?igsh=YXJ2eWY1cTBjZHpp#" }].map((item, i) => (
         <Link
           key={i}
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-[143px] h-[37px] flex items-center justify-between rounded-lg bg-[#4B4B4B] text-white px-3 transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+          className="w-[143px] h-[37px] flex items-center justify-between rounded-lg bg-[#4B4B4B] text-white px-3 transition-transform hover:scale-105 active:scale-95"
         >
           <span className="text-sm">{item.label}</span>
-          <div className="w-8 h-8 rounded-md bg-[#FFDE21] flex items-center justify-center pointer-events-none">
-            <SocialIcon network={item.network} style={{ width: 40, height: 40 }} fgColor="#4B4B4B" bgColor="transparent" />
+          <div className="w-8 h-8 rounded-md bg-[#FFDE21] flex items-center justify-center">
+            <SocialIcon url={item.url} style={{ width: 40, height: 40 }} fgColor="#4B4B4B" bgColor="transparent" />
           </div>
         </Link>
       ))}
@@ -161,10 +161,10 @@ function Socials() {
     {/* Get in Touch */}
     <Link
       href="mailto:sales@mighty-five.com"
-      className="w-[143px] h-[37px] flex items-center justify-between rounded-lg bg-[#4B4B4B] text-white px-3 transition-transform hover:scale-105 active:scale-95 cursor-pointer"
+      className="w-[143px] h-[37px] flex items-center justify-between rounded-lg bg-[#4B4B4B] text-white px-3 transition-transform hover:scale-105 active:scale-95"
     >
       <span className="text-sm">Get in Touch</span>
-      <div className="w-8 h-8 rounded-md bg-[#FFDE21] flex items-center justify-center pointer-events-none">
+      <div className="w-8 h-8 rounded-md bg-[#FFDE21] flex items-center justify-center">
         <Image src="/images/Vector.svg" alt="Get in Touch" width={16} height={16} />
       </div>
     </Link>
